@@ -1,30 +1,1212 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>صفحه شخصی نیما</title>
-  <!-- لینک CSS جدا -->
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نیما شهسوارزاده |•| Nima Shaheswarzadeh</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* ===== پس زمینه پویا با بلور ===== */
+        body {
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        #animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: #0f172a;
+        }
+        
+        .bg-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            animation: floatBlob 20s ease-in-out infinite;
+        }
+        
+        .bg-blob-1 {
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+        
+        .bg-blob-2 {
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+            bottom: -150px;
+            left: -100px;
+            animation-delay: -7s;
+        }
+        
+        .bg-blob-3 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, #f0abfc, #d946ef);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation-delay: -14s;
+        }
+        
+        .bg-blob-4 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, #22d3ee, #06b6d4);
+            top: 30%;
+            right: 20%;
+            animation-delay: -5s;
+        }
+        
+        .bg-blob-5 {
+            width: 450px;
+            height: 450px;
+            background: linear-gradient(135deg, #c084fc, #9333ea);
+            bottom: 20%;
+            right: -100px;
+            animation-delay: -10s;
+        }
+        
+        @keyframes floatBlob {
+            0%, 100% { 
+                transform: translate(0, 0) scale(1) rotate(0deg); 
+            }
+            25% { 
+                transform: translate(100px, -80px) scale(1.1) rotate(90deg); 
+            }
+            50% { 
+                transform: translate(-50px, 100px) scale(0.9) rotate(180deg); 
+            }
+            75% { 
+                transform: translate(-100px, -50px) scale(1.05) rotate(270deg); 
+            }
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #38bdf8 0%, #a855f7 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px -15px rgba(56, 189, 248, 0.3);
+        }
+        
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.5;
+            animation: blob 7s infinite;
+        }
+        
+        @keyframes blob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+        
+        /* ===== انیمیشن‌های پیشرفته ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-80px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(80px);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .rotate-in {
+            opacity: 0;
+            transform: rotate(-10deg) scale(0.9);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .rotate-in.visible {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+        
+        /* انیمیشن برای بخش‌ها */
+        section {
+            position: relative;
+        }
+        
+        .section-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .section-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .typing-effect {
+            border-left: 3px solid #38bdf8;
+            animation: blink 0.7s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { border-color: #38bdf8; }
+            50% { border-color: transparent; }
+        }
+        
+        .skill-bar {
+            transition: width 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.9) 0%, rgba(168, 85, 247, 0.9) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover::before {
+            opacity: 1;
+        }
+        
+        .project-card:hover .project-info {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #38bdf8 0%, #a855f7 100%);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        /* جلوه بلور اکریلیک */
+        .acrylic-blur {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .acrylic-blur-light {
+            background: rgba(56, 189, 248, 0.3);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* استایل تب‌های پروژه */
+        .project-tab {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .project-tab.active {
+            background: linear-gradient(135deg, #38bdf8 0%, #a855f7 100%);
+        }
+        
+        .project-content {
+            display: none;
+            animation: fadeInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .project-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        /* انیمیشن شناور برای عناصر */
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* انیمیشن پالس */
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+        
+        /* انیمیشن چرخش آرام */
+        .slow-spin {
+            animation: slowSpin 20s linear infinite;
+        }
+        
+        @keyframes slowSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* اسکرول نرم برای لینک‌ها */
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        /* انیمیشن ورود تیتر بخش‌ها */
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #38bdf8 0%, #a855f7 100%);
+            border-radius: 2px;
+            transition: width 0.6s ease;
+        }
+        
+        .section-title.visible::before {
+            width: 100%;
+        }
+        
+        /* hover برای آیکون‌های اجتماعی */
+        .social-icon {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-8px) scale(1.2);
+            text-shadow: 0 10px 30px rgba(56, 189, 248, 0.5);
+        }
+        
+        /* استایل بهبود یافته برای کارت‌ها */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+        }
+        
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ===== پس‌زمینه بلور برای خوانایی بهتر متون ===== */
+        .text-backdrop {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 12px;
+            padding: 8px 16px;
+        }
+        
+        /* بهبود خوانایی متن‌ها */
+        h1, h2, h3, p, span, a, div {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .gradient-text {
+            text-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
+        }
+        
+        /* پس‌زمینه نیمه‌شفاف برای بخش‌ها */
+        section {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+        
+        #home {
+            background: transparent;
+            backdrop-filter: none;
+        }
+        
+        /* افکت کلیک */
+        .clickable {
+            cursor: pointer;
+        }
+        
+        .click-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .click-ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, opacity 0.3s;
+            opacity: 0;
+        }
+        
+        .click-ripple:active::after {
+            width: 200px;
+            height: 200px;
+            opacity: 1;
+            transition: 0s;
+        }
+    </style>
 </head>
-<body>
+<body class="text-white overflow-x-hidden">
+    
+    <!-- ===== پس زمینه پویا ===== -->
+    <div id="animated-bg">
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+        <div class="bg-blob bg-blob-3"></div>
+        <div class="bg-blob bg-blob-4"></div>
+        <div class="bg-blob bg-blob-5"></div>
+    </div>
+    
+    <!-- ===== بخش نویگیشن ===== -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <!-- لوگو -->
+                <a href="#" class="flex items-center">
+                    <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Nima-Shaheswarzadeh.github.io/main//Nima%20Person%201.1.png" 
+                         alt="Nima Logo" 
+                         class="w-10 h-10 rounded-full object-cover hover:scale-110 transition-transform duration-300">
+                </a>
+                
+                <!-- منوی دسکتاپ با افکت بلور -->
+                <div id="desktopMenu" class="hidden md:flex gap-2 acrylic-blur rounded-full px-6 py-2">
+                    <a href="#home" class="nav-link relative text-gray-300 hover:text-white transition px-3 py-1">خانه</a>
+                    <a href="#about" class="nav-link relative text-gray-300 hover:text-white transition px-3 py-1">درباره من</a>
+                    <a href="#skills" class="nav-link relative text-gray-300 hover:text-white transition px-3 py-1">مهارت‌ها</a>
+                    <a href="#projects" class="nav-link relative text-gray-300 hover:text-white transition px-3 py-1">پروژه‌ها</a>
+                    <a href="#experience" class="nav-link relative text-gray-300 hover:text-white transition px-3 py-1">تجارب</a>
+                    <a href="#contact" class="nav-link relative text-gray-300 hover:text-white transition px-3 py-1">تماس</a>
+                </div>
+                
+                <!-- دکمه منوی موبایل -->
+                <button id="menuBtn" class="md:hidden text-2xl acrylic-blur p-2 rounded-lg">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <!-- منوی موبایل با افکت بلور -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 acrylic-blur rounded-2xl">
+                <div class="flex flex-col gap-4 p-4">
+                    <a href="#home" class="text-gray-300 hover:text-white transition hover:bg-white/10 px-4 py-2 rounded-lg">خانه</a>
+                    <a href="#about" class="text-gray-300 hover:text-white transition hover:bg-white/10 px-4 py-2 rounded-lg">درباره من</a>
+                    <a href="#skills" class="text-gray-300 hover:text-white transition hover:bg-white/10 px-4 py-2 rounded-lg">مهارت‌ها</a>
+                    <a href="#projects" class="text-gray-300 hover:text-white transition hover:bg-white/10 px-4 py-2 rounded-lg">پروژه‌ها</a>
+                    <a href="#experience" class="text-gray-300 hover:text-white transition hover:bg-white/10 px-4 py-2 rounded-lg">تجارب</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition hover:bg-white/10 px-4 py-2 rounded-lg">تماس</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-  <!-- دکمه تغییر تم -->
-  <button id="theme-toggle">🌙</button>
+    <!-- ===== بخش هیرو (Hero Section) ===== -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <!-- Animated Blobs -->
+        <div class="blob w-72 h-72 bg-fuchsia-500 top-20 right-20"></div>
+        <div class="blob w-96 h-96 bg-sky-400 bottom-20 left-20" style="animation-delay: 2s;"></div>
+        <div class="blob w-64 h-64 bg-violet-500 top-1/2 left-1/2" style="animation-delay: 4s;"></div>
+        
+        <div class="relative z-10 text-center px-6">
+            <!-- عکس پروفایل با انیمیشن -->
+            <div class="mb-8 scale-in float-animation">
+                <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Nima-Shaheswarzadeh.github.io/main/Nima%20LOGO.png" 
+                     alt="Nima Profile" 
+                     class="w-40 h-40 rounded-full mx-auto border-4 border-sky-400 shadow-2xl object-cover pulse-animation">
+            </div>
+            
+            <!-- متن معرفی -->
+            <p class="text-sky-400 text-lg mb-4 fade-in" style="transition-delay: 0.2s;">خوش اومدین ، من</p>
+            <h1 class="text-5xl md:text-7xl font-black mb-4 fade-in" style="transition-delay: 0.4s;">
+                <span class="gradient-text">نیما شهسوارزاده</span>
+            </h1>
+            
+            <!-- تایپینگ افکت -->
+            <div class="text-xl md:text-2xl text-gray-400 mb-8 h-8 fade-in" style="transition-delay: 0.6s;">
+                <span id="typingText" class="typing-effect pl-2"></span>
+            </div>
+            
+            <!-- دکمه بیشتر بدانید - باز کردن منو -->
+            <div class="flex gap-4 justify-center mb-12 fade-in" style="transition-delay: 0.8s;">
+                <button id="moreInfoBtn" class="gradient-bg px-8 py-3 rounded-full font-bold hover:opacity-90 transition transform hover:scale-105">
+                    <i class="fas fa-bars ml-2"></i>
+                    بیشتر بدانید
+                </button>
+            </div>
+            
+            <!-- آیکون‌های شبکه‌های اجتماعی -->
+            <div class="flex gap-4 justify-center flex-wrap fade-in" style="transition-delay: 1s;">
+                <!-- ایتا -->
+                <a href="https://eitaa.com/Nima_Shaheswarzadeh" target="_blank" class="social-icon text-2xl text-gray-400 hover:text-sky-400" title="ایتا">
+                    <i class="fas fa-comment-dots"></i>
+                </a>
+                <!-- تلگرام -->
+                <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" class="social-icon text-2xl text-gray-400 hover:text-sky-400" title="تلگرام">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <!-- واتساپ -->
+                <a href="https://wa.me/989371164025" target="_blank" class="social-icon text-2xl text-gray-400 hover:text-sky-400" title="واتساپ">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <!-- جیمیل -->
+                <a href="mailto:Nima.Shaheswarzadeh@gmail.com" class="social-icon text-2xl text-gray-400 hover:text-sky-400" title="ایمیل">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <!-- گیت هاب -->
+                <a href="https://github.com/Nima-Shaheswarzadeh" target="_blank" class="social-icon text-2xl text-gray-400 hover:text-sky-400" title="گیت‌هاب">
+                    <i class="fab fa-github"></i>
+                </a>
+                <!-- دونیت -->
+                <a href="https://daramet.com/Nima-Sh" target="_blank" class="social-icon text-2xl text-gray-400 hover:text-sky-400" title="حمایت مالی">
+                    <i class="fas fa-heart"></i>
+                </a>
+                <!-- تماس تلفنی -->
+                <a href="tel:09139362032" class="social-icon text-2xl text-gray-400 hover:text-sky-400" title="تماس">
+                    <i class="fas fa-phone"></i>
+                </a>
+            </div>
+        </div>
+        
+        <!-- نشانگر اسکرول -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i class="fas fa-chevron-down text-2xl text-sky-400"></i>
+        </div>
+    </section>
 
-  <!-- منو فلش‌کارت‌ها -->
-  <div id="menu">
-    <div class="card" data-sound="click.mp3">پروفایل</div>
-    <div class="card" data-sound="click.mp3">رزومه</div>
-    <div class="card" data-sound="click.mp3">پروژه‌ها</div>
-    <div class="card" data-sound="click.mp3">تماس با من</div>
-    <div class="card" data-sound="click.mp3">تست</div>
-  </div>
+    <!-- ===== بخش درباره من ===== -->
+    <section id="about" class="py-20 px-6 section-animate">
+        <div class="max-w-6xl mx-auto">
+            <div class="fade-in text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 section-title">درباره <span class="gradient-text">من</span></h2>
+                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- تصویر درباره من -->
+                <div class="fade-in-left">
+                    <div class="relative rotate-in">
+                        <div class="absolute inset-0 gradient-bg rounded-2xl transform rotate-6"></div>
+                        <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Nima-Shaheswarzadeh.github.io/main/Nima%20Person%209.16.png" 
+                             alt="Nima Shaheswarzadeh" 
+                             class="relative rounded-2xl shadow-2xl w-full object-cover hover:scale-105 transition-transform duration-500">
+                    </div>
+                </div>
+                
+                <div class="fade-in-right">
+                    <h3 class="text-2xl font-bold mb-4">تست تستی</h3>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        من یک توسعه‌دهنده و طراح با علاقه به تکنولوژی هستم. 
+                        علاقه‌مند به یادگیری تکنولوژی‌های جدید و ساختن محصولاتی که تجربه کاربری عالی ارائه می‌دهند.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        تمرکز اصلی من روی Unity، C# و طراحی گرافیک است. 
+                        به کار خلاقانه و حل مسائل پیچیده علاقه‌مندم.
+                    </p>
+                    
+                    <!-- آمار -->
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="glass-card p-4 rounded-xl text-center card-hover">
+                            <div class="text-3xl font-bold gradient-text">+۵</div>
+                            <div class="text-gray-400 text-sm">مشتری راضی</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl text-center card-hover">
+                            <div class="text-3xl font-bold gradient-text">+۵</div>
+                            <div class="text-gray-400 text-sm">پروژه موفق</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl text-center card-hover">
+                            <div class="text-3xl font-bold gradient-text">+n</div>
+                            <div class="text-gray-400 text-sm">سال تجربه</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl text-center card-hover">
+                            <div class="text-3xl font-bold gradient-text">+۲</div>
+                            <div class="text-gray-400 text-sm">جایزه</div>
+                        </div>
+                    </div>
+                    
+                    <!-- دانلود رزومه -->
+                    <a href="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Nima-Shaheswarzadeh.github.io/main/Nima%20Rezome.jpeg" 
+                       target="_blank"
+                       class="inline-flex items-center gap-2 gradient-bg px-6 py-3 rounded-full font-bold hover:opacity-90 transition hover:scale-105">
+                        <i class="fas fa-download"></i>
+                        دانلود رزومه
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- نوار متحرک بی‌پایان -->
-  <div id="moving-bar"></div>
+    <!-- ===== بخش مهارت‌ها ===== -->
+    <section id="skills" class="py-20 px-6 section-animate">
+        <div class="max-w-6xl mx-auto">
+            <div class="fade-in text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 section-title">مهارت‌های <span class="gradient-text">من</span></h2>
+                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- مهارت‌های فنی -->
+                <div class="fade-in-left">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-code text-sky-400"></i>
+                        مهارت‌های فنی
+                    </h3>
+                    
+                    <div class="space-y-6">
+                        <!-- Html - 30% -->
+                        <div class="scale-in" style="transition-delay: 0.1s;">
+                            <div class="flex justify-between mb-2">
+                                <span>HTML</span>
+                                <span class="text-sky-400">30%</span>
+                            </div>
+                            <div class="h-3 bg-gray-700/50 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" data-width="30%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Css / Java - 40% -->
+                        <div class="scale-in" style="transition-delay: 0.2s;">
+                            <div class="flex justify-between mb-2">
+                                <span>CSS / JavaScript</span>
+                                <span class="text-sky-400">40%</span>
+                            </div>
+                            <div class="h-3 bg-gray-700/50 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" data-width="40%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Python - 50% -->
+                        <div class="scale-in" style="transition-delay: 0.3s;">
+                            <div class="flex justify-between mb-2">
+                                <span>Python</span>
+                                <span class="text-sky-400">50%</span>
+                            </div>
+                            <div class="h-3 bg-gray-700/50 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" data-width="50%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- C# / Unity - 60% -->
+                        <div class="scale-in" style="transition-delay: 0.4s;">
+                            <div class="flex justify-between mb-2">
+                                <span>C# / Unity</span>
+                                <span class="text-sky-400">60%</span>
+                            </div>
+                            <div class="h-3 bg-gray-700/50 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" data-width="60%"></div>
+                            </div>
+                        </div>
+                        
+                        <!-- Photoshop / ai - 70% -->
+                        <div class="scale-in" style="transition-delay: 0.5s;">
+                            <div class="flex justify-between mb-2">
+                                <span>Photoshop / ai</span>
+                                <span class="text-sky-400">70%</span>
+                            </div>
+                            <div class="h-3 bg-gray-700/50 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" data-width="70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ابزارها و تکنولوژی‌ها -->
+                <div class="fade-in-right">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-tools text-sky-400"></i>
+                        ابزارها و تکنولوژی‌ها
+                    </h3>
+                    
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="glass-card p-4 rounded-xl text-center card-hover scale-in" style="transition-delay: 0.1s;">
+                            <i class="fab fa-html5 text-4xl text-orange-500 mb-2"></i>
+                            <div class="text-sm">HTML</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl text-center card-hover scale-in" style="transition-delay: 0.15s;">
+                            <i class="fab fa-css3-alt text-4xl text-blue-400 mb-2"></i>
+                            <div class="text-sm">CSS</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl text-center card-hover scale-in" style="transition-delay: 0.2s;">
+                            <i class="fab fa-js text-4xl text-yellow-400 mb-2"></i>
+                            <div class="text-sm">JavaScript</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl text-center card-hover scale-in" style="transition-delay: 0.25s;">
+                            <i class="fab fa-python text-4xl text-blue-300 mb-2"></i>
+                            <div class="text-sm">Python</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl text-center card-hover scale-in" style="transition-delay: 0.3s;">
+                            <i class="fas fa-code text-4xl text-fuchsia-400 mb-2"></i>
+                            <div class="text-sm">C# / Unity</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl text-center card-hover scale-in" style="transition-delay: 0.35s;">
+                            <i class="fas fa-image text-4xl text-blue-500 mb-2"></i>
+                            <div class="text-sm">Photoshop</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl text-center card-hover scale-in" style="transition-delay: 0.4s;">
+                            <i class="fas fa-robot text-4xl text-purple-400 mb-2"></i>
+                            <div class="text-sm">AI</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl text-center card-hover scale-in" style="transition-delay: 0.45s;">
+                            <i class="fab fa-github text-4xl text-gray-300 mb-2"></i>
+                            <div class="text-sm">GitHub</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl text-center card-hover scale-in" style="transition-delay: 0.5s;">
+                            <i class="fab fa-unity text-4xl text-gray-300 mb-2"></i>
+                            <div class="text-sm">Unity</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- لینک JS جدا -->
-  <script src="script.js"></script>
+    <!-- ===== بخش پروژه‌ها ===== -->
+    <section id="projects" class="py-20 px-6 section-animate">
+        <div class="max-w-6xl mx-auto">
+            <div class="fade-in text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 section-title">پروژه‌های <span class="gradient-text">من</span></h2>
+                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
+            </div>
+            
+            <!-- تب‌های پروژه -->
+            <div class="fade-in flex justify-center gap-4 mb-8 flex-wrap">
+                <button class="project-tab active px-6 py-3 rounded-full bg-gray-800/50 font-bold transition hover:scale-105" data-tab="project1">
+                    پروژه اول
+                </button>
+                <button class="project-tab px-6 py-3 rounded-full bg-gray-800/50 font-bold transition hover:scale-105" data-tab="project2">
+                    پروژه دوم
+                </button>
+                <button class="project-tab px-6 py-3 rounded-full bg-gray-800/50 font-bold transition hover:scale-105" data-tab="project3">
+                    پروژه سوم
+                </button>
+            </div>
+            
+            <!-- محتوای پروژه‌ها -->
+            <div class="scale-in">
+                <!-- پروژه اول - SMART HTML Viewer -->
+                <div id="project1" class="project-content active">
+                    <div class="glass-card rounded-2xl overflow-hidden max-w-2xl mx-auto card-hover">
+                        <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/SMART-HTML-Viewer/main/Welcome-Page/Welcome-Page.jpeg" 
+                             alt="SMART HTML Viewer" 
+                             class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-3">SMART HTML Viewer</h3>
+                            <p class="text-gray-400 mb-6">SMART HTML Viewer by Nima.Sh</p>
+                            <a href="https://github.com/Nima-Shaheswarzadeh/SMART-HTML-Viewer/blob/main/Welcome-Page/Welcome-Page.html" 
+                               target="_blank"
+                               class="inline-flex items-center gap-2 gradient-bg px-6 py-3 rounded-full font-bold hover:opacity-90 transition hover:scale-105">
+                                <i class="fas fa-external-link-alt"></i>
+                                رفتن به پروژه
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- پروژه دوم - تستی -->
+                <div id="project2" class="project-content">
+                    <div class="glass-card rounded-2xl overflow-hidden max-w-2xl mx-auto card-hover">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600" 
+                             alt="پروژه تستی ۲" 
+                             class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-3">پروژه تستی شماره ۲</h3>
+                            <p class="text-gray-400 mb-6">این یک پروژه تستی است که به زودی تکمیل خواهد شد.</p>
+                            <a href="#" 
+                               class="inline-flex items-center gap-2 gradient-bg px-6 py-3 rounded-full font-bold hover:opacity-90 transition hover:scale-105">
+                                <i class="fas fa-external-link-alt"></i>
+                                رفتن به پروژه
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- پروژه سوم - تستی -->
+                <div id="project3" class="project-content">
+                    <div class="glass-card rounded-2xl overflow-hidden max-w-2xl mx-auto card-hover">
+                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600" 
+                             alt="پروژه تستی ۳" 
+                             class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-3">پروژه تستی شماره ۳</h3>
+                            <p class="text-gray-400 mb-6">این یک پروژه تستی است که به زودی تکمیل خواهد شد.</p>
+                            <a href="#" 
+                               class="inline-flex items-center gap-2 gradient-bg px-6 py-3 rounded-full font-bold hover:opacity-90 transition hover:scale-105">
+                                <i class="fas fa-external-link-alt"></i>
+                                رفتن به پروژه
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== بخش تجربه‌های کاری ===== -->
+    <section id="experience" class="py-20 px-6 section-animate">
+        <div class="max-w-4xl mx-auto">
+            <div class="fade-in text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 section-title">تجربه‌های <span class="gradient-text">کاری</span></h2>
+                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="relative">
+                <!-- خط تایم‌لاین -->
+                <div class="absolute right-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-sky-400 to-fuchsia-500"></div>
+                
+                <!-- آیتم‌های تجربه -->
+                <div class="space-y-12">
+                    <!-- تجربه تستی ۱ -->
+                    <div class="fade-in-right relative pr-16">
+                        <div class="absolute right-4 w-5 h-5 rounded-full gradient-bg border-4 border-gray-900 pulse-animation"></div>
+                        <div class="glass-card p-6 rounded-2xl card-hover">
+                            <div class="flex flex-wrap justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">عنوان شغلی تستی ۱</h3>
+                                <span class="text-sky-400 text-sm">۱۴۰۲ - اکنون</span>
+                            </div>
+                            <p class="text-fuchsia-400 mb-3">نام شرکت تستی</p>
+                            <p class="text-gray-400">این یک توضیح تستی برای تجربه کاری است. جزئیات بیشتر به زودی اضافه خواهد شد.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- تجربه تستی ۲ -->
+                    <div class="fade-in-right relative pr-16" style="transition-delay: 0.2s;">
+                        <div class="absolute right-4 w-5 h-5 rounded-full gradient-bg border-4 border-gray-900 pulse-animation"></div>
+                        <div class="glass-card p-6 rounded-2xl card-hover">
+                            <div class="flex flex-wrap justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">عنوان شغلی تستی ۲</h3>
+                                <span class="text-sky-400 text-sm">۱۴۰۰ - ۱۴۰۲</span>
+                            </div>
+                            <p class="text-fuchsia-400 mb-3">نام شرکت تستی دوم</p>
+                            <p class="text-gray-400">این یک توضیح تستی برای تجربه کاری دوم است. جزئیات بیشتر به زودی اضافه خواهد شد.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== بخش تماس با من ===== -->
+    <section id="contact" class="py-20 px-6 section-animate">
+        <div class="max-w-6xl mx-auto">
+            <div class="fade-in text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4 section-title">تماس با <span class="gradient-text">من</span></h2>
+                <div class="w-24 h-1 gradient-bg mx-auto rounded-full"></div>
+                <p class="text-gray-400 mt-6">آماده همکاری در پروژه‌های جدید هستم. با من در ارتباط باشید!</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- سمت راست - تصویر کارت -->
+                <div class="fade-in-left order-2 md:order-1">
+                    <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Nima-Shaheswarzadeh.github.io/main/Nima%20Card.png" 
+                         alt="Nima Card" 
+                         class="rounded-2xl shadow-2xl w-full max-w-md mx-auto hover:scale-105 transition-transform duration-500 float-animation">
+                </div>
+                
+                <!-- سمت چپ - اطلاعات تماس -->
+                <div class="fade-in-right order-1 md:order-2">
+                    <div class="space-y-6">
+                        <!-- ایمیل -->
+                        <a href="mailto:Nima.Shaheswarzadeh@gmail.com" class="flex items-center gap-4 glass-card p-4 rounded-xl card-hover">
+                            <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">ایمیل</h3>
+                                <span class="text-gray-400">Nima.Shaheswarzadeh@gmail.com</span>
+                            </div>
+                        </a>
+                        
+                        <!-- تلفن -->
+                        <a href="tel:09139362032" class="flex items-center gap-4 glass-card p-4 rounded-xl card-hover">
+                            <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">تلفن</h3>
+                                <span class="text-gray-400">۰۹۱۳۹۳۶۲۰۳۲</span>
+                            </div>
+                        </a>
+                        
+                        <!-- تلگرام -->
+                        <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" class="flex items-center gap-4 glass-card p-4 rounded-xl card-hover">
+                            <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center">
+                                <i class="fab fa-telegram text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">تلگرام</h3>
+                                <span class="text-gray-400">@Nima_Shaheswarzadeh</span>
+                            </div>
+                        </a>
+                        
+                        <!-- واتساپ -->
+                        <a href="https://wa.me/989371164025" target="_blank" class="flex items-center gap-4 glass-card p-4 rounded-xl card-hover">
+                            <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center">
+                                <i class="fab fa-whatsapp text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">واتساپ</h3>
+                                <span class="text-gray-400">+98 937 116 4025</span>
+                            </div>
+                        </a>
+                        
+                        <!-- گیت‌هاب -->
+                        <a href="https://github.com/Nima-Shaheswarzadeh" target="_blank" class="flex items-center gap-4 glass-card p-4 rounded-xl card-hover">
+                            <div class="w-14 h-14 gradient-bg rounded-full flex items-center justify-center">
+                                <i class="fab fa-github text-2xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold">گیت‌هاب</h3>
+                                <span class="text-gray-400">github.com/Nima-Shaheswarzadeh</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== بخش فوتر ===== -->
+    <footer id="footer" class="py-8 px-6 border-t border-gray-800/50">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-gray-400">تمامی حقوق مادی و معنوی برای نیما شهسوارزاده محفوظ است |•| 2026 - 1405</p>
+        </div>
+    </footer>
+
+    <!-- ===== دکمه برگشت به بالا ===== -->
+    <button id="backToTop" class="fixed bottom-8 left-8 w-12 h-12 acrylic-blur-light rounded-full flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:scale-110 shadow-lg">
+        <i class="fas fa-arrow-up text-white"></i>
+    </button>
+
+    <script>
+        // ===== سیستم صدای کلیک =====
+        const clickSound = new Audio('data:audio/wav;base64,UklGRl9vT19telegramXdhdmVmbXQgEAAAAAEAAQBDdQAAQHQAAAEACABkYXRhdmxvdwAAAAAA');
+        
+        // ایجاد صدای کلیک با Web Audio API
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        function playClickSound() {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = 800;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.1);
+        }
+        
+        // اضافه کردن صدای کلیک به تمام عناصر قابل کلیک
+        document.addEventListener('click', (e) => {
+            const clickableElements = ['A', 'BUTTON', 'INPUT', 'LABEL'];
+            const isClickable = clickableElements.includes(e.target.tagName) || 
+                               e.target.closest('a') || 
+                               e.target.closest('button') ||
+                               e.target.classList.contains('clickable') ||
+                               e.target.classList.contains('project-tab') ||
+                               e.target.classList.contains('social-icon') ||
+                               e.target.classList.contains('card-hover') ||
+                               e.target.classList.contains('glass-card');
+            
+            if (isClickable) {
+                // فعال کردن AudioContext در اولین تعامل کاربر
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+                playClickSound();
+            }
+        });
+        
+        // ===== تایپینگ افکت =====
+        const texts = ['علاقمند به تکنولوژی هستم !', 'طراح وب هستم !', 'متخصص یونیتی هستم !', 'آشنا به C# هستم !', 'گرافیست هستم !', 'طراح عکس هستم !'];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById('typingText');
+        
+        function typeEffect() {
+            const currentText = texts[textIndex];
+            
+            if (isDeleting) {
+                typingElement.textContent = currentText.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentText.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            
+            let typeSpeed = isDeleting ? 50 : 100;
+            
+            if (!isDeleting && charIndex === currentText.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                textIndex = (textIndex + 1) % texts.length;
+                typeSpeed = 500;
+            }
+            
+            setTimeout(typeEffect, typeSpeed);
+        }
+        
+        typeEffect();
+        
+        // ===== منوی موبایل =====
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const desktopMenu = document.getElementById('desktopMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuBtn.innerHTML = mobileMenu.classList.contains('hidden') 
+                ? '<i class="fas fa-bars"></i>' 
+                : '<i class="fas fa-times"></i>';
+        });
+        
+        // بستن منوی موبایل با کلیک روی لینک
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // ===== دکمه بیشتر بدانید - باز کردن منو =====
+        const moreInfoBtn = document.getElementById('moreInfoBtn');
+        
+        moreInfoBtn.addEventListener('click', () => {
+            // در موبایل منو رو باز کن
+            if (window.innerWidth < 768) {
+                mobileMenu.classList.remove('hidden');
+                menuBtn.innerHTML = '<i class="fas fa-times"></i>';
+            }
+            // اسکرول به منو
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // افکت برجسته کردن منو
+            const menu = window.innerWidth >= 768 ? desktopMenu : mobileMenu;
+            menu.style.transform = 'scale(1.05)';
+            menu.style.boxShadow = '0 0 30px rgba(56, 189, 248, 0.5)';
+            setTimeout(() => {
+                menu.style.transform = 'scale(1)';
+                menu.style.boxShadow = 'none';
+            }, 500);
+        });
+        
+        // ===== پس‌زمینه نویگیشن در اسکرول =====
+        const navbar = document.getElementById('navbar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('acrylic-blur', 'shadow-lg');
+            } else {
+                navbar.classList.remove('acrylic-blur', 'shadow-lg');
+            }
+        });
+        
+        // ===== دکمه برگشت به بالا =====
+        const backToTop = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                backToTop.classList.remove('opacity-0', 'invisible');
+                backToTop.classList.add('opacity-100', 'visible');
+            } else {
+                backToTop.classList.add('opacity-0', 'invisible');
+                backToTop.classList.remove('opacity-100', 'visible');
+            }
+        });
+        
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // ===== انیمیشن‌های پیشرفته در اسکرول =====
+        const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in, .rotate-in, .section-animate, .section-title');
+        
+        const animationObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { 
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        animatedElements.forEach(el => animationObserver.observe(el));
+        
+        // ===== انیمیشن نوار مهارت‌ها =====
+        const skillBars = document.querySelectorAll('.skill-bar');
+        
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const width = entry.target.dataset.width;
+                    entry.target.style.width = width;
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        skillBars.forEach(bar => {
+            bar.style.width = '0%';
+            skillObserver.observe(bar);
+        });
+        
+        // ===== سیستم تب‌های پروژه =====
+        const projectTabs = document.querySelectorAll('.project-tab');
+        const projectContents = document.querySelectorAll('.project-content');
+        
+        projectTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                projectTabs.forEach(t => t.classList.remove('active'));
+                projectContents.forEach(c => c.classList.remove('active'));
+                
+                tab.classList.add('active');
+                const targetId = tab.dataset.tab;
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+        
+        // ===== اسکرول نرم برای لینک‌های داخلی =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // ===== پارالکس ساده برای پس‌زمینه =====
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const blobs = document.querySelectorAll('.bg-blob');
+            
+            blobs.forEach((blob, index) => {
+                const speed = (index + 1) * 0.05;
+                blob.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+        
+        // ===== فعال‌سازی انیمیشن‌های اولیه =====
+        window.addEventListener('load', () => {
+            // فعال کردن انیمیشن‌های بخش هیرو
+            setTimeout(() => {
+                document.querySelectorAll('#home .fade-in, #home .scale-in').forEach(el => {
+                    el.classList.add('visible');
+                });
+            }, 300);
+        });
+    </script>
 </body>
 </html>
