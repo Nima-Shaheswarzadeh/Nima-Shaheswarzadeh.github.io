@@ -445,6 +445,20 @@
             opacity: 1;
             transition: 0s;
         }
+
+        /* استایل لوگو رفرش */
+        .logo-refresh {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-refresh:hover {
+            transform: scale(1.1) rotate(360deg);
+        }
+        
+        .logo-refresh:active {
+            transform: scale(0.95);
+        }
     </style>
 </head>
 <body class="text-white overflow-x-hidden">
@@ -462,12 +476,14 @@
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="max-w-6xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <!-- لوگو -->
-                <a href="#" class="flex items-center">
+                <!-- لوگو با قابلیت رفرش -->
+                <div class="flex items-center">
                     <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Nima-Shaheswarzadeh.github.io/main/Nima%20LOGO.png" 
                          alt="Nima Logo" 
-                         class="w-10 h-10 rounded-full object-cover hover:scale-110 transition-transform duration-300">
-                </a>
+                         class="w-10 h-10 rounded-full object-cover logo-refresh"
+                         onclick="location.reload()"
+                         title="کلیک برای رفرش صفحه">
+                </div>
                 
                 <!-- منوی دسکتاپ با افکت بلور -->
                 <div id="desktopMenu" class="hidden md:flex gap-2 acrylic-blur rounded-full px-6 py-2">
@@ -705,6 +721,17 @@
                                 <div class="skill-bar h-full gradient-bg rounded-full" data-width="70%"></div>
                             </div>
                         </div>
+                        
+                        <!-- Scratch - 80% -->
+                        <div class="scale-in" style="transition-delay: 0.6s;">
+                            <div class="flex justify-between mb-2">
+                                <span>Scratch</span>
+                                <span class="text-sky-400">80%</span>
+                            </div>
+                            <div class="h-3 bg-gray-700/50 rounded-full overflow-hidden">
+                                <div class="skill-bar h-full gradient-bg rounded-full" data-width="80%"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 
@@ -751,6 +778,10 @@
                         <div class="glass-card p-4 rounded-xl text-center card-hover scale-in" style="transition-delay: 0.5s;">
                             <i class="fab fa-unity text-4xl text-gray-300 mb-2"></i>
                             <div class="text-sm">Unity</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl text-center card-hover scale-in" style="transition-delay: 0.55s;">
+                            <i class="fas fa-cat text-4xl text-orange-400 mb-2"></i>
+                            <div class="text-sm">Scratch</div>
                         </div>
                     </div>
                 </div>
@@ -966,7 +997,8 @@
     <!-- ===== بخش فوتر ===== -->
     <footer id="footer" class="py-8 px-6 border-t border-gray-800/50">
         <div class="max-w-6xl mx-auto text-center">
-            <p class="text-gray-400">تمامی حقوق مادی و معنوی برای نیما شهسوارزاده محفوظ است |•| 2026 - 1405</p>
+            <p class="text-gray-400 mb-4">تمامی حقوق مادی و معنوی برای نیما شهسوارزاده محفوظ است |•| 2026 - 1405</p>
+            <p class="text-gray-500 text-sm">HTML |•| CSS |•| JavaScript |•| Tailwind CSS |•| Font Awesome |•| Claude AI</p>
         </div>
     </footer>
 
@@ -1009,7 +1041,8 @@
                                e.target.classList.contains('project-tab') ||
                                e.target.classList.contains('social-icon') ||
                                e.target.classList.contains('card-hover') ||
-                               e.target.classList.contains('glass-card');
+                               e.target.classList.contains('glass-card') ||
+                               e.target.classList.contains('logo-refresh');
             
             if (isClickable) {
                 // فعال کردن AudioContext در اولین تعامل کاربر
