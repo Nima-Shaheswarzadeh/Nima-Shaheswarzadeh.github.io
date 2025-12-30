@@ -1,0 +1,63 @@
+/* ==========================
+  تنظیمات کلی و تم
+========================== */
+:root {
+  --bg-light: #f0f0f0;
+  --bg-dark: #1a1a1a;
+  --text-light: #1a1a1a;
+  --text-dark: #f0f0f0;
+  --card-color: #4caf50;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  overflow-x: hidden;
+}
+
+/* دکمه تغییر تم */
+#theme-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+/* ==========================
+  فلش‌کارت‌ها
+========================== */
+#menu {
+  position: fixed;
+  top: 50px;
+  right: -250px; /* شروع خارج صفحه */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background-color: var(--card-color);
+  padding: 20px 40px;
+  width: 200px;
+  border-radius: 8px;
+  cursor: pointer;
+  transform: translateX(300px); /* انیمیشن ورود */
+  opacity: 0;
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+/* ==========================
+  نوار متحرک بی‌پایان
+========================== */
+#moving-bar {
+  position: fixed;
+  top: 0;
+  right: -200px;
+  width: 200px;
+  height: 5px;
+  background-color: #ff5722;
+}
