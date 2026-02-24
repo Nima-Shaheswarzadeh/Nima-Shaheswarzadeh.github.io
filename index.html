@@ -8,25 +8,28 @@
     <meta name="author" content="Nima Shaheswarzadeh">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0a1628">
-    
-    <!-- Open Graph / Social Media -->
+
+    <!-- ===== تگ‌های Open Graph برای اشتراک‌گذاری در شبکه‌های اجتماعی ===== -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="نیما شهسوارزاده | Nima Shaheswarzadeh">
     <meta property="og:description" content="توسعه‌دهنده و طراح وب، متخصص Unity و C#، گرافیست حرفه‌ای">
     <meta property="og:image" content="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Nima-Shaheswarzadeh.github.io/main/Picture/Nima%20Person%201.1.png">
-    
-    <!-- Twitter Card -->
+
+    <!-- ===== تگ‌های Twitter Card برای نمایش در توییتر ===== -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="نیما شهسوارزاده | Nima Shaheswarzadeh">
     <meta name="twitter:description" content="توسعه‌دهنده و طراح وب، متخصص Unity و C#">
-    
+
     <title>نیما شهسوارزاده |•| Nima Shaheswarzadeh</title>
     <link rel="canonical" href="https://nima-shaheswarzadeh.github.io/">
-    
+
+    <!-- ===== بارگذاری کتابخانه‌های خارجی: Tailwind CSS، Font Awesome و فونت وزیرمتن ===== -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
     <style>
+        /* ===== تنظیمات کلی فونت و رفتار اسکرول ===== */
         * {
             font-family: 'Vazirmatn', sans-serif;
         }
@@ -36,14 +39,14 @@
             scroll-snap-type: y proximity;
         }
         
-        /* ===== پس زمینه پویا با بلور - Navy Blue & Gray Theme ===== */
+        /* ===== پس‌زمینه اصلی سایت - تم سرمه‌ای و خاکستری ===== */
         body {
             position: relative;
             overflow-x: hidden;
             background: #0a1628;
         }
         
-        /* ===== اسکرول بخش به بخش (Snap Scroll) ===== */
+        /* ===== اسکرول بخش به بخش (Snap Scroll) - هر سکشن در جای خود قفل می‌شود ===== */
         section, footer {
             scroll-snap-align: start;
             scroll-snap-stop: normal;
@@ -53,12 +56,14 @@
             scroll-snap-align: center;
         }
         
+        /* در موبایل اسنپ اسکرول غیرفعال می‌شود تا تجربه بهتری داشته باشیم */
         @media (max-width: 768px) {
             html {
                 scroll-snap-type: none;
             }
         }
         
+        /* ===== پس‌زمینه پویا با بلور و گرادیان - ثابت در پشت محتوا ===== */
         #animated-bg {
             position: fixed;
             top: 0;
@@ -67,10 +72,10 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
-            background: linear-gradient(135deg, #0a1628 0%, #1a2744 50%, #0d1f3c 100%);
+            background: linear-gradient(135deg, #0a1628 0%, #1a2744 30%, #1e2a3a 60%, #0d1f3c 100%);
         }
         
-        /* Turquoise Neon Grid Background */
+        /* ===== خطوط شبکه‌ای نئونی فیروزه‌ای در پس‌زمینه ===== */
         #animated-bg::before {
             content: '';
             position: absolute;
@@ -90,11 +95,12 @@
             100% { transform: translate(50px, 50px); }
         }
         
+        /* ===== حباب‌های رنگی پس‌زمینه - ایجاد افکت بلور رنگی ===== */
         .bg-blob {
             position: absolute;
             border-radius: 50%;
             filter: blur(100px);
-            opacity: 0.4;
+            opacity: 0.35;
             animation: floatBlob 20s ease-in-out infinite;
         }
         
@@ -128,10 +134,11 @@
             box-shadow: 0 0 80px rgba(0, 229, 204, 0.2);
         }
         
+        /* حباب خاکستری ملایم - برای تعادل رنگی */
         .bg-blob-4 {
             width: 350px;
             height: 350px;
-            background: linear-gradient(135deg, #3a6ea5, #1e3a5f);
+            background: linear-gradient(135deg, #4a5568, #2d3748);
             top: 30%;
             right: 20%;
             animation-delay: -5s;
@@ -140,11 +147,11 @@
         .bg-blob-5 {
             width: 450px;
             height: 450px;
-            background: linear-gradient(135deg, #00ffd5, #0891b2);
+            background: linear-gradient(135deg, #718096, #4a5568);
             bottom: 20%;
             right: -100px;
             animation-delay: -10s;
-            box-shadow: 0 0 120px rgba(0, 255, 213, 0.25);
+            opacity: 0.2;
         }
         
         @keyframes floatBlob {
@@ -162,7 +169,7 @@
             }
         }
         
-        /* Turquoise Neon Accent Color */
+        /* ===== رنگ‌های گرادیان اصلی سایت - فیروزه‌ای نئونی ===== */
         .gradient-text {
             background: linear-gradient(135deg, #00ffd5 0%, #3a6ea5 50%, #00e5cc 100%);
             -webkit-background-clip: text;
@@ -174,7 +181,7 @@
             background: linear-gradient(135deg, #00ffd5 0%, #1e3a5f 50%, #00b8a9 100%);
         }
         
-        /* Neon Glow Effect */
+        /* ===== افکت درخشش نئونی - برای دکمه‌ها و المان‌های مهم ===== */
         .neon-glow {
             box-shadow: 0 0 20px rgba(0, 255, 213, 0.4),
                         0 0 40px rgba(0, 255, 213, 0.2),
@@ -187,7 +194,7 @@
                          0 0 30px rgba(0, 255, 213, 0.3);
         }
         
-        /* Neon Border Animation */
+        /* ===== حاشیه نئونی متحرک - حرکت رنگی دور المان ===== */
         .neon-border {
             position: relative;
         }
@@ -213,7 +220,7 @@
             100% { background-position: 0% 50%; }
         }
         
-        /* Floating Neon Particles */
+        /* ===== ذرات نئونی شناور - ذرات فیروزه‌ای که از پایین به بالا حرکت می‌کنند ===== */
         .neon-particles {
             position: fixed;
             top: 0;
@@ -253,6 +260,7 @@
             }
         }
         
+        /* ===== افکت هاور کارت‌ها - حرکت به بالا و بزرگ‌نمایی هنگام هاور ===== */
         .card-hover {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -262,6 +270,7 @@
             box-shadow: 0 30px 60px -15px rgba(0, 255, 213, 0.3);
         }
         
+        /* ===== حباب‌های تزئینی بخش هیرو ===== */
         .blob {
             position: absolute;
             border-radius: 50%;
@@ -276,7 +285,9 @@
             66% { transform: translate(-20px, 20px) scale(0.9); }
         }
         
-        /* ===== انیمیشن‌های پیشرفته ===== */
+        /* ===== انیمیشن‌های ورودی المان‌ها - ظاهر شدن هنگام اسکرول ===== */
+        
+        /* ظاهر شدن از پایین به بالا */
         .fade-in {
             opacity: 0;
             transform: translateY(50px);
@@ -288,6 +299,7 @@
             transform: translateY(0);
         }
         
+        /* ظاهر شدن از سمت چپ */
         .fade-in-left {
             opacity: 0;
             transform: translateX(-80px);
@@ -299,6 +311,7 @@
             transform: translateX(0);
         }
         
+        /* ظاهر شدن از سمت راست */
         .fade-in-right {
             opacity: 0;
             transform: translateX(80px);
@@ -310,6 +323,7 @@
             transform: translateX(0);
         }
         
+        /* ظاهر شدن با بزرگ‌نمایی */
         .scale-in {
             opacity: 0;
             transform: scale(0.8);
@@ -321,6 +335,7 @@
             transform: scale(1);
         }
         
+        /* ظاهر شدن با چرخش */
         .rotate-in {
             opacity: 0;
             transform: rotate(-10deg) scale(0.9);
@@ -332,6 +347,7 @@
             transform: rotate(0deg) scale(1);
         }
         
+        /* ===== انیمیشن ورودی بخش‌ها (Section) ===== */
         section {
             position: relative;
         }
@@ -347,6 +363,7 @@
             transform: translateY(0) scale(1);
         }
         
+        /* ===== انیمیشن ورود پلکانی فرزندان - هر فرزند با تأخیر ظاهر می‌شود ===== */
         .stagger-animate > * {
             opacity: 0;
             transform: translateY(40px);
@@ -365,6 +382,7 @@
             transform: translateY(0);
         }
         
+        /* ===== انیمیشن reveal از پایین ===== */
         .reveal-up {
             opacity: 0;
             transform: translateY(80px);
@@ -376,6 +394,7 @@
             transform: translateY(0);
         }
         
+        /* ===== افکت تایپینگ - خط چشمک‌زن کنار متن ===== */
         .typing-effect {
             border-left: 3px solid #00ffd5;
             animation: blink 0.7s infinite;
@@ -386,10 +405,12 @@
             50% { border-color: transparent; }
         }
         
+        /* ===== نوار پیشرفت مهارت‌ها - عرض با انیمیشن تغییر می‌کند ===== */
         .skill-bar {
             transition: width 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
+        /* ===== افکت هاور کارت پروژه - نمایش اطلاعات روی تصویر ===== */
         .project-card::before {
             content: '';
             position: absolute;
@@ -411,6 +432,7 @@
             transform: translateY(0);
         }
         
+        /* ===== خط زیر لینک‌های منو هنگام هاور ===== */
         .nav-link::after {
             content: '';
             position: absolute;
@@ -426,7 +448,7 @@
             width: 100%;
         }
         
-        /* جلوه بلور اکریلیک - Navy Theme */
+        /* ===== افکت بلور اکریلیک - پس‌زمینه شیشه‌ای مات ===== */
         .acrylic-blur {
             background: rgba(10, 22, 40, 0.8);
             backdrop-filter: blur(20px);
@@ -434,6 +456,7 @@
             border: 1px solid rgba(0, 255, 213, 0.1);
         }
         
+        /* افکت بلور اکریلیک روشن‌تر - برای دکمه‌ها */
         .acrylic-blur-light {
             background: rgba(0, 255, 213, 0.2);
             backdrop-filter: blur(15px);
@@ -441,6 +464,20 @@
             border: 1px solid rgba(0, 255, 213, 0.3);
         }
         
+        /* ===== استایل خاکستری ملایم برای تعادل رنگی ===== */
+        .acrylic-blur-gray {
+            background: rgba(75, 85, 99, 0.35);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(156, 163, 175, 0.25);
+        }
+        
+        .acrylic-blur-gray:hover {
+            background: rgba(75, 85, 99, 0.5);
+            border-color: rgba(156, 163, 175, 0.4);
+        }
+        
+        /* ===== تب‌های پروژه - حالت فعال با گرادیان ===== */
         .project-tab {
             cursor: pointer;
             transition: all 0.3s ease;
@@ -450,6 +487,7 @@
             background: linear-gradient(135deg, #00ffd5 0%, #1e3a5f 100%);
         }
         
+        /* ===== محتوای پروژه‌ها - نمایش/مخفی شدن با انیمیشن ===== */
         .project-content {
             display: none;
             animation: fadeInUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -470,6 +508,7 @@
             }
         }
         
+        /* ===== انیمیشن شناور شدن - حرکت بالا و پایین آرام ===== */
         .float-animation {
             animation: float 6s ease-in-out infinite;
         }
@@ -479,6 +518,7 @@
             50% { transform: translateY(-20px); }
         }
         
+        /* ===== انیمیشن نبض - بزرگ و کوچک شدن آرام ===== */
         .pulse-animation {
             animation: pulse 2s ease-in-out infinite;
         }
@@ -488,6 +528,7 @@
             50% { transform: scale(1.05); opacity: 0.8; }
         }
         
+        /* ===== چرخش آهسته - ۳۶۰ درجه در ۲۰ ثانیه ===== */
         .slow-spin {
             animation: slowSpin 20s linear infinite;
         }
@@ -501,6 +542,7 @@
             scroll-behavior: smooth;
         }
         
+        /* ===== خط زیر عنوان بخش‌ها - ظاهر شدن با انیمیشن ===== */
         .section-title {
             position: relative;
             display: inline-block;
@@ -523,6 +565,7 @@
             width: 100%;
         }
         
+        /* ===== آیکون‌های شبکه‌های اجتماعی - افکت هاور با حرکت به بالا ===== */
         .social-icon {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -533,7 +576,7 @@
             color: #00ffd5 !important;
         }
         
-        /* Glass Card - Navy Theme */
+        /* ===== کارت شیشه‌ای - پس‌زمینه نیمه‌شفاف با بلور ===== */
         .glass-card {
             background: rgba(20, 35, 60, 0.6);
             backdrop-filter: blur(10px);
@@ -548,6 +591,7 @@
                         0 0 30px rgba(0, 255, 213, 0.1);
         }
         
+        /* ===== پس‌زمینه متن - خوانایی بهتر روی تصاویر ===== */
         .text-backdrop {
             background: rgba(0, 0, 0, 0.3);
             backdrop-filter: blur(8px);
@@ -556,6 +600,7 @@
             padding: 8px 16px;
         }
         
+        /* ===== سایه متن برای خوانایی بهتر ===== */
         h1, h2, h3, p, span, a, div {
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
@@ -564,21 +609,25 @@
             text-shadow: 0 4px 20px rgba(0, 255, 213, 0.3);
         }
         
+        /* ===== پس‌زمینه نیمه‌شفاف بخش‌ها ===== */
         section {
             background: rgba(10, 22, 40, 0.3);
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
         }
         
+        /* بخش هیرو بدون پس‌زمینه اضافی */
         #home {
             background: transparent;
             backdrop-filter: none;
         }
         
+        /* ===== نشانگر کلیک‌پذیری ===== */
         .clickable {
             cursor: pointer;
         }
         
+        /* ===== افکت ریپل (موج) هنگام کلیک ===== */
         .click-ripple {
             position: relative;
             overflow: hidden;
@@ -604,6 +653,8 @@
             opacity: 1;
             transition: 0s;
         }
+        
+        /* ===== لوگو با قابلیت رفرش صفحه ===== */
         .logo-refresh {
             cursor: pointer;
             transition: all 0.3s ease;
@@ -618,6 +669,7 @@
             transform: scale(0.95);
         }
         
+        /* ===== جداکننده رنگی (|•|) در فوتر ===== */
         .separator {
             background: linear-gradient(135deg, #00ffd5, #3a6ea5, #00e5cc, #1e3a5f);
             -webkit-background-clip: text;
@@ -632,6 +684,7 @@
             50% { filter: brightness(1.3); }
         }
         
+        /* ===== نقاط ناوبری کناری (Section Dots) - نمایش بخش فعال ===== */
         .section-dot {
             width: 16px;
             height: 16px;
@@ -658,6 +711,7 @@
             transition: all 0.4s ease;
         }
         
+        /* حالت فعال نقطه ناوبری */
         .section-dot.active {
             background: linear-gradient(135deg, #00ffd5 0%, #1e3a5f 100%);
             transform: scale(1.2);
@@ -669,6 +723,7 @@
             height: 8px;
         }
         
+        /* تولتیپ نقاط ناوبری - نمایش نام بخش هنگام هاور */
         .section-dot::before {
             content: attr(title);
             position: absolute;
@@ -691,7 +746,7 @@
             visibility: visible;
         }
         
-        /* Turquoise accent colors */
+        /* ===== رنگ فیروزه‌ای سفارشی ===== */
         .text-turquoise {
             color: #00ffd5;
         }
@@ -700,7 +755,196 @@
             border-color: #00ffd5;
         }
         
-        /* ===== Improved Responsive Styles ===== */
+        /* ===== رنگ‌های خاکستری ملایم - تعادل رنگی سایت ===== */
+        .text-soft-gray {
+            color: #9ca3af;
+        }
+        
+        .bg-soft-gray {
+            background-color: rgba(156, 163, 175, 0.1);
+        }
+        
+        .border-soft-gray {
+            border-color: rgba(156, 163, 175, 0.3);
+        }
+
+        /* ====================================================================
+           ===== استایل دکمه دفترچه تلفن (Contact Book) و دکمه‌های تماس =====
+           ==================================================================== */
+        
+        /* ===== کانتینر اصلی دکمه‌ها - ثابت در گوشه پایین سمت چپ ===== */
+        #contactFabContainer {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 5rem;
+            z-index: 50;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 0.6rem;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        
+        /* در حالت موبایل، فاصله از پایین و چپ کمتر می‌شود */
+        @media (min-width: 640px) {
+            #contactFabContainer {
+                bottom: 2rem;
+                left: 6rem;
+            }
+        }
+        
+        /* ===== دکمه اصلی دفترچه تلفن ===== */
+        #contactFabBtn {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            background: rgba(75, 85, 99, 0.45);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(156, 163, 175, 0.3);
+            box-shadow: 0 0 15px rgba(156, 163, 175, 0.15),
+                        0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        @media (min-width: 640px) {
+            #contactFabBtn {
+                width: 3rem;
+                height: 3rem;
+                font-size: 1.25rem;
+            }
+        }
+        
+        /* چرخش آیکون هنگام باز شدن منو */
+        #contactFabBtn.active {
+            transform: rotate(45deg) scale(1.1);
+            background: rgba(0, 255, 213, 0.25);
+            border-color: rgba(0, 255, 213, 0.4);
+            box-shadow: 0 0 20px rgba(0, 255, 213, 0.3),
+                        0 0 40px rgba(0, 255, 213, 0.15);
+        }
+        
+        #contactFabBtn:hover {
+            transform: scale(1.15);
+            box-shadow: 0 0 25px rgba(156, 163, 175, 0.3),
+                        0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        #contactFabBtn.active:hover {
+            transform: rotate(45deg) scale(1.15);
+        }
+        
+        /* ===== دکمه‌های تماس فرعی (۷ عدد) ===== */
+        .contact-fab-item {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            /* حالت اولیه: مخفی و کوچک‌شده */
+            opacity: 0;
+            transform: scale(0) translateY(20px);
+            pointer-events: none;
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            background: rgba(75, 85, 99, 0.45);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(156, 163, 175, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        }
+        
+        @media (min-width: 640px) {
+            .contact-fab-item {
+                width: 2.75rem;
+                height: 2.75rem;
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* هنگام هاور: رنگ حاشیه فیروزه‌ای و درخشش */
+        .contact-fab-item:hover {
+            transform: scale(1.2) !important;
+            border-color: rgba(0, 255, 213, 0.5);
+            background: rgba(0, 255, 213, 0.2);
+            box-shadow: 0 0 20px rgba(0, 255, 213, 0.3),
+                        0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* حالت باز: دکمه‌ها قابل مشاهده و کلیک‌پذیر */
+        .contact-fab-item.show {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+        }
+        
+        /* تولتیپ دکمه‌های تماس - نمایش نام هنگام هاور */
+        .contact-fab-item::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            right: calc(100% + 10px);
+            background: rgba(10, 22, 40, 0.95);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            border: 1px solid rgba(156, 163, 175, 0.25);
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .contact-fab-item:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* ===== پس‌زمینه تاریک هنگام باز شدن منوی دفترچه تلفن ===== */
+        #contactFabOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 49;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(2px);
+        }
+        
+        #contactFabOverlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* ===== حالت مخفی دکمه‌ها هنگام اسکرول (scroll-aware) ===== */
+        #contactFabContainer.scroll-hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+        }
+        
+        /* ===== استایل‌های ریسپانسیو بهبودیافته ===== */
+        
+        /* تبلت و صفحات متوسط */
         @media (max-width: 1024px) {
             .max-w-6xl {
                 max-width: 100%;
@@ -709,10 +953,12 @@
             }
         }
         
+        /* موبایل - تنظیمات اصلی */
         @media (max-width: 768px) {
+            /* کاهش اندازه حباب‌ها برای عملکرد بهتر */
             .bg-blob {
                 filter: blur(80px);
-                opacity: 0.3;
+                opacity: 0.25;
             }
             
             .bg-blob-1 {
@@ -750,6 +996,12 @@
                 height: 150px !important;
             }
             
+            /* تنظیم فاصله‌های داخلی بخش‌ها */
+            section {
+                padding-left: 1rem !important;
+                padding-right: 1rem !important;
+            }
+            
             footer p {
                 font-size: 0.75rem;
                 line-height: 1.6;
@@ -767,6 +1019,7 @@
                 font-size: 1.5rem;
             }
             
+            /* تنظیم تایم‌لاین تجربه‌ها */
             #experience .pr-16 {
                 padding-right: 3rem;
             }
@@ -784,6 +1037,7 @@
                 font-size: 0.875rem;
             }
             
+            /* تنظیم بخش تماس */
             #contact .w-14 {
                 width: 3rem;
                 height: 3rem;
@@ -802,6 +1056,7 @@
                 word-break: break-all;
             }
             
+            /* تنظیم گرید مهارت‌ها */
             #skills .grid-cols-3 {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -814,17 +1069,20 @@
                 font-size: 0.7rem;
             }
             
+            /* ذرات کوچک‌تر */
             .neon-particle {
                 width: 2px;
                 height: 2px;
             }
         }
         
+        /* موبایل‌های کوچک‌تر */
         @media (max-width: 480px) {
             #skills .grid-cols-3 {
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            /* تنظیم اندازه فونت‌ها */
             .text-5xl {
                 font-size: 2.25rem;
             }
@@ -841,11 +1099,6 @@
                 font-size: 1rem;
             }
             
-            section {
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-            
             .social-icon {
                 font-size: 1.25rem !important;
             }
@@ -853,8 +1106,15 @@
             #home .flex.gap-3 {
                 gap: 0.5rem;
             }
+            
+            /* محتوای بخش‌ها تمام عرض صفحه را بگیرد */
+            .max-w-6xl, .max-w-4xl {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
         }
         
+        /* موبایل‌های خیلی کوچک */
         @media (max-width: 360px) {
             .text-5xl {
                 font-size: 1.875rem;
@@ -879,12 +1139,14 @@
             }
         }
         
-        /* Print styles for accessibility */
+        /* ===== استایل‌های پرینت - حذف المان‌های غیرضروری ===== */
         @media print {
             .neon-particles,
             #animated-bg,
             #backToTop,
-            #sectionDots {
+            #sectionDots,
+            #contactFabContainer,
+            #contactFabOverlay {
                 display: none !important;
             }
             
@@ -894,7 +1156,7 @@
             }
         }
         
-        /* Reduced motion preference */
+        /* ===== کاهش انیمیشن برای کاربران حساس به حرکت ===== */
         @media (prefers-reduced-motion: reduce) {
             *,
             *::before,
@@ -906,9 +1168,10 @@
         }
     </style>
 </head>
+
 <body class="text-white overflow-x-hidden">
-    
-    <!-- ===== Neon Particles ===== -->
+
+    <!-- ===== ذرات نئونی شناور - تزئینی و غیرتعاملی ===== -->
     <div class="neon-particles" aria-hidden="true">
         <div class="neon-particle" style="left: 10%; animation-delay: 0s;"></div>
         <div class="neon-particle" style="left: 20%; animation-delay: 2s;"></div>
@@ -925,8 +1188,8 @@
         <div class="neon-particle" style="left: 75%; animation-delay: 9s;"></div>
         <div class="neon-particle" style="left: 95%; animation-delay: 10s;"></div>
     </div>
-    
-    <!-- ===== پس زمینه پویا ===== -->
+
+    <!-- ===== پس‌زمینه پویا با حباب‌های رنگی متحرک ===== -->
     <div id="animated-bg" aria-hidden="true">
         <div class="bg-blob bg-blob-1"></div>
         <div class="bg-blob bg-blob-2"></div>
@@ -934,12 +1197,16 @@
         <div class="bg-blob bg-blob-4"></div>
         <div class="bg-blob bg-blob-5"></div>
     </div>
-    
-    <!-- ===== بخش نویگیشن ===== -->
+
+    <!-- ==========================================================
+         ===== بخش نویگیشن (منوی بالای صفحه) =====
+         - شامل لوگو، منوی دسکتاپ و منوی موبایل
+         - در اسکرول افکت بلور اکریلیک دریافت می‌کند
+         ========================================================== -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" role="navigation" aria-label="منوی اصلی">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4">
             <div class="flex justify-between items-center">
-                <!-- لوگو با قابلیت رفرش -->
+                <!-- لوگو - با کلیک صفحه رفرش می‌شود -->
                 <div class="flex items-center">
                     <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Nima-Shaheswarzadeh.github.io/main/Picture/Nima%20LOGO.png" 
                          alt="لوگوی نیما شهسوارزاده" 
@@ -949,7 +1216,7 @@
                          loading="lazy">
                 </div>
                 
-                <!-- منوی دسکتاپ با افکت بلور -->
+                <!-- منوی دسکتاپ - فقط در صفحات بزرگ‌تر از ۷۶۸ پیکسل نمایش داده می‌شود -->
                 <div id="desktopMenu" class="hidden md:flex gap-2 acrylic-blur rounded-full px-6 py-2">
                     <a href="#home" class="nav-link relative text-gray-300 hover:text-turquoise transition px-3 py-1">خانه</a>
                     <a href="#about" class="nav-link relative text-gray-300 hover:text-turquoise transition px-3 py-1">درباره من</a>
@@ -959,13 +1226,13 @@
                     <a href="#contact" class="nav-link relative text-gray-300 hover:text-turquoise transition px-3 py-1">تماس</a>
                 </div>
                 
-                <!-- دکمه منوی موبایل -->
+                <!-- دکمه همبرگری منوی موبایل -->
                 <button id="menuBtn" class="md:hidden text-2xl acrylic-blur p-2 rounded-lg" aria-label="باز کردن منو" aria-expanded="false">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
             
-            <!-- منوی موبایل با افکت بلور -->
+            <!-- منوی کشویی موبایل - با کلیک روی دکمه همبرگری باز/بسته می‌شود -->
             <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 acrylic-blur rounded-2xl" role="menu">
                 <div class="flex flex-col gap-4 p-4">
                     <a href="#home" class="text-gray-300 hover:text-turquoise transition hover:bg-white/10 px-4 py-2 rounded-lg" role="menuitem">خانه</a>
@@ -978,15 +1245,19 @@
             </div>
         </div>
     </nav>
-    <!-- ===== بخش هیرو (Hero Section) ===== -->
+
+    <!-- ==========================================================
+         ===== بخش هیرو (Hero Section) - صفحه اصلی =====
+         - شامل عکس پروفایل، نام، تایپینگ افکت و لینک‌های اجتماعی
+         ========================================================== -->
     <section id="home" class="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <!-- Animated Blobs with Turquoise -->
+        <!-- حباب‌های تزئینی رنگی -->
         <div class="blob w-72 h-72 bg-cyan-500 top-20 right-20" aria-hidden="true"></div>
         <div class="blob w-96 h-96 bg-teal-400 bottom-20 left-20" style="animation-delay: 2s;" aria-hidden="true"></div>
         <div class="blob w-64 h-64 bg-blue-800 top-1/2 left-1/2" style="animation-delay: 4s;" aria-hidden="true"></div>
         
-        <div class="relative z-10 text-center px-4 sm:px-6">
-            <!-- عکس پروفایل با انیمیشن -->
+        <div class="relative z-10 text-center px-4 sm:px-6 w-full max-w-4xl mx-auto">
+            <!-- عکس پروفایل با انیمیشن شناور و نبض -->
             <div class="mb-8 scale-in float-animation">
                 <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Nima-Shaheswarzadeh.github.io/main/Picture/Nima%20Person%201.1.png" 
                      alt="عکس پروفایل نیما شهسوارزاده" 
@@ -995,18 +1266,20 @@
                      loading="eager">
             </div>
             
-            <!-- متن معرفی -->
+            <!-- متن خوش‌آمدگویی -->
             <p class="text-turquoise text-base sm:text-lg mb-4 fade-in neon-text-glow" style="transition-delay: 0.2s; color: #00ffd5;">خوش اومدین ، من</p>
+            
+            <!-- نام با افکت گرادیان -->
             <h1 class="text-4xl sm:text-5xl md:text-7xl font-black mb-4 fade-in" style="transition-delay: 0.4s;">
                 <span class="gradient-text">نیما شهسوارزاده</span>
             </h1>
             
-            <!-- تایپینگ افکت -->
+            <!-- افکت تایپینگ - متن به صورت خودکار تایپ و پاک می‌شود -->
             <div class="text-lg sm:text-xl md:text-2xl text-gray-400 mb-8 h-8 fade-in" style="transition-delay: 0.6s;">
                 <span id="typingText" class="typing-effect pl-2"></span>
             </div>
             
-            <!-- دکمه بیشتر بدانید - باز کردن منو -->
+            <!-- دکمه "بیشتر بدانید" - منو را باز می‌کند -->
             <div class="flex gap-4 justify-center mb-12 fade-in" style="transition-delay: 0.8s;">
                 <button id="moreInfoBtn" class="gradient-bg px-6 sm:px-8 py-3 rounded-full font-bold hover:opacity-90 transition transform hover:scale-105 text-sm sm:text-base neon-glow">
                     <i class="fas fa-bars ml-2"></i>
@@ -1014,45 +1287,42 @@
                 </button>
             </div>
             
-            <!-- آیکون‌های شبکه‌های اجتماعی -->
+            <!-- آیکون‌های شبکه‌های اجتماعی - ایتا، تلگرام، واتساپ، ایمیل، گیت‌هاب، حمایت مالی، تماس -->
             <div class="flex gap-3 sm:gap-4 justify-center flex-wrap fade-in" style="transition-delay: 1s;">
-                <!-- ایتا -->
                 <a href="https://eitaa.com/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="social-icon text-xl sm:text-2xl text-gray-400 hover:text-turquoise" title="ایتا" aria-label="پروفایل ایتا">
                     <i class="fas fa-comment-dots"></i>
                 </a>
-                <!-- تلگرام -->
                 <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="social-icon text-xl sm:text-2xl text-gray-400 hover:text-turquoise" title="تلگرام" aria-label="پروفایل تلگرام">
                     <i class="fab fa-telegram"></i>
                 </a>
-                <!-- واتساپ -->
                 <a href="https://wa.me/989371164025" target="_blank" rel="noopener noreferrer" class="social-icon text-xl sm:text-2xl text-gray-400 hover:text-turquoise" title="واتساپ" aria-label="پروفایل واتساپ">
                     <i class="fab fa-whatsapp"></i>
                 </a>
-                <!-- جیمیل -->
                 <a href="mailto:Nima.Shaheswarzadeh@gmail.com" class="social-icon text-xl sm:text-2xl text-gray-400 hover:text-turquoise" title="ایمیل" aria-label="ارسال ایمیل">
                     <i class="fas fa-envelope"></i>
                 </a>
-                <!-- گیت هاب -->
                 <a href="https://github.com/Nima-Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="social-icon text-xl sm:text-2xl text-gray-400 hover:text-turquoise" title="گیت‌هاب" aria-label="پروفایل گیت‌هاب">
                     <i class="fab fa-github"></i>
                 </a>
-                <!-- دونیت -->
                 <a href="https://daramet.com/Nima-Sh" target="_blank" rel="noopener noreferrer" class="social-icon text-xl sm:text-2xl text-gray-400 hover:text-turquoise" title="حمایت مالی" aria-label="حمایت مالی">
                     <i class="fas fa-heart"></i>
                 </a>
-                <!-- تماس تلفنی -->
                 <a href="tel:09371164025" class="social-icon text-xl sm:text-2xl text-gray-400 hover:text-turquoise" title="تماس" aria-label="تماس تلفنی">
                     <i class="fas fa-phone"></i>
                 </a>
             </div>
         </div>
         
-        <!-- نشانگر اسکرول -->
+        <!-- فلش اسکرول به پایین -->
         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce" aria-hidden="true">
             <i class="fas fa-chevron-down text-2xl" style="color: #00ffd5;"></i>
         </div>
     </section>
-    <!-- ===== بخش درباره من ===== -->
+
+    <!-- ==========================================================
+         ===== بخش درباره من =====
+         - شامل تصویر، توضیحات، آمار و دکمه دانلود رزومه
+         ========================================================== -->
     <section id="about" class="py-16 sm:py-20 px-4 sm:px-6 section-animate">
         <div class="max-w-6xl mx-auto">
             <div class="fade-in text-center mb-12 sm:mb-16">
@@ -1061,7 +1331,7 @@
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
-                <!-- تصویر درباره من -->
+                <!-- تصویر با افکت چرخش و گرادیان پس‌زمینه -->
                 <div class="fade-in-left">
                     <div class="relative rotate-in">
                         <div class="absolute inset-0 gradient-bg rounded-2xl transform rotate-6 neon-glow"></div>
@@ -1072,6 +1342,7 @@
                     </div>
                 </div>
                 
+                <!-- متن و آمار -->
                 <div class="fade-in-right">
                     <h3 class="text-xl sm:text-2xl font-bold mb-4">یکمی از خودم . . .</h3>
                     <p class="text-gray-400 leading-relaxed mb-6 text-sm sm:text-base">
@@ -1083,7 +1354,7 @@
                         به کار خلاقانه و حل مسائل پیچیده علاقه‌مندم.
                     </p>
                     
-                    <!-- آمار -->
+                    <!-- کارت‌های آمار - مشتری، پروژه، تجربه، جایزه -->
                     <div class="grid grid-cols-2 gap-3 sm:gap-4 mb-8">
                         <div class="glass-card p-3 sm:p-4 rounded-xl text-center card-hover">
                             <div class="text-2xl sm:text-3xl font-bold gradient-text">+۵</div>
@@ -1103,7 +1374,7 @@
                         </div>
                     </div>
                     
-                    <!-- دانلود رزومه -->
+                    <!-- دکمه دانلود رزومه -->
                     <a href="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Nima-Shaheswarzadeh.github.io/main/Picture/Nima%20Rezome.jpeg" 
                        target="_blank"
                        rel="noopener noreferrer"
@@ -1115,7 +1386,11 @@
             </div>
         </div>
     </section>
-    <!-- ===== بخش مهارت‌ها ===== -->
+
+    <!-- ==========================================================
+         ===== بخش مهارت‌ها =====
+         - شامل نوارهای پیشرفت مهارت‌های فنی و آیکون‌های ابزارها
+         ========================================================== -->
     <section id="skills" class="py-16 sm:py-20 px-4 sm:px-6 section-animate">
         <div class="max-w-6xl mx-auto">
             <div class="fade-in text-center mb-12 sm:mb-16">
@@ -1124,7 +1399,7 @@
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 sm:gap-12">
-                <!-- مهارت‌های فنی -->
+                <!-- ستون چپ: نوارهای پیشرفت مهارت‌های فنی -->
                 <div class="fade-in-left">
                     <h3 class="text-lg sm:text-xl font-bold mb-6 flex items-center gap-2">
                         <i class="fas fa-code" style="color: #00ffd5;"></i>
@@ -1132,7 +1407,7 @@
                     </h3>
                     
                     <div class="space-y-5 sm:space-y-6">
-                        <!-- Html - 30% -->
+                        <!-- هر مهارت شامل نام، درصد و نوار پیشرفت است -->
                         <div class="scale-in" style="transition-delay: 0.1s;">
                             <div class="flex justify-between mb-2 text-sm sm:text-base">
                                 <span>HTML</span>
@@ -1143,7 +1418,6 @@
                             </div>
                         </div>
                         
-                        <!-- Css / Java - 40% -->
                         <div class="scale-in" style="transition-delay: 0.2s;">
                             <div class="flex justify-between mb-2 text-sm sm:text-base">
                                 <span>CSS / JavaScript</span>
@@ -1154,7 +1428,6 @@
                             </div>
                         </div>
                         
-                        <!-- Python - 50% -->
                         <div class="scale-in" style="transition-delay: 0.3s;">
                             <div class="flex justify-between mb-2 text-sm sm:text-base">
                                 <span>Python</span>
@@ -1165,7 +1438,6 @@
                             </div>
                         </div>
                         
-                        <!-- C# / Unity - 60% -->
                         <div class="scale-in" style="transition-delay: 0.4s;">
                             <div class="flex justify-between mb-2 text-sm sm:text-base">
                                 <span>C# / Unity</span>
@@ -1176,7 +1448,6 @@
                             </div>
                         </div>
                         
-                        <!-- Photoshop / ai - 70% -->
                         <div class="scale-in" style="transition-delay: 0.5s;">
                             <div class="flex justify-between mb-2 text-sm sm:text-base">
                                 <span>Photoshop / ai</span>
@@ -1187,7 +1458,6 @@
                             </div>
                         </div>
                         
-                        <!-- Scratch - 80% -->
                         <div class="scale-in" style="transition-delay: 0.6s;">
                             <div class="flex justify-between mb-2 text-sm sm:text-base">
                                 <span>Scratch</span>
@@ -1198,7 +1468,6 @@
                             </div>
                         </div>
                         
-                        <!-- Visual Studio / Visual Studio Code - 90% -->
                         <div class="scale-in" style="transition-delay: 0.7s;">
                             <div class="flex justify-between mb-2 text-sm sm:text-base">
                                 <span>Visual Studio / VS Code</span>
@@ -1211,7 +1480,7 @@
                     </div>
                 </div>
                 
-                <!-- ابزارها و تکنولوژی‌ها -->
+                <!-- ستون راست: آیکون‌های ابزارها و تکنولوژی‌ها -->
                 <div class="fade-in-right">
                     <h3 class="text-lg sm:text-xl font-bold mb-6 flex items-center gap-2">
                         <i class="fas fa-tools" style="color: #00ffd5;"></i>
@@ -1259,12 +1528,10 @@
                             <i class="fas fa-cat text-3xl sm:text-4xl text-orange-400 mb-2"></i>
                             <div class="text-xs sm:text-sm">Scratch</div>
                         </div>
-                        <!-- Visual Studio -->
                         <div class="glass-card p-3 sm:p-4 rounded-xl text-center card-hover scale-in" style="transition-delay: 0.6s;">
                             <i class="fas fa-laptop-code text-3xl sm:text-4xl text-purple-500 mb-2"></i>
                             <div class="text-xs sm:text-sm">Visual Studio</div>
                         </div>
-                        <!-- Visual Studio Code -->
                         <div class="glass-card p-3 sm:p-4 rounded-xl text-center card-hover scale-in" style="transition-delay: 0.65s;">
                             <i class="fas fa-file-code text-3xl sm:text-4xl text-blue-500 mb-2"></i>
                             <div class="text-xs sm:text-sm">VS Code</div>
@@ -1274,7 +1541,11 @@
             </div>
         </div>
     </section>
-    <!-- ===== بخش پروژه‌ها ===== -->
+
+    <!-- ==========================================================
+         ===== بخش پروژه‌ها =====
+         - شامل تب‌های انتخابی و محتوای هر پروژه
+         ========================================================== -->
     <section id="projects" class="py-16 sm:py-20 px-4 sm:px-6 section-animate">
         <div class="max-w-6xl mx-auto">
             <div class="fade-in text-center mb-12 sm:mb-16">
@@ -1282,7 +1553,7 @@
                 <div class="w-24 h-1 gradient-bg mx-auto rounded-full neon-glow"></div>
             </div>
             
-            <!-- تب‌های پروژه -->
+            <!-- تب‌های انتخاب پروژه -->
             <div class="fade-in flex justify-center gap-2 sm:gap-4 mb-8 flex-wrap" role="tablist">
                 <button class="project-tab active px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gray-800/50 font-bold transition hover:scale-105 text-sm sm:text-base" data-tab="project1" role="tab" aria-selected="true">
                     پروژه اول
@@ -1295,9 +1566,9 @@
                 </button>
             </div>
             
-            <!-- محتوای پروژه‌ها -->
+            <!-- محتوای پروژه‌ها - فقط پروژه فعال نمایش داده می‌شود -->
             <div class="scale-in">
-                <!-- پروژه اول - SMART HTML Viewer -->
+                <!-- پروژه اول: SMART HTML Viewer -->
                 <article id="project1" class="project-content active" role="tabpanel">
                     <div class="glass-card rounded-2xl overflow-hidden max-w-2xl mx-auto card-hover">
                         <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/SMART-HTML-Viewer/main/Welcome-Page/Welcome-Page.jpeg" 
@@ -1318,7 +1589,7 @@
                     </div>
                 </article>
                 
-                <!-- پروژه دوم - تستی -->
+                <!-- پروژه دوم: Smartule Weekly Schedule -->
                 <article id="project2" class="project-content" role="tabpanel">
                     <div class="glass-card rounded-2xl overflow-hidden max-w-2xl mx-auto card-hover">
                         <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Smartule-weekly-schedule/main/Welcome%20Page/Welcome-Page.jpeg" 
@@ -1337,7 +1608,7 @@
                     </div>
                 </article>
                 
-                <!-- پروژه سوم - تستی -->
+                <!-- پروژه سوم: تستی -->
                 <article id="project3" class="project-content" role="tabpanel">
                     <div class="glass-card rounded-2xl overflow-hidden max-w-2xl mx-auto card-hover">
                         <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600" 
@@ -1358,7 +1629,11 @@
             </div>
         </div>
     </section>
-    <!-- ===== بخش تجربه‌های کاری ===== -->
+
+    <!-- ==========================================================
+         ===== بخش تجربه‌های کاری =====
+         - نمایش تایم‌لاین عمودی با نقاط و خط اتصال
+         ========================================================== -->
     <section id="experience" class="py-16 sm:py-20 px-4 sm:px-6 section-animate">
         <div class="max-w-4xl mx-auto">
             <div class="fade-in text-center mb-12 sm:mb-16">
@@ -1367,12 +1642,11 @@
             </div>
             
             <div class="relative">
-                <!-- خط تایم‌لاین -->
+                <!-- خط عمودی تایم‌لاین -->
                 <div class="absolute right-4 sm:right-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-cyan-400 to-blue-800" style="background: linear-gradient(to bottom, #00ffd5, #1e3a5f);" aria-hidden="true"></div>
                 
-                <!-- آیتم‌های تجربه -->
                 <div class="space-y-10 sm:space-y-12">
-                    <!-- تجربه اول - IR Streets -->
+                    <!-- تجربه اول: IR Streets -->
                     <article class="fade-in-right relative pr-12 sm:pr-16">
                         <div class="absolute right-2 sm:right-4 w-5 h-5 rounded-full gradient-bg border-4 border-gray-900 pulse-animation neon-glow" aria-hidden="true"></div>
                         <div class="glass-card p-4 sm:p-6 rounded-2xl card-hover">
@@ -1385,7 +1659,7 @@
                         </div>
                     </article>
                     
-                    <!-- تجربه دوم - Game Nub -->
+                    <!-- تجربه دوم: Game Nub -->
                     <article class="fade-in-right relative pr-12 sm:pr-16" style="transition-delay: 0.2s;">
                         <div class="absolute right-2 sm:right-4 w-5 h-5 rounded-full gradient-bg border-4 border-gray-900 pulse-animation neon-glow" aria-hidden="true"></div>
                         <div class="glass-card p-4 sm:p-6 rounded-2xl card-hover">
@@ -1401,7 +1675,11 @@
             </div>
         </div>
     </section>
-    <!-- ===== بخش تماس با من ===== -->
+
+    <!-- ==========================================================
+         ===== بخش تماس با من =====
+         - شامل کارت ویزیت و لینک‌های تماس
+         ========================================================== -->
     <section id="contact" class="py-16 sm:py-20 px-4 sm:px-6 section-animate">
         <div class="max-w-6xl mx-auto">
             <div class="fade-in text-center mb-12 sm:mb-16">
@@ -1411,7 +1689,7 @@
             </div>
             
             <div class="grid md:grid-cols-2 gap-8 sm:gap-12 items-center">
-                <!-- سمت راست - تصویر کارت -->
+                <!-- تصویر کارت ویزیت -->
                 <div class="fade-in-left order-2 md:order-1">
                     <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Nima-Shaheswarzadeh.github.io/main/Picture/Nima%20Card.png" 
                          alt="کارت ویزیت نیما شهسوارزاده" 
@@ -1419,7 +1697,7 @@
                          loading="lazy">
                 </div>
                 
-                <!-- سمت چپ - اطلاعات تماس -->
+                <!-- لیست اطلاعات تماس -->
                 <div class="fade-in-right order-1 md:order-2">
                     <div class="space-y-4 sm:space-y-6">
                         <!-- ایمیل -->
@@ -1481,19 +1759,91 @@
             </div>
         </div>
     </section>
-    <!-- ===== بخش فوتر ===== -->
+
+    <!-- ===== بخش فوتر - اطلاعات کپی‌رایت و تکنولوژی‌های استفاده شده ===== -->
     <footer id="footer" class="py-8 px-4 sm:px-6 border-t border-gray-800/50">
         <div class="max-w-6xl mx-auto text-center">
             <p class="text-gray-400 mb-4 text-sm sm:text-base">تمامی حقوق مادی و معنوی برای نیما شهسوارزاده محفوظ است <span class="separator">|•|</span> 2026 - 1405</p>
             <p class="text-gray-500 text-xs sm:text-sm">HTML <span class="separator">|•|</span> CSS <span class="separator">|•|</span> JavaScript <span class="separator">|•|</span> Tailwind CSS <span class="separator">|•|</span> Font Awesome <span class="separator">|•|</span> Claude AI</p>
         </div>
     </footer>
-    <!-- ===== دکمه برگشت به بالا ===== -->
-    <button id="backToTop" class="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-10 h-10 sm:w-12 sm:h-12 acrylic-blur-light rounded-full flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:scale-110 shadow-lg z-50 neon-glow" aria-label="برگشت به بالا">
+
+    <!-- ==========================================================
+         ===== دکمه برگشت به بالا =====
+         - ثابت در گوشه پایین سمت چپ
+         - با اسکرول بیش از ۵۰۰ پیکسل ظاهر می‌شود
+         ========================================================== -->
+    <button id="backToTop" class="fixed bottom-6 left-6 sm:bottom-8 sm:left-8 w-10 h-10 sm:w-12 sm:h-12 acrylic-blur-gray rounded-full flex items-center justify-center opacity-0 invisible transition-all duration-300 hover:scale-110 shadow-lg z-50" aria-label="برگشت به بالا" style="box-shadow: 0 0 15px rgba(156, 163, 175, 0.15), 0 4px 15px rgba(0,0,0,0.3);">
         <i class="fas fa-arrow-up text-white"></i>
     </button>
-    
-    <!-- ===== نشانگر بخش‌ها (Section Dots) ===== -->
+
+    <!-- ==========================================================
+         ===== پوشش تاریک پس‌زمینه هنگام باز بودن دفترچه تلفن =====
+         - با کلیک روی آن، منوی دفترچه تلفن بسته می‌شود
+         ========================================================== -->
+    <div id="contactFabOverlay" onclick="toggleContactFab()"></div>
+
+    <!-- ==========================================================
+         ===== کانتینر دکمه دفترچه تلفن و ۷ دکمه تماس =====
+         
+         نحوه عملکرد:
+         ۱. دکمه اصلی (آیکون دفترچه تلفن) همیشه نمایش داده می‌شود
+         ۲. با کلیک روی دکمه اصلی، ۷ دکمه تماس از پایین به بالا با انیمیشن ظاهر می‌شوند
+         ۳. با کلیک مجدد، دکمه‌ها به صورت معکوس جمع می‌شوند
+         ۴. هنگام اسکرول به پایین، تمام دکمه‌ها مخفی می‌شوند
+         ۵. هنگام اسکرول به بالا، دوباره ظاهر می‌شوند
+         ۶. هر دکمه تولتیپ فارسی دارد
+         ۷. افکت صوتی هنگام باز/بسته شدن پخش می‌شود
+         ========================================================== -->
+    <div id="contactFabContainer">
+        <!-- دکمه اصلی دفترچه تلفن -->
+        <button id="contactFabBtn" onclick="toggleContactFab()" aria-label="دفترچه تلفن - راه‌های ارتباطی" title="دفترچه تلفن">
+            <i class="fas fa-address-book"></i>
+        </button>
+
+        <!-- ===== ۷ دکمه راه ارتباطی - ترتیب از پایین به بالا ===== -->
+        
+        <!-- دکمه ۱: تماس تلفنی -->
+        <a href="tel:09371164025" class="contact-fab-item" data-tooltip="تماس تلفنی" aria-label="تماس تلفنی">
+            <i class="fas fa-phone"></i>
+        </a>
+        
+        <!-- دکمه ۲: پیامک -->
+        <a href="sms:09371164025" class="contact-fab-item" data-tooltip="پیامک" aria-label="ارسال پیامک">
+            <i class="fas fa-sms"></i>
+        </a>
+        
+        <!-- دکمه ۳: ایمیل -->
+        <a href="mailto:Nima.Shaheswarzadeh@gmail.com" class="contact-fab-item" data-tooltip="ایمیل" aria-label="ارسال ایمیل">
+            <i class="fas fa-envelope"></i>
+        </a>
+        
+        <!-- دکمه ۴: واتساپ -->
+        <a href="https://wa.me/989371164025" target="_blank" rel="noopener noreferrer" class="contact-fab-item" data-tooltip="واتساپ" aria-label="واتساپ">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        
+        <!-- دکمه ۵: تلگرام -->
+        <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="contact-fab-item" data-tooltip="تلگرام" aria-label="تلگرام">
+            <i class="fab fa-telegram"></i>
+        </a>
+        
+        <!-- دکمه ۶: ایتا -->
+        <a href="https://eitaa.com/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="contact-fab-item" data-tooltip="ایتا" aria-label="ایتا">
+            <i class="fas fa-comment-dots"></i>
+        </a>
+        
+        <!-- دکمه ۷: گیت‌هاب -->
+        <a href="https://github.com/Nima-Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="contact-fab-item" data-tooltip="گیت‌هاب" aria-label="گیت‌هاب">
+            <i class="fab fa-github"></i>
+        </a>
+    </div>
+
+    <!-- ==========================================================
+         ===== نشانگر بخش‌ها (Section Dots) =====
+         - فقط در دسکتاپ نمایش داده می‌شود
+         - نقطه فعال با رنگ فیروزه‌ای مشخص می‌شود
+         ========================================================== -->
     <nav id="sectionDots" class="fixed right-4 sm:right-6 top-1/2 transform -translate-y-1/2 z-50 hidden md:flex flex-col gap-3" aria-label="ناوبری بخش‌ها">
         <a href="#home" class="section-dot active" data-section="home" title="خانه" aria-label="رفتن به بخش خانه">
             <span class="dot-inner"></span>
@@ -1514,21 +1864,38 @@
             <span class="dot-inner"></span>
         </a>
     </nav>
+
+    <!-- ==========================================================
+         ===== اسکریپت‌های جاوااسکریپت =====
+         - شامل تمام منطق تعاملی سایت
+         ========================================================== -->
     <script>
-        // ===== سیستم صدای کلیک - Fixed for AudioContext ===== 
+        // ====================================================================
+        // ===== سیستم صدای کلیک =====
+        // از AudioContext برای تولید صدای کلیک استفاده می‌شود
+        // این روش نیاز به فایل صوتی خارجی ندارد
+        // ====================================================================
         let audioContext = null;
         
+        /**
+         * مقداردهی اولیه AudioContext
+         * فقط یک بار ایجاد می‌شود و در کل سایت استفاده می‌شود
+         */
         function initAudioContext() {
             if (!audioContext) {
                 try {
                     audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 } catch (e) {
-                    console.log('Audio not supported');
+                    console.log('صدا پشتیبانی نمی‌شود');
                 }
             }
             return audioContext;
         }
         
+        /**
+         * پخش صدای کلیک ساده
+         * فرکانس: ۸۰۰ هرتز، مدت: ۰.۱ ثانیه
+         */
         function playClickSound() {
             const ctx = initAudioContext();
             if (!ctx || ctx.state === 'suspended') return;
@@ -1549,11 +1916,67 @@
                 oscillator.start(ctx.currentTime);
                 oscillator.stop(ctx.currentTime + 0.1);
             } catch (e) {
-                // Silent fail
+                // خطای بی‌صدا - مشکلی ایجاد نمی‌کند
             }
         }
         
-        // Enable audio on first user interaction
+        /**
+         * پخش افکت صوتی باز شدن منوی دفترچه تلفن
+         * صدای ملایم‌تر با sweep فرکانسی از پایین به بالا
+         */
+        function playOpenSound() {
+            const ctx = initAudioContext();
+            if (!ctx || ctx.state === 'suspended') return;
+            
+            try {
+                const oscillator = ctx.createOscillator();
+                const gainNode = ctx.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(ctx.destination);
+                
+                // فرکانس از ۴۰۰ به ۱۰۰۰ هرتز sweep می‌کند (افکت باز شدن)
+                oscillator.frequency.setValueAtTime(400, ctx.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(1000, ctx.currentTime + 0.15);
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.15, ctx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+                
+                oscillator.start(ctx.currentTime);
+                oscillator.stop(ctx.currentTime + 0.2);
+            } catch (e) {}
+        }
+        
+        /**
+         * پخش افکت صوتی بسته شدن منوی دفترچه تلفن
+         * صدای معکوس: sweep فرکانسی از بالا به پایین
+         */
+        function playCloseSound() {
+            const ctx = initAudioContext();
+            if (!ctx || ctx.state === 'suspended') return;
+            
+            try {
+                const oscillator = ctx.createOscillator();
+                const gainNode = ctx.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(ctx.destination);
+                
+                // فرکانس از ۱۰۰۰ به ۴۰۰ هرتز sweep می‌کند (افکت بسته شدن)
+                oscillator.frequency.setValueAtTime(1000, ctx.currentTime);
+                oscillator.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.15);
+                oscillator.type = 'sine';
+                
+                gainNode.gain.setValueAtTime(0.15, ctx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+                
+                oscillator.start(ctx.currentTime);
+                oscillator.stop(ctx.currentTime + 0.2);
+            } catch (e) {}
+        }
+        
+        // فعال‌سازی صدا با اولین تعامل کاربر (محدودیت مرورگر)
         document.addEventListener('click', function enableAudio() {
             const ctx = initAudioContext();
             if (ctx && ctx.state === 'suspended') {
@@ -1561,7 +1984,7 @@
             }
         }, { once: true });
         
-        // Add click sound to clickable elements
+        // اضافه کردن صدای کلیک به تمام المان‌های قابل کلیک
         document.addEventListener('click', (e) => {
             const clickableElements = ['A', 'BUTTON', 'INPUT', 'LABEL'];
             const isClickable = clickableElements.includes(e.target.tagName) || 
@@ -1579,30 +2002,38 @@
             }
         });
         
+        // ====================================================================
         // ===== تایپینگ افکت =====
+        // متن‌های مختلف به صورت خودکار تایپ و پاک می‌شوند
+        // ====================================================================
         const texts = ['علاقمند به تکنولوژی هستم !', 'طراح وب هستم !', 'متخصص یونیتی هستم !', 'آشنا به C# هستم !', 'گرافیست هستم !', 'طراح عکس هستم !'];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
+        let textIndex = 0;      // شماره متن فعلی
+        let charIndex = 0;      // شماره کاراکتر فعلی
+        let isDeleting = false;  // آیا در حال پاک کردن است؟
         const typingElement = document.getElementById('typingText');
         
         function typeEffect() {
             const currentText = texts[textIndex];
             
             if (isDeleting) {
+                // حذف کاراکتر به کاراکتر
                 typingElement.textContent = currentText.substring(0, charIndex - 1);
                 charIndex--;
             } else {
+                // اضافه کردن کاراکتر به کاراکتر
                 typingElement.textContent = currentText.substring(0, charIndex + 1);
                 charIndex++;
             }
             
+            // سرعت تایپ: پاک کردن سریع‌تر از نوشتن
             let typeSpeed = isDeleting ? 50 : 100;
             
             if (!isDeleting && charIndex === currentText.length) {
+                // متن کامل شد - ۲ ثانیه صبر کن و بعد پاک کن
                 typeSpeed = 2000;
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
+                // پاک شدن کامل شد - به متن بعدی برو
                 isDeleting = false;
                 textIndex = (textIndex + 1) % texts.length;
                 typeSpeed = 500;
@@ -1613,20 +2044,24 @@
         
         typeEffect();
         
+        // ====================================================================
         // ===== منوی موبایل =====
+        // باز و بسته کردن منوی کشویی در حالت موبایل
+        // ====================================================================
         const menuBtn = document.getElementById('menuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
         const desktopMenu = document.getElementById('desktopMenu');
         
         menuBtn.addEventListener('click', () => {
             const isHidden = mobileMenu.classList.toggle('hidden');
+            // تغییر آیکون: همبرگر ↔ ضربدر
             menuBtn.innerHTML = isHidden 
                 ? '<i class="fas fa-bars"></i>' 
                 : '<i class="fas fa-times"></i>';
             menuBtn.setAttribute('aria-expanded', !isHidden);
         });
         
-        // Close mobile menu on link click
+        // بستن منو با کلیک روی لینک‌ها
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
@@ -1635,7 +2070,10 @@
             });
         });
         
-        // ===== دکمه بیشتر بدانید =====
+        // ====================================================================
+        // ===== دکمه "بیشتر بدانید" =====
+        // در موبایل منو را باز می‌کند، صفحه را به بالا اسکرول می‌کند
+        // ====================================================================
         const moreInfoBtn = document.getElementById('moreInfoBtn');
         
         moreInfoBtn.addEventListener('click', () => {
@@ -1646,6 +2084,7 @@
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
+            // افکت درخشش موقتی روی منو
             const menu = window.innerWidth >= 768 ? desktopMenu : mobileMenu;
             menu.style.transform = 'scale(1.05)';
             menu.style.boxShadow = '0 0 30px rgba(0, 255, 213, 0.5)';
@@ -1655,7 +2094,10 @@
             }, 500);
         });
         
-        // ===== پس‌زمینه نویگیشن در اسکرول =====
+        // ====================================================================
+        // ===== افکت بلور نویگیشن هنگام اسکرول =====
+        // بعد از ۵۰ پیکسل اسکرول، پس‌زمینه بلوری به نوار ناوبری اضافه می‌شود
+        // ====================================================================
         const navbar = document.getElementById('navbar');
         
         window.addEventListener('scroll', () => {
@@ -1666,7 +2108,10 @@
             }
         }, { passive: true });
         
+        // ====================================================================
         // ===== دکمه برگشت به بالا =====
+        // بعد از ۵۰۰ پیکسل اسکرول نمایش داده می‌شود
+        // ====================================================================
         const backToTop = document.getElementById('backToTop');
         
         window.addEventListener('scroll', () => {
@@ -1683,7 +2128,104 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
         
-        // ===== انیمیشن‌های پیشرفته در اسکرول =====
+        // ====================================================================
+        // ===== سیستم دکمه دفترچه تلفن (Contact FAB) =====
+        // 
+        // این سیستم شامل:
+        // - یک دکمه اصلی با آیکون دفترچه تلفن
+        // - ۷ دکمه فرعی برای راه‌های ارتباطی مختلف
+        // - انیمیشن باز/بسته شدن پلکانی
+        // - افکت صوتی هنگام باز/بسته شدن
+        // - حساسیت به اسکرول (scroll-aware)
+        // ====================================================================
+        
+        let contactFabOpen = false;  // وضعیت باز/بسته بودن منو
+        const contactFabBtn = document.getElementById('contactFabBtn');
+        const contactFabContainer = document.getElementById('contactFabContainer');
+        const contactFabOverlay = document.getElementById('contactFabOverlay');
+        const contactFabItems = document.querySelectorAll('.contact-fab-item');
+        
+        /**
+         * باز و بسته کردن منوی دفترچه تلفن
+         * - هنگام باز شدن: دکمه‌ها یکی یکی از پایین ظاهر می‌شوند
+         * - هنگام بسته شدن: دکمه‌ها به صورت معکوس ناپدید می‌شوند
+         */
+        function toggleContactFab() {
+            contactFabOpen = !contactFabOpen;
+            
+            if (contactFabOpen) {
+                // ===== باز کردن منو =====
+                contactFabBtn.classList.add('active');
+                contactFabOverlay.classList.add('show');
+                playOpenSound(); // پخش صدای باز شدن
+                
+                // نمایش پلکانی دکمه‌ها از پایین به بالا
+                contactFabItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('show');
+                    }, index * 60); // هر دکمه ۶۰ میلی‌ثانیه بعد از قبلی
+                });
+            } else {
+                // ===== بستن منو =====
+                contactFabBtn.classList.remove('active');
+                contactFabOverlay.classList.remove('show');
+                playCloseSound(); // پخش صدای بسته شدن
+                
+                // مخفی کردن معکوس دکمه‌ها از بالا به پایین
+                const totalItems = contactFabItems.length;
+                contactFabItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.remove('show');
+                    }, (totalItems - 1 - index) * 50); // ترتیب معکوس
+                });
+            }
+        }
+        
+        // ====================================================================
+        // ===== حساسیت دکمه دفترچه تلفن به اسکرول (Scroll-Aware) =====
+        // هنگام اسکرول به پایین مخفی و هنگام اسکرول به بالا آشکار می‌شود
+        // ====================================================================
+        let lastScrollY = 0;           // آخرین موقعیت اسکرول
+        let scrollTimer = null;        // تایمر تشخیص توقف اسکرول
+        let fabScrollHidden = false;   // آیا دکمه‌ها مخفی هستند؟
+        
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            // اگر منو باز است، هنگام اسکرول ببند
+            if (contactFabOpen) {
+                toggleContactFab();
+            }
+            
+            // تشخیص جهت اسکرول
+            if (currentScrollY > lastScrollY && currentScrollY > 200) {
+                // اسکرول به پایین: مخفی کردن
+                if (!fabScrollHidden) {
+                    contactFabContainer.classList.add('scroll-hidden');
+                    fabScrollHidden = true;
+                }
+            } else {
+                // اسکرول به بالا: نمایش دادن
+                if (fabScrollHidden) {
+                    contactFabContainer.classList.remove('scroll-hidden');
+                    fabScrollHidden = false;
+                }
+            }
+            
+            lastScrollY = currentScrollY;
+            
+            // بعد از توقف اسکرول (۱ ثانیه) دکمه‌ها را نمایش بده
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(() => {
+                contactFabContainer.classList.remove('scroll-hidden');
+                fabScrollHidden = false;
+            }, 1000);
+        }, { passive: true });
+        
+        // ====================================================================
+        // ===== انیمیشن‌های ورودی المان‌ها با IntersectionObserver =====
+        // هنگامی که المان وارد viewport می‌شود، کلاس visible اضافه می‌شود
+        // ====================================================================
         const animatedElements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in, .rotate-in, .section-animate, .section-title');
         
         const animationObserver = new IntersectionObserver((entries) => {
@@ -1693,13 +2235,16 @@
                 }
             });
         }, { 
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.1,          // ۱۰٪ المان باید قابل مشاهده باشد
+            rootMargin: '0px 0px -50px 0px'  // ۵۰ پیکسل زودتر فعال شود
         });
         
         animatedElements.forEach(el => animationObserver.observe(el));
         
-        // ===== انیمیشن نوار مهارت‌ها =====
+        // ====================================================================
+        // ===== انیمیشن نوارهای پیشرفت مهارت‌ها =====
+        // عرض نوار وقتی وارد viewport می‌شود تغییر می‌کند
+        // ====================================================================
         const skillBars = document.querySelectorAll('.skill-bar');
         
         const skillObserver = new IntersectionObserver((entries) => {
@@ -1712,22 +2257,28 @@
         }, { threshold: 0.5 });
         
         skillBars.forEach(bar => {
-            bar.style.width = '0%';
+            bar.style.width = '0%';  // عرض اولیه صفر
             skillObserver.observe(bar);
         });
         
+        // ====================================================================
         // ===== سیستم تب‌های پروژه =====
+        // با کلیک روی هر تب، محتوای مربوطه نمایش داده می‌شود
+        // ====================================================================
         const projectTabs = document.querySelectorAll('.project-tab');
         const projectContents = document.querySelectorAll('.project-content');
         
         projectTabs.forEach(tab => {
             tab.addEventListener('click', () => {
+                // غیرفعال کردن همه تب‌ها
                 projectTabs.forEach(t => {
                     t.classList.remove('active');
                     t.setAttribute('aria-selected', 'false');
                 });
+                // مخفی کردن همه محتواها
                 projectContents.forEach(c => c.classList.remove('active'));
                 
+                // فعال کردن تب و محتوای انتخاب شده
                 tab.classList.add('active');
                 tab.setAttribute('aria-selected', 'true');
                 const targetId = tab.dataset.tab;
@@ -1735,13 +2286,16 @@
             });
         });
         
+        // ====================================================================
         // ===== اسکرول نرم برای لینک‌های داخلی =====
+        // لینک‌هایی که با # شروع می‌شوند به صورت نرم اسکرول می‌کنند
+        // ====================================================================
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    const offsetTop = target.offsetTop - 80;
+                    const offsetTop = target.offsetTop - 80; // ۸۰ پیکسل فاصله از بالا
                     window.scrollTo({
                         top: offsetTop,
                         behavior: 'smooth'
@@ -1750,7 +2304,11 @@
             });
         });
         
-        // ===== پارالکس ساده برای پس‌زمینه =====
+        // ====================================================================
+        // ===== پارالکس ساده پس‌زمینه =====
+        // حباب‌های پس‌زمینه با سرعت‌های مختلف هنگام اسکرول حرکت می‌کنند
+        // از requestAnimationFrame برای بهینه‌سازی عملکرد استفاده می‌شود
+        // ====================================================================
         let ticking = false;
         window.addEventListener('scroll', () => {
             if (!ticking) {
@@ -1768,7 +2326,10 @@
             }
         }, { passive: true });
         
-        // ===== فعال‌سازی انیمیشن‌های اولیه =====
+        // ====================================================================
+        // ===== فعال‌سازی انیمیشن‌های اولیه بخش هیرو =====
+        // بعد از بارگذاری صفحه، المان‌های بخش اول ظاهر می‌شوند
+        // ====================================================================
         window.addEventListener('load', () => {
             setTimeout(() => {
                 document.querySelectorAll('#home .fade-in, #home .scale-in').forEach(el => {
@@ -1777,10 +2338,16 @@
             }, 300);
         });
         
+        // ====================================================================
         // ===== سیستم نشانگر بخش‌ها (Section Dots) =====
+        // نقطه مربوط به بخش فعلی که کاربر در آن قرار دارد برجسته می‌شود
+        // ====================================================================
         const sectionDots = document.querySelectorAll('.section-dot');
         const allSections = document.querySelectorAll('section');
         
+        /**
+         * به‌روزرسانی نقطه فعال بر اساس موقعیت اسکرول
+         */
         function updateActiveDot() {
             let currentSection = '';
             
@@ -1803,6 +2370,7 @@
         
         window.addEventListener('scroll', updateActiveDot, { passive: true });
         
+        // اسکرول نرم با کلیک روی نقاط ناوبری
         sectionDots.forEach(dot => {
             dot.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1818,7 +2386,9 @@
             });
         });
         
-        // ===== انیمیشن reveal برای المان‌ها =====
+        // ====================================================================
+        // ===== انیمیشن reveal برای المان‌های پلکانی =====
+        // ====================================================================
         const revealElements = document.querySelectorAll('.reveal-up, .stagger-animate');
         
         const revealObserver = new IntersectionObserver((entries) => {
@@ -1835,8 +2405,4 @@
         revealElements.forEach(el => revealObserver.observe(el));
     </script>
 </body>
-
 </html>
-
-
-
