@@ -1,0 +1,94 @@
+/* ==========================================================================
+   DESIGN TOKENS
+   Single source of truth for the visual language of the site.
+   ========================================================================== */
+
+:root {
+  /* ---- Color: surfaces ---- */
+  --bg: #05070d;
+  --bg-elevated: #0a0f1c;
+  --surface: #0d1526;
+  --surface-2: #131f36;
+  --surface-glass: rgba(16, 24, 42, 0.55);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+
+  /* ---- Color: text ---- */
+  --text: #eef2f8;
+  --text-muted: #93a0b5;
+  --text-faint: #5b6478;
+
+  /* ---- Color: brand ---- */
+  --accent: #24e0c2;
+  --accent-dim: #1aa48f;
+  --accent-deep: #3a6ea5;
+  --accent-soft: rgba(36, 224, 194, 0.14);
+  --warm: #ffb454;
+  --warm-soft: rgba(255, 180, 84, 0.14);
+
+  /* ---- Gradients ---- */
+  --gradient-brand: linear-gradient(135deg, #24e0c2 0%, #3a6ea5 55%, #1aa48f 100%);
+  --gradient-mesh: radial-gradient(60% 50% at 15% 10%, rgba(36, 224, 194, 0.16), transparent 60%),
+                   radial-gradient(50% 45% at 85% 20%, rgba(58, 110, 165, 0.18), transparent 60%),
+                   radial-gradient(60% 55% at 50% 100%, rgba(26, 164, 143, 0.12), transparent 65%);
+
+  /* ---- Type ---- */
+  --font-display: 'Vazirmatn', 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --fs-xs: clamp(0.72rem, 0.68rem + 0.15vw, 0.8rem);
+  --fs-sm: clamp(0.84rem, 0.8rem + 0.2vw, 0.95rem);
+  --fs-base: clamp(0.98rem, 0.94rem + 0.2vw, 1.05rem);
+  --fs-md: clamp(1.1rem, 1.02rem + 0.35vw, 1.3rem);
+  --fs-lg: clamp(1.4rem, 1.25rem + 0.7vw, 1.9rem);
+  --fs-xl: clamp(1.9rem, 1.55rem + 1.5vw, 2.75rem);
+  --fs-2xl: clamp(2.4rem, 1.9rem + 2.2vw, 3.75rem);
+  --fs-hero: clamp(2.75rem, 2rem + 4vw, 5.5rem);
+
+  --lh-tight: 1.15;
+  --lh-snug: 1.35;
+  --lh-normal: 1.7;
+
+  /* ---- Spacing: 8px scale ---- */
+  --space-1: 0.5rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4rem;
+  --space-8: 6rem;
+  --space-9: 8rem;
+
+  /* ---- Radius ---- */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 999px;
+
+  /* ---- Shadow / elevation ---- */
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 12px 40px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 70px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 0 1px rgba(36, 224, 194, 0.25), 0 0 40px rgba(36, 224, 194, 0.18);
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 0.25s;
+  --dur-base: 0.5s;
+  --dur-slow: 0.9s;
+
+  /* ---- Layout ---- */
+  --container: 1180px;
+  --nav-height: 76px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 0.001s;
+    --dur-base: 0.001s;
+    --dur-slow: 0.001s;
+  }
+}
