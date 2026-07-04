@@ -1,0 +1,88 @@
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+[data-reveal].in-view { opacity: 1; transform: translateY(0); }
+
+[data-reveal="scale"] { transform: translateY(0) scale(0.92); }
+[data-reveal="scale"].in-view { transform: scale(1); }
+
+[data-reveal="left"] { transform: translateX(-36px); }
+[data-reveal="left"].in-view { transform: translateX(0); }
+
+[data-reveal="right"] { transform: translateX(36px); }
+[data-reveal="right"].in-view { transform: translateX(0); }
+
+[data-reveal-group] > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+[data-reveal-group].in-view > * { opacity: 1; transform: translateY(0); }
+[data-reveal-group].in-view > *:nth-child(1) { transition-delay: 0.05s; }
+[data-reveal-group].in-view > *:nth-child(2) { transition-delay: 0.12s; }
+[data-reveal-group].in-view > *:nth-child(3) { transition-delay: 0.19s; }
+[data-reveal-group].in-view > *:nth-child(4) { transition-delay: 0.26s; }
+[data-reveal-group].in-view > *:nth-child(5) { transition-delay: 0.33s; }
+[data-reveal-group].in-view > *:nth-child(6) { transition-delay: 0.4s; }
+[data-reveal-group].in-view > *:nth-child(7) { transition-delay: 0.47s; }
+[data-reveal-group].in-view > *:nth-child(8) { transition-delay: 0.54s; }
+[data-reveal-group].in-view > *:nth-child(9) { transition-delay: 0.61s; }
+[data-reveal-group].in-view > *:nth-child(10) { transition-delay: 0.68s; }
+[data-reveal-group].in-view > *:nth-child(11) { transition-delay: 0.75s; }
+[data-reveal-group].in-view > *:nth-child(12) { transition-delay: 0.82s; }
+
+/* GSAP has taken ownership of these children's opacity/transform every
+   frame (see initGroupReveals in scroll.js) — a CSS transition chasing the
+   same properties on top of that only adds lag, so it's switched off. */
+.gsap-group > * { transition: none; }
+
+@keyframes floatSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.float { animation: floatSoft 5s ease-in-out infinite; }
+
+.split-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.6em) rotate(4deg);
+  animation: charIn 0.7s var(--ease-out) forwards;
+  animation-delay: var(--i-delay, 0s);
+  animation-play-state: paused;
+}
+
+/* The delay clock only starts once the animation is allowed to run, so
+   pausing by default and releasing here keeps every character's stagger
+   perfectly timed to the moment the preloader hands off to the hero —
+   never mid-cascade, never before the page is actually visible. */
+body.hero-ready .split-char { animation-play-state: running; }
+
+@keyframes charIn {
+  to { opacity: 1; transform: translateY(0) rotate(0); }
+}
+
+/* ---------- Hero entrance cascade ---------- */
+.hero-inner > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
+}
+
+body.hero-ready .hero-inner > * { opacity: 1; transform: translateY(0); }
+
+body.hero-ready .hero-inner > *:nth-child(1) { transition-delay: 0.02s; }
+body.hero-ready .hero-inner > *:nth-child(2) { transition-delay: 0.12s; }
+body.hero-ready .hero-inner > *:nth-child(3) { transition-delay: 0.2s; }
+body.hero-ready .hero-inner > *:nth-child(4) { transition-delay: 0.55s; }
+body.hero-ready .hero-inner > *:nth-child(5) { transition-delay: 0.68s; }
+body.hero-ready .hero-inner > *:nth-child(6) { transition-delay: 0.78s; }
