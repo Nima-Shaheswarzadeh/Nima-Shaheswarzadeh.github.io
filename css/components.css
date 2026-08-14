@@ -209,6 +209,28 @@
   z-index: 1;
 }
 
+/* ---------- Liquid glass nav pill ---------- */
+/* A soft glass capsule that morphs (width + position) to sit behind
+   whichever link is active — navigation.js measures the active link's
+   physical offsetLeft/offsetWidth in JS and writes them here, which stays
+   correct under RTL since nothing here is a logical property being
+   authored, only a measured pixel value being read. */
+.nav-pill {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.02)),
+              var(--surface-glass);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-glow-soft), inset 0 1px 0 rgba(255,255,255,0.08);
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+  transition: transform 0.55s var(--ease-spring), width 0.55s var(--ease-spring), opacity 0.3s var(--ease-out);
+}
+
 .nav-links a {
   position: relative;
   padding: var(--space-1) var(--space-3);
@@ -217,7 +239,11 @@
   transition: color var(--dur-fast);
 }
 
-.nav-links a::after {
+.nav-links a:hover, .nav-links a.active { color: var(--text); }
+
+/* The underline only decorates hover now — the pill itself is the "active"
+   signal, so a persistent underline on top of it would be visual noise. */
+.nav-links a:not(.active)::after {
   content: '';
   position: absolute;
   left: var(--space-3); right: var(--space-3);
@@ -229,8 +255,7 @@
   transition: transform var(--dur-fast) var(--ease-out);
 }
 
-.nav-links a:hover, .nav-links a.active { color: var(--text); }
-.nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+.nav-links a:not(.active):hover::after { transform: scaleX(1); }
 
 .nav-toggle {
   display: none;
@@ -573,6 +598,46 @@ body.hero-ready .scroll-cue { opacity: 1; }
   display: flex;
   flex-direction: column;
   min-height: 240px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.5s var(--ease-out), border-color var(--dur-fast);
+}
+
+/* Depth Stack: the bento grid already stacks cards on a real z-axis
+   (see .projects-grid), this just sells that depth further on hover. */
+.project-card:hover {
+  box-shadow: var(--shadow-lg), 0 30px 70px -30px var(--accent-glow);
+}
+
+/* Aurora Glow: a thin conic-gradient ring, masked down to just the border
+   itself (so the glass card underneath stays untouched), slowly spinning.
+   `overflow: hidden` on .project-card clips it flush to the rounded corners. */
+.project-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from 0deg, var(--accent-light), var(--warm), var(--accent-dim), var(--accent-light));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  pointer-events: none;
+  animation: auroraSpin 7s linear infinite;
+  animation-play-state: paused;
+  transition: opacity 0.6s var(--ease-out);
+}
+
+.project-card:hover::before {
+  opacity: 0.9;
+  animation-play-state: running;
+}
+
+@keyframes auroraSpin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card::before { animation: none; }
 }
 
 .project-card .media {
@@ -757,6 +822,33 @@ footer {
 
 #back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
 #back-to-top:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ---------- Sound toggle ---------- */
+/* Restored click-sound feature from the old version, but — unlike the old
+   version — genuinely optional: sits quietly above the back-to-top button
+   and only appears once there's something to scroll back up to. */
+#sound-toggle {
+  position: fixed;
+  bottom: calc(var(--space-4) + 46px + var(--space-2));
+  inset-inline-end: var(--space-4);
+  z-index: 40;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all var(--dur-fast) var(--ease-spring);
+}
+
+#back-to-top.show ~ #sound-toggle { opacity: 1; visibility: visible; transform: translateY(0); }
+
+#sound-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+#sound-toggle .fa-volume-mute { display: none; }
+#sound-toggle.is-muted .fa-volume-up { display: none; }
+#sound-toggle.is-muted .fa-volume-mute { display: inline-block; }
 
 /* ---------- Contact FAB ---------- */
 #contact-fab-items {

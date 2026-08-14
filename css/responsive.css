@@ -11,7 +11,33 @@
   .tool-grid { grid-template-columns: repeat(3, 1fr); }
   .hero-avatar { width: 104px; height: 104px; }
   .container { padding-inline: var(--space-3); }
-  #contact-fab, #contact-fab-items { display: none; }
+
+  /* Contact FAB stays available on mobile (it used to disappear here
+     entirely) — just compact, with 7 channels now instead of 3, so it
+     needs the tighter sizing to comfortably fit above the thumb. */
+  #contact-fab, #back-to-top {
+    width: 42px; height: 42px;
+    bottom: var(--space-3);
+  }
+  #contact-fab { inset-inline-start: var(--space-3); }
+  #back-to-top { inset-inline-end: var(--space-3); }
+
+  #sound-toggle {
+    width: 34px; height: 34px;
+    bottom: calc(var(--space-3) + 42px + var(--space-1));
+    inset-inline-end: var(--space-3);
+  }
+
+  #contact-fab-items {
+    bottom: 4.6rem;
+    inset-inline-start: var(--space-3);
+    gap: var(--space-1);
+  }
+  .fab-item { width: 38px; height: 38px; font-size: 0.9rem; }
+
+  /* Tooltips rely on hover, which doesn't exist on touch — drop them here
+     rather than leave dead hover-only UI. */
+  .fab-item::before { display: none; }
 }
 
 @media (min-width: 861px) {

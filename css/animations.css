@@ -52,24 +52,23 @@
 
 .float { animation: floatSoft 5s ease-in-out infinite; }
 
-.split-char {
-  display: inline-block;
+/* Hero name entrance — split by WORD, never by character. Vazirmatn is a
+   joined Persian script: wrapping individual letters in their own
+   inline-block spans breaks that joining, so the stagger only ever
+   operates at word granularity (see .word in components.css for the
+   inline-block base rule, and splitHeroName() in app.js for the split). */
+.hero-name .word {
   opacity: 0;
-  transform: translateY(0.6em) rotate(4deg);
-  animation: charIn 0.7s var(--ease-out) forwards;
-  animation-delay: var(--i-delay, 0s);
-  animation-play-state: paused;
+  transform: translateY(0.5em);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+  transition-delay: var(--i-delay, 0s);
 }
 
-/* The delay clock only starts once the animation is allowed to run, so
-   pausing by default and releasing here keeps every character's stagger
-   perfectly timed to the moment the preloader hands off to the hero —
-   never mid-cascade, never before the page is actually visible. */
-body.hero-ready .split-char { animation-play-state: running; }
-
-@keyframes charIn {
-  to { opacity: 1; transform: translateY(0) rotate(0); }
-}
+/* The transition-delay clock only starts counting once opacity is actually
+   asked to change, so gating the flip behind body.hero-ready keeps every
+   word's entrance perfectly timed to the preloader hand-off — never
+   mid-cascade, never before the page is actually visible. */
+body.hero-ready .hero-name .word { opacity: 1; transform: translateY(0); }
 
 /* ---------- Hero entrance cascade ---------- */
 .hero-inner > * {
