@@ -26,6 +26,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 <link rel="stylesheet" href="css/variables.css">
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/typography.css">
@@ -44,6 +47,61 @@
     }
   </style>
 </noscript>
+
+<style>
+  /* ===== استایل‌های اختصاصی ربات و اسلایدر ===== */
+  #cute-companion {
+    position: fixed;
+    right: 5%;
+    top: 20%;
+    z-index: 100;
+    width: 70px;
+    height: 70px;
+    pointer-events: none;
+    filter: drop-shadow(0 0 10px var(--accent));
+    transform-origin: center center;
+  }
+  @keyframes floatCompanion {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+  .companion-float { animation: floatCompanion 3s ease-in-out infinite; }
+  @keyframes blinkCompanion {
+    0%, 96%, 98% { transform: scaleY(1); }
+    97% { transform: scaleY(0.1); }
+    100% { transform: scaleY(1); }
+  }
+  .companion-eye {
+    transform-origin: center;
+    animation: blinkCompanion 4s infinite;
+  }
+  .companion-flame {
+    animation: floatCompanion 0.5s ease-in-out infinite alternate;
+  }
+
+  /* Swiper Slider Styles */
+  .swiper {
+    width: 100%;
+    padding: 40px 0;
+  }
+  .swiper-slide {
+    width: 320px;
+    height: 480px;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+  }
+  @media (min-width: 768px) {
+    .swiper-slide { width: 400px; height: 550px; }
+  }
+  .swiper-slide-active { opacity: 1; }
+  .swiper-slide .project-card { 
+    height: 100%; 
+    margin: 0; 
+    display: flex; 
+    flex-direction: column;
+  }
+</style>
+
 </head>
 <body>
 
@@ -61,6 +119,33 @@
 <!-- Ambient backdrop -->
 <div id="bg-mesh" aria-hidden="true"></div>
 <div class="grain" aria-hidden="true"></div>
+
+<!-- ربات کیوت و همراه کاربر -->
+<div id="cute-companion">
+  <div class="companion-float">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- هاله درخشان -->
+      <circle cx="50" cy="50" r="45" fill="var(--accent-soft)" />
+      <!-- شعله موتور -->
+      <path d="M 40 70 Q 50 105 60 70 Z" fill="var(--accent-light)" class="companion-flame" opacity="0.9" />
+      <!-- دست‌ها -->
+      <path d="M 30 55 Q 15 60 22 75" stroke="var(--accent-light)" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <path d="M 70 55 Q 85 60 78 75" stroke="var(--accent-light)" stroke-width="4" stroke-linecap="round" fill="none"/>
+      <!-- بدنه -->
+      <rect x="25" y="30" width="50" height="45" rx="15" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="3"/>
+      <!-- صورت -->
+      <rect x="32" y="42" width="36" height="18" rx="8" fill="var(--bg-elevated)" stroke="var(--accent-light)" stroke-width="2"/>
+      <!-- چشم‌ها -->
+      <circle cx="41" cy="51" r="3.5" fill="var(--accent-light)" class="companion-eye"/>
+      <circle cx="59" cy="51" r="3.5" fill="var(--accent-light)" class="companion-eye"/>
+      <!-- آنتن -->
+      <path d="M 46 30 L 54 30 L 50 18 Z" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="2"/>
+      <!-- سر آنتن -->
+      <circle cx="50" cy="14" r="4.5" fill="var(--accent-light)" class="companion-flame"/>
+      <circle cx="50" cy="14" r="2.5" fill="#ffffff"/>
+    </svg>
+  </div>
+</div>
 
 <!-- Navigation -->
 <nav id="navbar" aria-label="منوی اصلی">
@@ -129,13 +214,13 @@
         </a>
       </div>
       <div class="social-row">
-        <a href="https://eitaa.com/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="social-icon" title="ایتا" aria-label="پروفایل ایتا"><i class="fas fa-comment-dots"></i></a>
-        <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="social-icon" title="تلگرام" aria-label="پروفایل تلگرام"><i class="fab fa-telegram"></i></a>
-        <a href="https://wa.me/989371164025" target="_blank" rel="noopener noreferrer" class="social-icon" title="واتساپ" aria-label="پروفایل واتساپ"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://instagram.com/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="social-icon" title="اینستاگرام" aria-label="پروفایل اینستاگرام"><i class="fab fa-instagram"></i></a>
-        <a href="mailto:Nima.Shaheswarzadeh@gmail.com" class="social-icon" title="ایمیل" aria-label="ارسال ایمیل"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/Nima-Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="social-icon" title="گیت‌هاب" aria-label="پروفایل گیت‌هاب"><i class="fab fa-github"></i></a>
-        <a href="https://daramet.com/Nima-Sh" target="_blank" rel="noopener noreferrer" class="social-icon" title="حمایت مالی" aria-label="حمایت مالی"><i class="fas fa-heart"></i></a>
+        <a href="https://eitaa.com/Nima_Shaheswarzadeh" target="_blank" class="social-icon" title="ایتا"><i class="fas fa-comment-dots"></i></a>
+        <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" class="social-icon" title="تلگرام"><i class="fab fa-telegram"></i></a>
+        <a href="https://wa.me/989371164025" target="_blank" class="social-icon" title="واتساپ"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://instagram.com/Nima_Shaheswarzadeh" target="_blank" class="social-icon" title="اینستاگرام"><i class="fab fa-instagram"></i></a>
+        <a href="mailto:Nima.Shaheswarzadeh@gmail.com" class="social-icon" title="ایمیل"><i class="fas fa-envelope"></i></a>
+        <a href="https://github.com/Nima-Shaheswarzadeh" target="_blank" class="social-icon" title="گیت‌هاب"><i class="fab fa-github"></i></a>
+        <a href="https://daramet.com/Nima-Sh" target="_blank" class="social-icon" title="حمایت مالی"><i class="fas fa-heart"></i></a>
       </div>
     </div>
     <div class="scroll-cue" aria-hidden="true"><span class="line"></span><span>اسکرول</span></div>
@@ -158,12 +243,15 @@
           <p style="margin-bottom: var(--space-5);">
             تمرکز اصلی من روی Unity، C# و طراحی گرافیک است. به کار خلاقانه و حل مسائل پیچیده علاقه‌مندم.
           </p>
+          
+          <!-- شمارنده‌های داینامیک: اعداد با اسکرول پر می‌شوند -->
           <div class="grid-2" data-reveal-group>
-            <div class="glass stat-card"><div class="stat-value" data-counter="5">+0</div><div class="stat-label">مشتری راضی</div></div>
-            <div class="glass stat-card"><div class="stat-value" data-counter="5">+0</div><div class="stat-label">پروژه موفق</div></div>
-            <div class="glass stat-card"><div class="stat-value" data-counter="1">+0</div><div class="stat-label">سال تجربه</div></div>
-            <div class="glass stat-card"><div class="stat-value" data-counter="2">+0</div><div class="stat-label">جایزه</div></div>
+            <div class="glass stat-card"><div class="stat-value" data-counter="15">+0</div><div class="stat-label">مشتری راضی</div></div>
+            <div class="glass stat-card"><div class="stat-value" data-counter="24">+0</div><div class="stat-label">پروژه موفق</div></div>
+            <div class="glass stat-card"><div class="stat-value" data-counter="3">+0</div><div class="stat-label">سال تجربه</div></div>
+            <div class="glass stat-card"><div class="stat-value" data-counter="5">+0</div><div class="stat-label">جایزه</div></div>
           </div>
+
           <a href="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Nima-Shaheswarzadeh.github.io/main/Picture/Nima%20Rezome.jpeg"
              target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top: var(--space-5);">
             <i class="fas fa-download" aria-hidden="true"></i>
@@ -221,75 +309,88 @@
             <i class="fas fa-tools" style="color: var(--accent);" aria-hidden="true"></i> ابزارها و تکنولوژی‌ها
           </h3>
           <div class="tool-grid" data-reveal-group>
-            <div class="glass tool-chip"><i class="fab fa-html5" style="color:#f06529;"></i>HTML</div>
-            <div class="glass tool-chip"><i class="fab fa-css3-alt" style="color:#3b82f6;"></i>CSS</div>
-            <div class="glass tool-chip"><i class="fab fa-js" style="color:#f7df1e;"></i>JavaScript</div>
-            <div class="glass tool-chip"><i class="fab fa-python" style="color:#93c5fd;"></i>Python</div>
-            <div class="glass tool-chip"><i class="fas fa-code" style="color: var(--accent);"></i>#C</div>
-            <div class="glass tool-chip"><i class="fas fa-image" style="color:#60a5fa;"></i>Photoshop</div>
-            <div class="glass tool-chip"><i class="fas fa-robot" style="color:#c084fc;"></i>AI</div>
-            <div class="glass tool-chip"><i class="fab fa-github"></i>GitHub</div>
-            <div class="glass tool-chip"><i class="fab fa-unity"></i>Unity</div>
-            <div class="glass tool-chip"><i class="fas fa-cat" style="color:#fb923c;"></i>Scratch</div>
-            <div class="glass tool-chip"><i class="fas fa-laptop-code" style="color:#a855f7;"></i>Visual Studio</div>
-            <div class="glass tool-chip"><i class="fas fa-file-code" style="color:#3b82f6;"></i>VS Code</div>
+            <!-- آیکون‌های اصلی برنامه‌ها (Devicons) -->
+            <div class="glass tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" style="width:32px; height:32px; margin-bottom:4px;">HTML</div>
+            <div class="glass tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" style="width:32px; height:32px; margin-bottom:4px;">CSS</div>
+            <div class="glass tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" style="width:32px; height:32px; margin-bottom:4px;">JavaScript</div>
+            <div class="glass tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" style="width:32px; height:32px; margin-bottom:4px;">Python</div>
+            <div class="glass tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" style="width:32px; height:32px; margin-bottom:4px;">#C</div>
+            <div class="glass tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg" style="width:32px; height:32px; margin-bottom:4px;">Photoshop</div>
+            <div class="glass tool-chip"><i class="fas fa-robot" style="font-size:32px; color:#c084fc; margin-bottom:4px;"></i>AI</div>
+            <div class="glass tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" style="width:32px; height:32px; margin-bottom:4px; filter: invert(1);">GitHub</div>
+            <div class="glass tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" style="width:32px; height:32px; margin-bottom:4px; filter: invert(1);">Unity</div>
+            <div class="glass tool-chip"><i class="fas fa-cat" style="font-size:32px; color:#fb923c; margin-bottom:4px;"></i>Scratch</div>
+            <div class="glass tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-original.svg" style="width:32px; height:32px; margin-bottom:4px;">Visual Studio</div>
+            <div class="glass tool-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" style="width:32px; height:32px; margin-bottom:4px;">VS Code</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
+  <!-- Projects (Scroll-Jacked Swiper) -->
   <section id="projects">
-    <div class="container">
+    <div class="container" id="projects-pin-wrapper">
       <div class="section-kicker center-kicker" data-reveal>
         <p class="eyebrow" style="justify-content:center;">نمونه کار</p>
         <h2 class="section-heading">پروژه‌های <span class="accent-text">من</span></h2>
         <div class="divider mx-auto"></div>
       </div>
-      <div class="projects-grid" data-reveal-group>
-        <article class="glass card-tilt project-card">
-          <div class="media">
-            <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/SMART-HTML-Viewer/main/Welcome-Page/Welcome-Page.jpeg" alt="پروژه SMART HTML Viewer" loading="lazy" width="800" height="500">
+      
+      <!-- Swiper Slider -->
+      <div class="swiper projectSwiper" data-reveal>
+        <div class="swiper-wrapper">
+          <!-- Project 1 -->
+          <div class="swiper-slide">
+            <article class="glass card-tilt project-card">
+              <div class="media">
+                <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/SMART-HTML-Viewer/main/Welcome-Page/Welcome-Page.jpeg" alt="SMART HTML Viewer">
+              </div>
+              <span class="status mono-tag">فعال</span>
+              <div class="body">
+                <h3>SMART HTML Viewer</h3>
+                <p>بیننده پیشرفته فایل اچ‌تی‌ام‌ال هوشمند با قابلیت‌های ویژه.</p>
+                <a class="link" href="https://github.com/Nima-Shaheswarzadeh/SMART-HTML-Viewer/blob/main/Welcome-Page/Welcome-Page.html" target="_blank">
+                  رفتن به پروژه <i class="fas fa-arrow-left"></i>
+                </a>
+              </div>
+            </article>
           </div>
-          <span class="status mono-tag">فعال</span>
-          <div class="body">
-            <h3>SMART HTML Viewer</h3>
-            <p>بیننده پیشرفته فایل اچ‌تی‌ام‌ال هوشمند</p>
-            <a class="link" href="https://github.com/Nima-Shaheswarzadeh/SMART-HTML-Viewer/blob/main/Welcome-Page/Welcome-Page.html" target="_blank" rel="noopener noreferrer">
-              رفتن به پروژه <i class="fas fa-arrow-left" aria-hidden="true"></i>
-            </a>
+          <!-- Project 2 -->
+          <div class="swiper-slide">
+            <article class="glass card-tilt project-card">
+              <div class="media">
+                <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Smartule-weekly-schedule/main/Welcome%20Page/Welcome-Page.jpeg" alt="Smartule Weekly Schedule">
+              </div>
+              <span class="status mono-tag">فعال</span>
+              <div class="body">
+                <h3>Smartule Schedule</h3>
+                <p>برنامه هفتگی پیشرفته هوشمند برای مدیریت بهتر زمان.</p>
+                <a class="link" href="#" aria-disabled="true">
+                  به‌زودی <i class="fas fa-arrow-left"></i>
+                </a>
+              </div>
+            </article>
           </div>
-        </article>
-
-        <article class="glass card-tilt project-card">
-          <div class="media">
-            <img src="https://raw.githubusercontent.com/Nima-Shaheswarzadeh/Smartule-weekly-schedule/main/Welcome%20Page/Welcome-Page.jpeg" alt="پروژه Smartule Weekly Schedule" loading="lazy" width="800" height="500">
+          <!-- Project 3 -->
+          <div class="swiper-slide">
+            <article class="glass card-tilt project-card">
+              <div class="media">
+                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800" alt="بازی IR Streets">
+              </div>
+              <span class="status mono-tag">در حال ساخت</span>
+              <div class="body">
+                <h3>بازی IR Streets</h3>
+                <p>بازی جذاب خیابان‌های ایران ساخته شده با موتور بازی‌سازی یونیتی.</p>
+                <a class="link" href="#" aria-disabled="true">
+                  به‌زودی <i class="fas fa-arrow-left"></i>
+                </a>
+              </div>
+            </article>
           </div>
-          <span class="status mono-tag">فعال</span>
-          <div class="body">
-            <h3>Smartule Weekly Schedule</h3>
-            <p>برنامه هفتگی پیشرفته هوشمند</p>
-            <a class="link" href="#" aria-disabled="true">
-              به‌زودی <i class="fas fa-arrow-left" aria-hidden="true"></i>
-            </a>
-          </div>
-        </article>
-
-        <article class="glass card-tilt project-card">
-          <div class="media">
-            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800" alt="پروژه تستی شماره ۳" loading="lazy" width="800" height="500">
-          </div>
-          <span class="status mono-tag">در حال ساخت</span>
-          <div class="body">
-            <h3>پروژه تستی شماره ۳</h3>
-            <p>این پروژه به‌زودی تکمیل خواهد شد.</p>
-            <a class="link" href="#" aria-disabled="true">
-              به‌زودی <i class="fas fa-arrow-left" aria-hidden="true"></i>
-            </a>
-          </div>
-        </article>
+        </div>
       </div>
+      <p class="text-center caption mt-4" style="color:var(--text-faint)">برای ورق زدن پروژه‌ها به پایین اسکرول کنید</p>
     </div>
   </section>
 
@@ -336,49 +437,59 @@
         <p class="lede mx-auto">آماده همکاری در پروژه‌های جدید هستم. با من در ارتباط باشید!</p>
       </div>
       <div class="contact-tiles-grid" data-reveal-group data-reveal="scale">
-        <a href="mailto:Nima.Shaheswarzadeh@gmail.com" class="glass contact-tile" aria-label="ارسال ایمیل">
-          <span class="icon"><i class="fas fa-envelope" aria-hidden="true"></i></span>
+        <a href="mailto:Nima.Shaheswarzadeh@gmail.com" class="glass contact-tile">
+          <span class="icon"><i class="fas fa-envelope"></i></span>
           <span><h3>ایمیل</h3><span>Nima.Shaheswarzadeh@gmail.com</span></span>
         </a>
-        <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="glass contact-tile" aria-label="تلگرام">
-          <span class="icon"><i class="fab fa-telegram" aria-hidden="true"></i></span>
+        <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" class="glass contact-tile">
+          <span class="icon"><i class="fab fa-telegram"></i></span>
           <span><h3>تلگرام</h3><span>@Nima_Shaheswarzadeh</span></span>
         </a>
-        <a href="https://wa.me/989371164025" target="_blank" rel="noopener noreferrer" class="glass contact-tile" aria-label="واتساپ">
-          <span class="icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></span>
+        <a href="https://wa.me/989371164025" target="_blank" class="glass contact-tile">
+          <span class="icon"><i class="fab fa-whatsapp"></i></span>
           <span><h3>واتساپ</h3><span>@Nima_Shaheswarzadeh</span></span>
         </a>
-        <a href="https://eitaa.com/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="glass contact-tile" aria-label="ایتا">
-          <span class="icon"><i class="fas fa-comment-dots" aria-hidden="true"></i></span>
+        <a href="https://eitaa.com/Nima_Shaheswarzadeh" target="_blank" class="glass contact-tile">
+          <span class="icon"><i class="fas fa-comment-dots"></i></span>
           <span><h3>ایتا</h3><span>@Nima_Shaheswarzadeh</span></span>
         </a>
-        <a href="https://instagram.com/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="glass contact-tile" aria-label="اینستاگرام">
-          <span class="icon"><i class="fab fa-instagram" aria-hidden="true"></i></span>
+        <a href="https://instagram.com/Nima_Shaheswarzadeh" target="_blank" class="glass contact-tile">
+          <span class="icon"><i class="fab fa-instagram"></i></span>
           <span><h3>اینستاگرام</h3><span>@Nima_Shaheswarzadeh</span></span>
         </a>
-        <a href="https://github.com/Nima-Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="glass contact-tile" aria-label="گیت‌هاب">
-          <span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span>
+        <a href="https://github.com/Nima-Shaheswarzadeh" target="_blank" class="glass contact-tile">
+          <span class="icon"><i class="fab fa-github"></i></span>
           <span><h3>گیت‌هاب</h3><span>github.com/Nima-Shaheswarzadeh</span></span>
-        </a>
-        <a href="https://daramet.com/Nima-Sh" target="_blank" rel="noopener noreferrer" class="glass contact-tile" aria-label="حمایت مالی">
-          <span class="icon"><i class="fas fa-heart" aria-hidden="true"></i></span>
-          <span><h3>حمایت مالی</h3><span>daramet.com/Nima-Sh</span></span>
         </a>
       </div>
     </div>
   </section>
 
-
 </main>
 
 <footer>
   <div class="container footer-inner">
-    <div class="tech-chips">
-      <span class="tech-chip">HTML5</span>
-      <span class="tech-chip">CSS3</span>
-      <span class="tech-chip">Vanilla JS</span>
-      <span class="tech-chip">Three.js</span>
+    
+    <!-- لیست تکنولوژی‌های شیشه‌ای -->
+    <div style="margin-bottom: var(--space-2);">
+       <span style="color:var(--text-muted); font-size:var(--fs-sm); display:block; margin-bottom:var(--space-2);">تکنولوژی‌های استفاده شده در سایت:</span>
+       <div class="tech-chips">
+         <span class="tech-chip glass">HTML5 & CSS3</span>
+         <span class="tech-chip glass">Vanilla JS</span>
+         <span class="tech-chip glass">GSAP & Lenis</span>
+         <span class="tech-chip glass">Swiper.js</span>
+         <span class="tech-chip glass">Three.js</span>
+         <span class="tech-chip glass">Devicons</span>
+       </div>
     </div>
+
+    <!-- سال کسری مدرن -->
+    <div style="display:flex; align-items:center; justify-content:center; gap:16px; margin:var(--space-3) 0;">
+      <span style="font-size:24px; font-weight:900; color:var(--accent);">۱۴۰۵</span>
+      <div style="width:4px; height:40px; background:var(--border-strong); transform:rotate(20deg); border-radius:4px;"></div>
+      <span style="font-size:24px; font-weight:900; color:var(--accent);">2026</span>
+    </div>
+
     <p class="caption">© ۱۴۰۵ نیما شهسوارزاده — همه حقوق محفوظ است.</p>
   </div>
 </footer>
@@ -394,16 +505,94 @@
 
 <!-- Contact FAB -->
 <div id="contact-fab-items">
-  <a href="https://eitaa.com/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="glass fab-item" data-tooltip="ایتا"><i class="fas fa-comment-dots" aria-hidden="true"></i></a>
-  <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="glass fab-item" data-tooltip="تلگرام"><i class="fab fa-telegram" aria-hidden="true"></i></a>
-  <a href="https://wa.me/989371164025" target="_blank" rel="noopener noreferrer" class="glass fab-item" data-tooltip="واتساپ"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-  <a href="https://instagram.com/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="glass fab-item" data-tooltip="اینستاگرام"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-  <a href="mailto:Nima.Shaheswarzadeh@gmail.com" class="glass fab-item" data-tooltip="ایمیل"><i class="fas fa-envelope" aria-hidden="true"></i></a>
-  <a href="https://github.com/Nima-Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="glass fab-item" data-tooltip="گیت‌هاب"><i class="fab fa-github" aria-hidden="true"></i></a>
-  <a href="https://daramet.com/Nima-Sh" target="_blank" rel="noopener noreferrer" class="glass fab-item" data-tooltip="حمایت مالی"><i class="fas fa-heart" aria-hidden="true"></i></a>
+  <a href="https://eitaa.com/Nima_Shaheswarzadeh" target="_blank" class="glass fab-item" data-tooltip="ایتا"><i class="fas fa-comment-dots"></i></a>
+  <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" class="glass fab-item" data-tooltip="تلگرام"><i class="fab fa-telegram"></i></a>
+  <a href="https://wa.me/989371164025" target="_blank" class="glass fab-item" data-tooltip="واتساپ"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://instagram.com/Nima_Shaheswarzadeh" target="_blank" class="glass fab-item" data-tooltip="اینستاگرام"><i class="fab fa-instagram"></i></a>
+  <a href="mailto:Nima.Shaheswarzadeh@gmail.com" class="glass fab-item" data-tooltip="ایمیل"><i class="fas fa-envelope"></i></a>
+  <a href="https://github.com/Nima-Shaheswarzadeh" target="_blank" class="glass fab-item" data-tooltip="گیت‌هاب"><i class="fab fa-github"></i></a>
+  <a href="https://daramet.com/Nima-Sh" target="_blank" class="glass fab-item" data-tooltip="حمایت مالی"><i class="fas fa-heart"></i></a>
 </div>
 <button id="contact-fab" class="glass" aria-label="راه‌های ارتباطی" aria-expanded="false"><i class="fas fa-comment" aria-hidden="true"></i></button>
 
+
+<!-- وارد کردن اسکریپت اصلی سایت (ساختار ماژولار شما) -->
 <script type="module" src="js/app.js"></script>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- اسکریپت الحاقی: اتصال Swiper به اسکرول (Scroll-Jack) و رفتار ربات -->
+<script type="module">
+  // ۱. کنترل منطق ربات (Cute Companion) بدون تداخل با کتابخانه‌های اسکرول
+  const companion = document.getElementById('cute-companion');
+  let compY = 20, compRot = 0, lastScroll = window.scrollY;
+  
+  window.addEventListener('scroll', () => {
+    let currentScroll = window.scrollY;
+    let diff = currentScroll - lastScroll;
+    lastScroll = currentScroll;
+    
+    // کج شدن بدن ربات با توجه به سرعت اسکرول
+    let targetRot = Math.max(-35, Math.min(35, diff * 0.15));
+    compRot += (targetRot - compRot) * 0.2;
+    
+    // حرکت عمودی ربات: همیشه نزدیک کاربر می‌ماند
+    let scrollPercent = currentScroll / (document.body.scrollHeight - window.innerHeight);
+    let targetY = 20 + (scrollPercent * 60); 
+    compY += (targetY - compY) * 0.05;
+    
+    companion.style.top = `${compY}%`;
+    companion.style.transform = `rotate(${compRot}deg)`;
+  }, { passive: true });
+
+  // بازگشت زاویه ربات به حالت عادی هنگام توقف
+  setInterval(() => {
+    compRot *= 0.9; 
+    companion.style.transform = `rotate(${compRot}deg)`;
+  }, 50);
+
+  // ۲. کنترل اسلایدر سه‌بعدی و قفل شدن آن روی اسکرول با کمک فایل‌های ماژولار شما
+  // ابتدا Swiper مقداردهی اولیه می‌شود
+  const swiper = new Swiper('.projectSwiper', {
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    coverflowEffect: {
+      rotate: 30,
+      stretch: 0,
+      depth: 250,
+      modifier: 1,
+      slideShadows: false,
+    }
+  });
+
+  // از ساختار خود شما GSAP و ScrollTrigger را فراخوانی می‌کنیم تا به اسکرول نرم سایت متصل شود
+  import { loadMotionLibs } from './js/motion.js';
+  
+  loadMotionLibs().then(motion => {
+    if(!motion) return;
+    const { gsap, ScrollTrigger } = motion;
+    
+    // قفل کردن (Pin) بخش پروژه‌ها هنگام رسیدن به آن
+    ScrollTrigger.create({
+      trigger: "#projects-pin-wrapper",
+      pin: true,
+      start: "center center", 
+      end: "+=1200", // کاربر باید ۱۲۰۰ پیکسل اسکرول کند تا پروژه‌ها ورق بخورند
+      scrub: 1,      // اسکراب بسیار نرم
+      onUpdate: (self) => {
+        // تبدیل میزان پیشرفت اسکرول (0 تا 1) به شماره اسلاید
+        const total = swiper.slides.length - 1;
+        const index = Math.round(self.progress * total);
+        if(swiper.activeIndex !== index) {
+          swiper.slideTo(index);
+        }
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
