@@ -1,0 +1,87 @@
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+
+body {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  color: var(--text);
+  background: var(--bg);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  /* Vazirmatn is a joined Persian script — negative tracking breaks the
+     letter connections, so headings get normal spacing, never tightened. */
+  letter-spacing: normal;
+  line-height: var(--lh-tight);
+}
+
+p { color: var(--text-muted); line-height: var(--lh-normal); max-width: 62ch; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  letter-spacing: normal;
+  color: var(--accent-light);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  box-shadow: 0 0 12px var(--accent-glow);
+  flex-shrink: 0;
+}
+
+.section-heading {
+  font-size: var(--fs-2xl);
+  font-weight: 800;
+  margin-block: var(--space-2) var(--space-5);
+  text-wrap: balance;
+}
+
+.section-heading .accent-text {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-kicker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+.lede {
+  font-size: var(--fs-md);
+  line-height: var(--lh-snug);
+  color: var(--text-muted);
+  max-width: 46ch;
+}
+
+/* Reserved for genuinely Latin content only (tech labels, code-like tags) —
+   Vazirmatn carries every Persian string; JetBrains Mono never should. */
+.mono-tag {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+.caption {
+  font-family: var(--font-display);
+  font-size: var(--fs-xs);
+  color: var(--text-faint);
+}
+
+@media (max-width: 640px) {
+  .section-heading { font-size: var(--fs-xl); }
+  p { max-width: 100%; }
+}
