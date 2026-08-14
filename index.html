@@ -62,28 +62,64 @@
     box-shadow: 0 15px 45px -15px var(--accent-glow) !important;
   }
 
-  /* تنظیم جایگاه دکمه‌های صدا و ارتباط سمت چپ */
+  /* تنظیم جایگاه دکمه ارتباط (سمت راست) */
   #contact-fab, #contact-fab-items {
     inset-inline-start: auto !important;
     inset-inline-end: auto !important;
-    left: var(--space-4) !important;
-    right: auto !important;
+    left: auto !important;
+    right: var(--space-4) !important;
   }
-  /* قرارگیری دکمه صدا سمت چپ کنار دکمه ارتباط */
-  #sound-toggle {
-    inset-inline-end: auto !important;
-    inset-inline-start: auto !important;
-    left: calc(var(--space-4) + 60px) !important; 
-    right: auto !important;
-    bottom: var(--space-4) !important;
-  }
-  /* بهینه‌سازی دکمه‌ها در موبایل */
   @media (max-width: 640px) {
-    #contact-fab, #contact-fab-items { left: var(--space-3) !important; }
-    #sound-toggle { 
-      left: calc(var(--space-3) + 50px) !important; 
-      bottom: var(--space-3) !important; 
-    }
+    #contact-fab, #contact-fab-items { right: var(--space-3) !important; }
+  }
+
+  /* کپسول شیشه‌ای چسبیده (صدا + اسکرول بالا) در سمت چپ */
+  #action-pill {
+    position: fixed;
+    bottom: var(--space-4);
+    left: var(--space-4);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    background: var(--surface-glass);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border-strong);
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    padding: 0 4px;
+    height: 52px;
+  }
+  #action-pill button {
+    position: static !important;
+    width: 44px !important;
+    height: 44px !important;
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    border: none !important;
+    background: transparent !important;
+    border-radius: 50% !important;
+    box-shadow: none !important;
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #action-pill button:hover {
+    color: var(--accent);
+    background: rgba(255, 255, 255, 0.05) !important;
+  }
+  .pill-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border-strong);
+    margin: 0 2px;
+  }
+  @media (max-width: 640px) {
+    #action-pill { left: var(--space-3); bottom: var(--space-3); height: 46px; }
+    #action-pill button { width: 38px !important; height: 38px !important; }
   }
 
   /* استایل پیشرفته و نئونی لودینگ */
@@ -222,25 +258,25 @@
   }
   
   /* =======================================
-     استایل بک‌گراند محو برای سکشن تماس
+     استایل بک‌گراند محو برای سکشن‌های انتهایی (تماس و فوتر)
      ======================================= */
-  #contact {
+  #bottom-wrapper {
     position: relative;
     overflow: hidden;
   }
-  #contact-bg {
+  #bottom-bg {
     position: absolute;
     inset: 0;
     background: url('https://github.com/Nima-Shaheswarzadeh/nima-shaheswarzadeh.github.io/blob/main/Picture/Heels%201.png?raw=true') center/cover no-repeat;
     opacity: 0;
-    filter: blur(6px) brightness(0.3);
+    filter: blur(3px) brightness(0.8); /* وضوح و روشنایی بیشتر */
     z-index: 0;
     transition: opacity 2s ease-out;
   }
-  #contact-bg.in-view {
-    opacity: 0.25; /* ظاهر شدن عکس به صورت محو و تاریک */
+  #bottom-bg.in-view {
+    opacity: 0.65; /* شفافیت بیشتر برای دیده‌شدن عالی عکس */
   }
-  #contact .container {
+  #contact, footer {
     position: relative;
     z-index: 10;
   }
@@ -266,7 +302,7 @@
 
 <!-- ربات کیوت و شیطون -->
 <div id="cute-companion">
-  <div class="companion-speech" id="companion-speech">سلام! امیدوارم حالتون خوب باشه 👋</div>
+  <div class="companion-speech" id="companion-speech">سلام! امیدوارم حالتون خوب باشه!</div>
   <div class="companion-float">
     <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
       <!-- هاله درخشان -->
@@ -571,79 +607,88 @@
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact">
-    <!-- عکس پس زمینه محو که هنگام رسیدن به این بخش ظاهر می‌شود -->
-    <div id="contact-bg" aria-hidden="true" data-reveal></div>
-    
-    <div class="container relative z-10">
-      <div class="section-kicker center-kicker" data-reveal>
-        <p class="eyebrow" style="justify-content:center;">تماس</p>
-        <h2 class="section-heading">تماس با <span class="accent-text">من</span></h2>
-        <div class="divider mx-auto"></div>
-        <p class="lede mx-auto">آماده همکاری در پروژه‌های جدید هستم. با من در ارتباط باشید!</p>
-      </div>
-      <div class="contact-tiles-grid" data-reveal-group data-reveal="scale">
-        <a href="mailto:Nima.Shaheswarzadeh@gmail.com" class="glass contact-tile">
-          <span class="icon"><i class="fas fa-envelope"></i></span>
-          <span><h3>ایمیل</h3><span>Nima.Shaheswarzadeh@gmail.com</span></span>
-        </a>
-        <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" class="glass contact-tile">
-          <span class="icon"><i class="fab fa-telegram"></i></span>
-          <span><h3>تلگرام</h3><span>@Nima_Shaheswarzadeh</span></span>
-        </a>
-        <a href="https://wa.me/989371164025" target="_blank" class="glass contact-tile">
-          <span class="icon"><i class="fab fa-whatsapp"></i></span>
-          <span><h3>واتساپ</h3><span>@Nima_Shaheswarzadeh</span></span>
-        </a>
-        <a href="https://eitaa.com/Nima_Shaheswarzadeh" target="_blank" class="glass contact-tile">
-          <span class="icon"><i class="fas fa-comment-dots"></i></span>
-          <span><h3>ایتا</h3><span>@Nima_Shaheswarzadeh</span></span>
-        </a>
-        <a href="https://instagram.com/Nima_Shaheswarzadeh" target="_blank" class="glass contact-tile">
-          <span class="icon"><i class="fab fa-instagram"></i></span>
-          <span><h3>اینستاگرام</h3><span>@Nima_Shaheswarzadeh</span></span>
-        </a>
-        <a href="https://github.com/Nima-Shaheswarzadeh" target="_blank" class="glass contact-tile">
-          <span class="icon"><i class="fab fa-github"></i></span>
-          <span><h3>گیت‌هاب</h3><span>github.com/Nima-Shaheswarzadeh</span></span>
-        </a>
-      </div>
-    </div>
-  </section>
+  <!-- رپر کلی برای اعمال تصویر پس‌زمینه یکدست روی تماس و فوتر -->
+  <div id="bottom-wrapper">
+    <!-- تصویر پس زمینه که با اسکرول آشکار میشه (با شفافیت عالی) -->
+    <div id="bottom-bg" aria-hidden="true" data-reveal></div>
 
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container relative z-10">
+        <div class="section-kicker center-kicker" data-reveal>
+          <p class="eyebrow" style="justify-content:center;">تماس</p>
+          <h2 class="section-heading">تماس با <span class="accent-text">من</span></h2>
+          <div class="divider mx-auto"></div>
+          <p class="lede mx-auto">آماده همکاری در پروژه‌های جدید هستم. با من در ارتباط باشید!</p>
+        </div>
+        <div class="contact-tiles-grid" data-reveal-group data-reveal="scale">
+          <a href="mailto:Nima.Shaheswarzadeh@gmail.com" class="glass contact-tile">
+            <span class="icon"><i class="fas fa-envelope"></i></span>
+            <span><h3>ایمیل</h3><span>Nima.Shaheswarzadeh@gmail.com</span></span>
+          </a>
+          <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" class="glass contact-tile">
+            <span class="icon"><i class="fab fa-telegram"></i></span>
+            <span><h3>تلگرام</h3><span>@Nima_Shaheswarzadeh</span></span>
+          </a>
+          <a href="https://wa.me/989371164025" target="_blank" class="glass contact-tile">
+            <span class="icon"><i class="fab fa-whatsapp"></i></span>
+            <span><h3>واتساپ</h3><span>@Nima_Shaheswarzadeh</span></span>
+          </a>
+          <a href="https://eitaa.com/Nima_Shaheswarzadeh" target="_blank" class="glass contact-tile">
+            <span class="icon"><i class="fas fa-comment-dots"></i></span>
+            <span><h3>ایتا</h3><span>@Nima_Shaheswarzadeh</span></span>
+          </a>
+          <a href="https://instagram.com/Nima_Shaheswarzadeh" target="_blank" class="glass contact-tile">
+            <span class="icon"><i class="fab fa-instagram"></i></span>
+            <span><h3>اینستاگرام</h3><span>@Nima_Shaheswarzadeh</span></span>
+          </a>
+          <a href="https://github.com/Nima-Shaheswarzadeh" target="_blank" class="glass contact-tile">
+            <span class="icon"><i class="fab fa-github"></i></span>
+            <span><h3>گیت‌هاب</h3><span>github.com/Nima-Shaheswarzadeh</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-inner relative z-10">
+        <!-- لیست تکنولوژی‌های شیشه‌ای -->
+        <div style="margin-bottom: var(--space-4);">
+           <span style="color:var(--text-muted); font-size:var(--fs-sm); display:block; margin-bottom:var(--space-3);">تکنولوژی‌های استفاده شده در سایت:</span>
+           <div class="tech-chips">
+             <span class="tech-chip glass">HTML5 & CSS3</span>
+             <span class="tech-chip glass">Vanilla JS</span>
+             <span class="tech-chip glass">GSAP & Lenis</span>
+             <span class="tech-chip glass">Swiper.js</span>
+             <span class="tech-chip glass">Three.js</span>
+             <span class="tech-chip glass">Devicons</span>
+           </div>
+        </div>
+
+        <p class="caption">© ۱۴۰۵ نیما شهسوارزاده — همه حقوق محفوظ است.</p>
+      </div>
+    </footer>
+  </div>
 </main>
 
-<footer>
-  <div class="container footer-inner">
-    
-    <!-- لیست تکنولوژی‌های شیشه‌ای -->
-    <div style="margin-bottom: var(--space-4);">
-       <span style="color:var(--text-muted); font-size:var(--fs-sm); display:block; margin-bottom:var(--space-3);">تکنولوژی‌های استفاده شده در سایت:</span>
-       <div class="tech-chips">
-         <span class="tech-chip glass">HTML5 & CSS3</span>
-         <span class="tech-chip glass">Vanilla JS</span>
-         <span class="tech-chip glass">GSAP & Lenis</span>
-         <span class="tech-chip glass">Swiper.js</span>
-         <span class="tech-chip glass">Three.js</span>
-         <span class="tech-chip glass">Devicons</span>
-       </div>
-    </div>
+<!-- کپسول شیشه‌ای چسبیده (صدا + بازگشت به بالا) در سمت چپ صفحه -->
+<div id="action-pill">
+  <!-- دکمه صدا -->
+  <button id="sound-toggle" aria-label="قطع/وصل صدای کلیک" aria-pressed="false">
+    <i class="fas fa-volume-up" aria-hidden="true"></i>
+    <i class="fas fa-volume-mute" aria-hidden="true" style="display:none;"></i>
+  </button>
+  
+  <div class="pill-divider"></div>
+  
+  <!-- دکمه بازگشت به بالا -->
+  <button id="back-to-top" aria-label="بازگشت به بالا">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
+  </button>
+</div>
 
-    <p class="caption">© ۱۴۰۵ نیما شهسوارزاده — همه حقوق محفوظ است.</p>
-  </div>
-</footer>
-
-<!-- Back to top -->
-<button id="back-to-top" class="glass" aria-label="بازگشت به بالا"><i class="fas fa-arrow-up" aria-hidden="true"></i></button>
-
-<!-- Sound toggle -->
-<button id="sound-toggle" class="glass" aria-label="قطع/وصل صدای کلیک" aria-pressed="false">
-  <i class="fas fa-volume-up" aria-hidden="true"></i>
-  <i class="fas fa-volume-mute" aria-hidden="true"></i>
-</button>
-
-<!-- Contact FAB -->
+<!-- Contact FAB (در سمت راست صفحه) -->
 <div id="contact-fab-items">
   <a href="https://eitaa.com/Nima_Shaheswarzadeh" target="_blank" class="glass fab-item" data-tooltip="ایتا"><i class="fas fa-comment-dots"></i></a>
   <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" class="glass fab-item" data-tooltip="تلگرام"><i class="fab fa-telegram"></i></a>
@@ -656,7 +701,7 @@
 <button id="contact-fab" class="glass" aria-label="راه‌های ارتباطی" aria-expanded="false"><i class="fas fa-comment" aria-hidden="true"></i></button>
 
 
-<!-- وارد کردن اسکریپت اصلی سایت (ساختار ماژولار شما) -->
+<!-- وارد کردن اسکریپت اصلی سایت -->
 <script type="module" src="js/app.js"></script>
 
 <!-- Swiper JS -->
@@ -668,10 +713,10 @@
   const companion = document.getElementById('cute-companion');
   const speech = document.getElementById('companion-speech');
   
-  // دیالوگ سلام به مدت 3.5 ثانیه
+  // دیالوگ سلام به مدت 5 ثانیه (فقط علامت تعجب)
   setTimeout(() => {
     speech.classList.add('show');
-    setTimeout(() => speech.classList.remove('show'), 3500);
+    setTimeout(() => speech.classList.remove('show'), 5000);
   }, 1000);
 
   let compY = 20, compX = 5, compRot = 0, lastScroll = window.scrollY;
@@ -712,7 +757,7 @@
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 'auto',
-    speed: 500, // سرعت نرم ورق خوردن
+    speed: 500,
     coverflowEffect: {
       rotate: 30,
       stretch: 0,
@@ -733,7 +778,7 @@
       trigger: "#projects-pin-wrapper",
       pin: true,
       start: "center center", 
-      end: "+=1500", // کاربر باید ۱۵۰۰ پیکسل اسکرول کند تا پروژه‌ها ورق بخورند و سپس صفحه ادامه پیدا کند
+      end: "+=1500", // کاربر باید ۱۵۰۰ پیکسل اسکرول کند تا پروژه‌ها ورق بخورند
       scrub: 1,      
       onUpdate: (self) => {
         const total = swiper.slides.length - 1;
