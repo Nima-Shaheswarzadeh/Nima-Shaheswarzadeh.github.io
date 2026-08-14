@@ -739,7 +739,7 @@ body.hero-ready .scroll-cue { opacity: 1; }
   gap: var(--space-3);
   padding: var(--space-3);
   border-radius: var(--radius-md);
-  margin-bottom: var(--space-2);
+  height: 100%;
 }
 
 .contact-tile .icon {
@@ -755,7 +755,7 @@ body.hero-ready .scroll-cue { opacity: 1; }
 .contact-tile h3 { font-size: var(--fs-sm); }
 .contact-tile span { font-size: var(--fs-xs); color: var(--text-muted); word-break: break-all; }
 
-.contact-tile:hover { border-color: var(--accent); transform: translateX(-2px); }
+.contact-tile:hover { border-color: var(--accent); transform: translateY(-3px); }
 
 /* ---------- Footer ---------- */
 footer {

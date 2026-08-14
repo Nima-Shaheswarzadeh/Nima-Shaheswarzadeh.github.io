@@ -40,11 +40,6 @@
 [data-reveal-group].in-view > *:nth-child(11) { transition-delay: 0.75s; }
 [data-reveal-group].in-view > *:nth-child(12) { transition-delay: 0.82s; }
 
-/* GSAP has taken ownership of these children's opacity/transform every
-   frame (see initGroupReveals in scroll.js) — a CSS transition chasing the
-   same properties on top of that only adds lag, so it's switched off. */
-.gsap-group > * { transition: none; }
-
 @keyframes floatSoft {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }

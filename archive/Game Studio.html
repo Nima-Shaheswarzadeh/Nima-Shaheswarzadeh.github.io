@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Unami Studio — استودیو بازی‌سازی</title>
+  <meta name="description" content="Unami — استودیو بازی‌سازی مستقل. ساخت بازی‌های خلاقانه، جذاب و تجربه‌محور." />
+
+  <!-- فونت فارسی (Vazirmatn از CDN) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+
+  <!-- متابِر امنیت و تجربه -->
+  <meta name="theme-color" content="#0f172a" />
+
+  <style>
+    /* ===== Variables ===== */
+    :root{
+      --bg:#071026;
+      --card:#0e1726;
+      --muted:#9aa4b2;
+      --accent:#7c5cff;
+      --accent-2:#00d4ff;
+      --glass: rgba(255,255,255,0.04);
+      --radius:14px;
+      --fw-heading:700;
+      --fw-regular:400;
+    }
+
+    /* ===== Base ===== */
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,var(--bg) 0%, #041022 60%);
+      color: #e6eef8;
+      font-family: "Vazirmatn", "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+      padding-bottom:80px;
+    }
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+
+    /* ===== Layout ===== */
+    .container{
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+    header{
+      position:sticky;
+      top:0;
+      z-index:60;
+      backdrop-filter: blur(6px);
+      background: linear-gradient(180deg, rgba(7,16,38,0.6), rgba(7,16,38,0.25));
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:14px 6px;
+    }
+
+    /* Logo */
+    .brand{
+      display:flex;
+      gap:12px;
+      align-items:center;
+    }
+    .logo{
+      width:46px;height:46px;border-radius:10px;
+      background: linear-gradient(135deg,var(--accent), var(--accent-2));
+      display:flex;align-items:center;justify-content:center;
+      box-shadow: 0 6px 20px rgba(124,92,255,0.18), inset 0 -6px 18px rgba(0,0,0,0.15);
+      font-weight:800;color:white;font-size:18px;
+    }
+    .brand h1{margin:0;font-size:16px;letter-spacing:0.4px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    /* Nav links */
+    .navlinks{display:flex;gap:18px;align-items:center}
+    .navlinks a{font-size:14px;color:var(--muted);padding:8px;border-radius:8px}
+    .cta{
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      padding:9px 14px;border-radius:10px;font-weight:600;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+
+    /* ===== Hero ===== */
+    .hero{
+      padding:48px 0 28px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:28px;
+      align-items:center;
+    }
+    .hero-left h2{
+      margin:0 0 12px 0;
+      font-size:34px;line-height:1.02;font-weight:var(--fw-heading);
+      letter-spacing:-0.5px;
+    }
+    .hero-left p{color:var(--muted);margin:0 0 22px;font-size:15px;max-width:70ch}
+    .buttons{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{
+      padding:12px 16px;border-radius:12px;background:var(--glass);
+      border:1px solid rgba(255,255,255,0.03);font-weight:600;
+    }
+
+    /* Mock device card */
+    .device{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.12));
+      padding:18px;border-radius:18px;border:1px solid rgba(255,255,255,0.03);
+      box-shadow: 0 10px 40px rgba(2,6,23,0.7);
+    }
+    .screen{
+      width:100%;height:260px;border-radius:12px;background:
+      linear-gradient(135deg, rgba(255,255,255,0.02), rgba(0,0,0,0.25));
+      display:flex;align-items:center;justify-content:center;flex-direction:column;
+      gap:12px;padding:18px;
+    }
+    .pill{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+
+    /* ===== Features / Grid ===== */
+    .features{
+      margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+    }
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.08));
+      padding:16px;border-radius:14px;border:1px solid rgba(255,255,255,0.03);
+      transition:transform .28s ease, box-shadow .28s ease;
+    }
+    .card:hover{transform:translateY(-6px);box-shadow: 0 18px 50px rgba(2,6,23,0.65)}
+    .card h3{margin:6px 0 4px;font-size:15px}
+    .card p{margin:0;color:var(--muted);font-size:13px}
+
+    /* ===== Games gallery ===== */
+    .section{margin:64px 0}
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+    }
+    .game{
+      border-radius:12px;overflow:hidden;position:relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+      border:1px solid rgba(255,255,255,0.03);padding:14px;
+    }
+    .game .thumb{height:140px;border-radius:10px;background:linear-gradient(120deg, rgba(124,92,255,0.18), rgba(0,212,255,0.06));display:flex;align-items:center;justify-content:center;font-weight:700}
+    .game h4{margin:10px 0 6px}
+    .game p{margin:0;color:var(--muted);font-size:13px}
+
+    /* ===== Team ===== */
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+    .member{
+      padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.03);text-align:center;
+    }
+    .avatar{width:84px;height:84px;border-radius:999px;margin:0 auto 10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:22px}
+
+    /* ===== Contact ===== */
+    form{display:grid;gap:10px}
+    input,textarea{
+      background: rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.03);
+      padding:12px;border-radius:10px;color:inherit;font-size:14px;
+    }
+    textarea{min-height:120px;resize:vertical}
+
+    /* Footer */
+    footer{padding:24px 0 40px;color:var(--muted);font-size:13px;text-align:center}
+
+    /* ===== Responsive ===== */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr;gap:18px}
+      .features{grid-template-columns:repeat(2,1fr)}
+    }
+    @media (max-width:640px){
+      .features{grid-template-columns:1fr}
+    }
+
+    /* Small utility */
+    .muted{color:var(--muted)}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.02);font-size:12px}
+    .center{display:flex;align-items:center;justify-content:center}
+    .fade-up{opacity:0;transform:translateY(10px);animation:fadeUp .7s forwards}
+    @keyframes fadeUp{to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo">U</div>
+        <div>
+          <h1>Unami Studio</h1>
+          <p>استودیو بازی‌سازی مستقل</p>
+        </div>
+      </div>
+
+      <nav class="navlinks" aria-label="منو سایت">
+        <a href="#work">پروژه‌ها</a>
+        <a href="#team">تیم</a>
+        <a href="#about">درباره</a>
+        <a href="#contact" class="cta">در تماس باشید</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-left fade-up" style="animation-delay:.05s">
+        <h2>ساخت تجربه‌هایی که در خاطر می‌ماند</h2>
+        <p>Unami ترکیبی از روایت قوی، طراحی هنری چشم‌نواز و گیم‌پلی معنادار است. پروژه‌های ما روی پلتفرم‌های مختلف (PC / Console / Mobile) عرضه می‌شوند.</p>
+
+        <div class="buttons">
+          <a class="btn" href="#work">بازی‌هایمان</a>
+          <a class="btn" href="#about">داستان ما</a>
+          <a class="btn" href="#contact">همکاری</a>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
+          <span class="tag">ایندی</span>
+          <span class="tag">روایت‌گرا</span>
+          <span class="tag">پازل-اکشن</span>
+        </div>
+      </div>
+
+      <div class="device fade-up" style="animation-delay:.12s">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div class="pill">نسخه دموی آنلاین</div>
+          <div class="muted" style="font-size:13px">Unami Labs</div>
+        </div>
+
+        <div class="screen">
+          <div style="font-weight:800;font-size:18px">Unami — Project Atlas</div>
+          <div style="max-width:70%;text-align:center;color:var(--muted);font-size:13px">
+            تصویری مفهومی از بازی آینده ما — ترکیبی از جهان‌بندی عمیق و مکانیک سادهٔ دسترسی.
+          </div>
+          <div style="display:flex;gap:10px;margin-top:12px">
+            <div class="pill">PC</div><div class="pill">Console</div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;margin-top:12px;align-items:center;justify-content:space-between">
+          <div class="muted" style="font-size:13px">نسخهٔ آزمایشی در راه است</div>
+          <a class="cta" href="#contact">درخواست دموی دسترسی</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" aria-label="امکانات">
+      <div class="card fade-up" style="animation-delay:.18s">
+        <h3>روایت هنری</h3>
+        <p>تولید داستان‌های غنی با تمرکز بر انتخاب بازیکن و پیامدهای بلندمدت.</p>
+      </div>
+      <div class="card fade-up" style="animation-delay:.22s">
+        <h3>گرافیک منحصربه‌فرد</h3>
+        <p>ترکیب سبک نقاشی دیجیتال و جلوه‌های نورپردازی برای خلق دنیاهای چشم‌نواز.</p>
+      </div>
+      <div class="card fade-up" style="animation-delay:.26s">
+        <h3>مکانیک نوآورانه</h3>
+        <p>تمرکز روی تعاملات ساده ولی عمیق که باعث ایجاد تجربه‌ای تکرارپذیر می‌شود.</p>
+      </div>
+    </section>
+
+    <!-- Work / Games -->
+    <section id="work" class="section">
+      <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:14px">
+        <div>
+          <h2 style="margin:0">پروژه‌ها</h2>
+          <div class="muted" style="margin-top:6px">نمونه‌هایی از بازی‌هایی که توسعه دادیم یا در دست ساخت داریم</div>
+        </div>
+        <div class="muted">نمایش همه</div>
+      </div>
+
+      <div class="grid">
+        <article class="game fade-up" style="animation-delay:.3s">
+          <div class="thumb">Atlas</div>
+          <h4>Atlas — ماجراجویی جهان‌باز</h4>
+          <p class="muted">گشت‌وگذار، معماهای محیطی و روایت چندگانه.</p>
+        </article>
+
+        <article class="game fade-up" style="animation-delay:.34s">
+          <div class="thumb">Echo</div>
+          <h4>Echo — پازل و صدا</h4>
+          <p class="muted">پازل‌هایی مبتنی بر بازتاب صدا و مکانیک‌های صوتی.</p>
+        </article>
+
+        <article class="game fade-up" style="animation-delay:.38s">
+          <div class="thumb">Neon Run</div>
+          <h4>Neon Run — ریسینگ آرکید</h4>
+          <p class="muted">اکشن سریع با موسیقی دراماتیک و طراحی نئونی.</p>
+        </article>
+
+        <article class="game fade-up" style="animation-delay:.42s">
+          <div class="thumb">Workshop</div>
+          <h4>Unami Workshop</h4>
+          <p class="muted">ابزاری برای تجربه و آزمون ایده‌های گیم‌دیزاین.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <div style="display:flex;gap:22px;align-items:center;flex-wrap:wrap">
+        <div style="flex:1;min-width:260px">
+          <h2 style="margin:0">درباره Unami</h2>
+          <p class="muted" style="margin-top:8px">ما گروهی از طراحان، برنامه‌نویسان و هنرمندانیم که هدف‌مان خلق بازی‌هایی است که حرفی برای گفتن دارند. از ایده تا انتشار، روی کیفیت و تجربهٔ بازیکن تمرکز می‌کنیم.</p>
+          <ul style="margin-top:12px;color:var(--muted)">
+            <li>تمرکز بر روایت و تجربهٔ کاربر</li>
+            <li>پروژه‌های کراس-پلتفرم</li>
+            <li>تیم کوچک، تصمیم‌گیری چابک</li>
+          </ul>
+        </div>
+
+        <div style="flex:0 0 320px">
+          <div class="card">
+            <h3 style="margin-top:0">ما به دنبال:</h3>
+            <p class="muted">همکاری با ناشران، استخدام افراد خلاق، و جذب سرمایهٔ اندک برای گسترش تیم.</p>
+            <div style="display:flex;gap:8px;margin-top:12px">
+              <a class="btn" href="#contact">درخواست همکاری</a>
+              <a class="btn" href="#work">تماشای دموی بازی</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team -->
+    <section id="team" class="section">
+      <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:14px">
+        <div>
+          <h2 style="margin:0">تیم</h2>
+          <div class="muted" style="margin-top:6px">چند نفر از اعضای اصلی</div>
+        </div>
+      </div>
+
+      <div class="team-grid">
+        <div class="member fade-up" style="animation-delay:.46s">
+          <div class="avatar">ن</div>
+          <h4 style="margin:6px 0 2px">نیمولی — کارگردان هنری</h4>
+          <div class="muted">تصویرگر ارشد / مفهومی</div>
+        </div>
+
+        <div class="member fade-up" style="animation-delay:.5s">
+          <div class="avatar">م</div>
+          <h4 style="margin:6px 0 2px">مهندس — برنامه‌نویس ارشد</h4>
+          <div class="muted">گیم‌پلی، شبکه</div>
+        </div>
+
+        <div class="member fade-up" style="animation-delay:.54s">
+          <div class="avatar">س</div>
+          <h4 style="margin:6px 0 2px">سس جان — طراحی سطح</h4>
+          <div class="muted">سطح/تعادل بازی</div>
+        </div>
+
+        <div class="member fade-up" style="animation-delay:.58s">
+          <div class="avatar">آ</div>
+          <h4 style="margin:6px 0 2px">آوا — تولید محتوا</h4>
+          <div class="muted">موسیقی و صداگذاری</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div style="display:grid;grid-template-columns:1fr 360px;gap:20px;align-items:start">
+        <div>
+          <h2 style="margin:0">تماس با ما</h2>
+          <p class="muted" style="margin-top:8px">ایده‌ای داری؟ می‌خوای همکاری کنی؟ همینجا پیام بذار — یا ایمیل بزن به <strong>hello@unami.studio</strong></p>
+
+          <form style="margin-top:12px" onsubmit="event.preventDefault(); handleContact()">
+            <input id="name" placeholder="اسم شما" required>
+            <input id="email" placeholder="ایمیل" type="email" required>
+            <textarea id="message" placeholder="خلاصه‌ای از درخواست یا ایده‌ات..." required></textarea>
+            <div style="display:flex;gap:8px;justify-content:flex-start;margin-top:8px">
+              <button class="cta" type="submit">ارسال پیام</button>
+              <button class="btn" type="button" onclick="copyEmail()">کپی ایمیل</button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="card">
+          <h3 style="margin-top:0">دفتر</h3>
+          <p class="muted" style="margin:6px 0">آلمان / دفتر مجازی — جلسات آنلاین و استودیوهای مقیاس کوچک</p>
+          <div style="margin-top:10px">
+            <div class="muted" style="font-size:13px">شبکه‌ها</div>
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <a class="btn" href="#" aria-label="Twitter">Twitter</a>
+              <a class="btn" href="#" aria-label="Dribbble">Dribbble</a>
+              <a class="btn" href="#" aria-label="Itch.io">Itch.io</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div style="display:flex;gap:12px;align-items:center">
+          <div class="logo" style="width:38px;height:38px">U</div>
+          <div style="text-align:right">
+            <div style="font-weight:700">Unami Studio</div>
+            <div class="muted">© 2025 — همه حقوق محفوظ است</div>
+          </div>
+        </div>
+
+        <div class="muted">ساخته شده با عشق برای بازی‌سازان ♥</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ساده‌ترین تعاملات: نمایش alert شبیه ارسال پیام (در پروژه واقعی باید با بک‌اند جایگزین شود)
+    function handleContact(){
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      if(!name || !email || !msg) return alert('لطفاً همه فیلدها را پر کنید.');
+      // ایمیل/سرور در نسخه واقعی اینجا خواهد بود
+      alert('پیام شما دریافت شد — متشکریم، ' + name + ' 🌟\\nما در اسرع وقت پاسخ می‌دهیم.');
+      // پاک‌سازی فرم
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('message').value = '';
+    }
+    function copyEmail(){
+      navigator.clipboard && navigator.clipboard.writeText('hello@unami.studio')
+        .then(()=>alert('ایمیل کپی شد: hello@unami.studio'))
+        .catch(()=>prompt('کپی ناموفق. لطفاً این ایمیل را کپی کنید:', 'hello@unami.studio'));
+    }
+
+    // انیمیشن ورود ساده: اضافه کردن کلاس fade-up به المنت‌ها هنگام ورود
+    document.addEventListener('DOMContentLoaded',()=>{
+      document.querySelectorAll('.fade-up').forEach((el, i)=>{
+        el.style.animationDelay = (i*0.04) + 's';
+      });
+    });
+  </script>
+</body>
+</html>

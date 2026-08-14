@@ -24,35 +24,20 @@ export function initScrollReveal() {
 }
 
 /**
- * Staggered reveal for [data-reveal-group] containers. With GSAP available
- * this drives a proper stagger timeline off ScrollTrigger — smoother easing,
- * no hard cap on child count. Without it (or with reduced motion requested),
- * it falls back to the CSS nth-child cascade already defined in
- * animations.css, via the same .in-view + IntersectionObserver pattern used
- * everywhere else on the site.
+ * Staggered reveal for [data-reveal-group] containers. Deliberately uses
+ * the same plain IntersectionObserver + .in-view pattern as every single
+ * [data-reveal] element on the site, rather than a GSAP ScrollTrigger
+ * timeline — a scroll-linked trigger that silently never fires (which can
+ * happen with dynamically-loaded GSAP/ScrollTrigger paired with a custom
+ * scroll library) leaves `gsap.from()`'s initial opacity:0 state stuck
+ * forever, i.e. permanently invisible content. For decorative motion
+ * that's an acceptable risk; for entire sections (stats, tool grid,
+ * projects, contact tiles) it isn't, so this stays on the boring,
+ * always-correct path.
  */
-export function initGroupReveals(motion) {
+export function initGroupReveals() {
   const groups = document.querySelectorAll('[data-reveal-group]');
   if (!groups.length) return;
-
-  if (motion && motion.gsap && motion.ScrollTrigger && !prefersReducedMotion) {
-    const { gsap, ScrollTrigger } = motion;
-    groups.forEach((group) => {
-      // Marks the group so animations.css disables its own CSS transition —
-      // GSAP now owns these properties every frame, and letting a CSS
-      // transition also chase the same values only produces lag.
-      group.classList.add('gsap-group');
-      gsap.from(group.children, {
-        opacity: 0,
-        y: 20,
-        duration: 0.7,
-        ease: 'power3.out',
-        stagger: 0.07,
-        scrollTrigger: { trigger: group, start: 'top 88%' },
-      });
-    });
-    return;
-  }
 
   const io = new IntersectionObserver(
     (entries) => {

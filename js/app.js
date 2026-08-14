@@ -66,20 +66,21 @@ async function init() {
   initContactFab();
   initCounters();
   initSound();
+  initScrollReveal();
+  initGroupReveals();
+  initSkillBars();
 
   const canvas = document.getElementById('hero-canvas');
   initHeroScene(canvas);
 
   // Motion libraries (GSAP/ScrollTrigger/Lenis) load in parallel with
-  // everything above. Every consumer below degrades gracefully to a
-  // CSS/IntersectionObserver fallback if they never arrive.
+  // everything above. Only the consumers below actually need them, and
+  // every one of those still degrades gracefully to a CSS/
+  // IntersectionObserver fallback if the libraries never arrive.
   const motionPromise = loadMotionLibs();
 
   const motion = await motionPromise;
   initSmoothScroll(motion);
-  initScrollReveal();
-  initGroupReveals(motion);
-  initSkillBars();
   initTimelineDraw(motion);
   initHeroParallax(motion);
 
