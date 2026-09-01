@@ -1,0 +1,14 @@
+{
+  "name": "nima-shaheswarzadeh-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio website of Nima Shaheswarzadeh",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "echo 'No build step required for static site'",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

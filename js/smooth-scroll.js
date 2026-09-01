@@ -14,11 +14,11 @@ export function initSmoothScroll(motion) {
   const { gsap, ScrollTrigger, Lenis } = motion;
 
   const lenis = new Lenis({
-    duration: 1.05,
+    duration: 1.25,
     easing: (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t)),
     smoothWheel: true,
-    wheelMultiplier: 1,
-    touchMultiplier: 1.1,
+    wheelMultiplier: 0.78,
+    touchMultiplier: 0.95,
   });
 
   lenis.on('scroll', ScrollTrigger.update);

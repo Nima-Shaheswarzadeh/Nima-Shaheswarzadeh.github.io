@@ -1,14 +1,13 @@
 // ============================================================
 // Hero signature element: a soft constellation / network field
 // rendered with Three.js. Represents connections between
-// technology & craft. Lazily loaded, mouse-reactive, and fully
-// disabled for reduced-motion, touch, or small screens so it
-// never costs a real user real battery for a decorative flourish.
+// technology & craft. High mouse sensitivity, smooth parallax,
+// and dynamic reactive particles.
 // ============================================================
 import { prefersReducedMotion, isMobileViewport } from './helpers.js';
 
 export async function initHeroScene(canvas) {
-  if (prefersReducedMotion || isMobileViewport() || !canvas) return;
+  if (prefersReducedMotion || !canvas) return;
   if (!('IntersectionObserver' in window)) return;
 
   let THREE;
@@ -20,20 +19,28 @@ export async function initHeroScene(canvas) {
 
   const parent = canvas.parentElement;
   const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(55, 1, 0.1, 100);
   camera.position.z = 22;
 
-  const COUNT = 70;
+  const COUNT = isMobileViewport() ? 40 : 85;
   const positions = new Float32Array(COUNT * 3);
+  const basePositions = new Float32Array(COUNT * 3);
   const speeds = [];
+  
   for (let i = 0; i < COUNT; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 34;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 14;
-    speeds.push(0.04 + Math.random() * 0.08);
+    const x = (Math.random() - 0.5) * 36;
+    const y = (Math.random() - 0.5) * 22;
+    const z = (Math.random() - 0.5) * 16;
+    positions[i * 3] = x;
+    positions[i * 3 + 1] = y;
+    positions[i * 3 + 2] = z;
+    basePositions[i * 3] = x;
+    basePositions[i * 3 + 1] = y;
+    basePositions[i * 3 + 2] = z;
+    speeds.push(0.04 + Math.random() * 0.09);
   }
 
   const geometry = new THREE.BufferGeometry();
@@ -41,24 +48,24 @@ export async function initHeroScene(canvas) {
 
   const pointsMaterial = new THREE.PointsMaterial({
     color: 0x93aad9,
-    size: 0.2,
+    size: isMobileViewport() ? 0.22 : 0.28,
     transparent: true,
-    opacity: 0.75,
+    opacity: 0.85,
     sizeAttenuation: true,
   });
   const points = new THREE.Points(geometry, pointsMaterial);
   scene.add(points);
 
   const lineMaterial = new THREE.LineBasicMaterial({
-    color: 0x4f6a9b,
+    color: 0x6284c1,
     transparent: true,
-    opacity: 0.16,
+    opacity: 0.22,
   });
   const lineGeometry = new THREE.BufferGeometry();
-  let lineMesh = new THREE.LineSegments(lineGeometry, lineMaterial);
+  const lineMesh = new THREE.LineSegments(lineGeometry, lineMaterial);
   scene.add(lineMesh);
 
-  const LINK_DIST = 6.2;
+  const LINK_DIST = 6.8;
 
   function rebuildLinks() {
     const verts = [];
@@ -81,14 +88,27 @@ export async function initHeroScene(canvas) {
   rebuildLinks();
 
   let mouseX = 0, mouseY = 0;
+  let targetMouseX = 0, targetMouseY = 0;
+
   window.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-    mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
+    // Increased coordinate range (-1 to 1) for strong responsiveness
+    targetMouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+    targetMouseY = (e.clientY / window.innerHeight - 0.5) * 2;
   }, { passive: true });
 
+  // Optional subtle device tilt on mobile
+  if (window.DeviceOrientationEvent) {
+    window.addEventListener('deviceorientation', (e) => {
+      if (e.gamma !== null && e.beta !== null) {
+        targetMouseX = Math.max(-1, Math.min(1, e.gamma / 25));
+        targetMouseY = Math.max(-1, Math.min(1, (e.beta - 45) / 25));
+      }
+    }, { passive: true });
+  }
+
   function resize() {
-    const w = parent.clientWidth;
-    const h = parent.clientHeight;
+    const w = parent.clientWidth || window.innerWidth;
+    const h = parent.clientHeight || window.innerHeight;
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
@@ -108,19 +128,33 @@ export async function initHeroScene(canvas) {
     if (!visible) return;
     frame++;
 
-    if (frame % 3 === 0) {
+    // Smooth interpolation with high follow speed
+    mouseX += (targetMouseX - mouseX) * 0.06;
+    mouseY += (targetMouseY - mouseY) * 0.06;
+
+    if (frame % 2 === 0) {
       for (let i = 0; i < COUNT; i++) {
         const s = speeds[i];
-        positions[i * 3 + 1] += Math.sin(frame * 0.01 * s + i) * 0.004;
-        positions[i * 3] += Math.cos(frame * 0.008 * s + i) * 0.003;
+        const bx = basePositions[i * 3];
+        const by = basePositions[i * 3 + 1];
+        const bz = basePositions[i * 3 + 2];
+
+        // Organic floating animation
+        positions[i * 3 + 1] = by + Math.sin(frame * 0.012 * s + i) * 1.2;
+        positions[i * 3] = bx + Math.cos(frame * 0.009 * s + i) * 1.0;
+        positions[i * 3 + 2] = bz + Math.sin(frame * 0.007 * s + i * 0.5) * 0.8;
       }
       geometry.attributes.position.needsUpdate = true;
-      if (frame % 18 === 0) rebuildLinks();
+      if (frame % 12 === 0) rebuildLinks();
     }
 
-    scene.rotation.y += (mouseX * 0.15 - scene.rotation.y) * 0.02;
-    scene.rotation.x += (-mouseY * 0.08 - scene.rotation.x) * 0.02;
-    scene.rotation.y += 0.0004;
+    // Much higher sensitivity: camera translation + scene tilt
+    camera.position.x = mouseX * 4.5;
+    camera.position.y = -mouseY * 3.2;
+    camera.lookAt(0, 0, 0);
+
+    scene.rotation.y = mouseX * 0.55 + Math.sin(frame * 0.002) * 0.05;
+    scene.rotation.x = -mouseY * 0.38 + Math.cos(frame * 0.002) * 0.03;
 
     renderer.render(scene, camera);
   }

@@ -1,20 +1,181 @@
 /* ==========================================================================
-   RESPONSIVE
+   RESPONSIVE & MOBILE (ANDROID / IOS) OPTIMIZATIONS
    ========================================================================== */
+
+:root {
+  /* Dynamic viewport scaling */
+  --nav-height: 70px;
+}
 
 @media (max-width: 860px) {
   .nav-links { display: none; }
   .nav-toggle { display: flex; }
+  
+  :root {
+    --fs-hero: clamp(2.1rem, 6.5vw, 3.2rem);
+    --fs-2xl: clamp(1.8rem, 5vw, 2.4rem);
+    --fs-xl: clamp(1.5rem, 4vw, 1.9rem);
+    --fs-lg: clamp(1.2rem, 3.2vw, 1.45rem);
+    --fs-md: 1.05rem;
+    --fs-base: 0.92rem;
+    --space-7: 2.75rem;
+    --space-8: 3.5rem;
+    --space-9: 4.5rem;
+  }
+  
+  section { padding-block: var(--space-6); }
+  .split { grid-template-columns: 1fr; gap: var(--space-4); }
+  
+  .portrait-frame {
+    max-width: 320px;
+    margin-inline: auto;
+  }
 }
 
 @media (max-width: 640px) {
-  .tool-grid { grid-template-columns: repeat(3, 1fr); }
-  .hero-avatar { width: 104px; height: 104px; }
+  :root {
+    --fs-hero: clamp(1.85rem, 7.5vw, 2.5rem);
+    --fs-2xl: 1.65rem;
+    --fs-xl: 1.35rem;
+    --fs-lg: 1.15rem;
+    --fs-md: 0.98rem;
+    --fs-base: 0.88rem;
+    --fs-sm: 0.8rem;
+    --fs-xs: 0.72rem;
+    --space-5: 1.5rem;
+    --space-6: 2.25rem;
+    --space-8: 3rem;
+  }
+
+  section { padding-block: var(--space-5); }
   .container { padding-inline: var(--space-3); }
 
-  /* Contact FAB stays available on mobile (it used to disappear here
-     entirely) — just compact, with 7 channels now instead of 3, so it
-     needs the tighter sizing to comfortably fit above the thumb. */
+  /* Hero adjustments for Android / Mobile */
+  .hero {
+    min-height: 92svh;
+    padding-top: calc(var(--nav-height) + 0.5rem);
+  }
+  .hero-avatar {
+    width: 96px;
+    height: 96px;
+    margin-bottom: var(--space-2);
+  }
+  .hero-name {
+    font-size: var(--fs-hero);
+    line-height: 1.15;
+  }
+  .hero-role {
+    font-size: 0.95rem;
+    min-height: 1.4em;
+  }
+  .hero-actions {
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+  .hero-actions .btn {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.82rem;
+  }
+  .social-row {
+    gap: 0.5rem;
+  }
+  .social-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+
+  /* About section mobile */
+  .portrait-frame {
+    max-width: 260px;
+    margin-inline: auto;
+  }
+  .grid-2 {
+    gap: var(--space-2);
+  }
+  .stat-card {
+    padding: var(--space-2) var(--space-3);
+  }
+  .stat-value {
+    font-size: 1.35rem;
+  }
+
+  /* Skills mobile */
+  .skill-row {
+    margin-bottom: var(--space-3);
+  }
+  .tool-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+  .tool-chip {
+    padding: var(--space-2) 0.25rem;
+    font-size: 0.72rem;
+  }
+  .tool-chip img, .tool-chip i {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 24px !important;
+    margin-bottom: 2px !important;
+  }
+
+  /* Projects slider on mobile */
+  .swiper {
+    padding: 20px 0 50px 0;
+  }
+  .swiper-slide {
+    width: 275px !important;
+    height: 410px !important;
+  }
+  .project-card .body {
+    padding: var(--space-3);
+  }
+  .project-card h3 {
+    font-size: 1.05rem;
+  }
+  .project-card p {
+    font-size: 0.8rem;
+    margin-bottom: var(--space-2);
+  }
+
+  /* Timeline mobile */
+  .timeline {
+    padding-inline-start: var(--space-4);
+  }
+  .timeline-card {
+    padding: var(--space-3);
+  }
+
+  /* Bottom Background: Fit entirely inside phone screen maintaining aspect ratio */
+  #bottom-wrapper {
+    position: relative;
+    background: radial-gradient(circle at center, rgba(13, 21, 38, 0.4) 0%, rgba(5, 7, 13, 0.95) 100%);
+  }
+  #bottom-bg {
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center bottom !important;
+    opacity: 0;
+    transition: opacity 1.2s ease-out;
+  }
+  #bottom-bg.in-view {
+    opacity: 0.8 !important;
+  }
+
+  /* Contact Vista 3D tiles mobile tuning */
+  .contact-tiles-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    perspective: 800px;
+    padding-inline: 0.5rem;
+  }
+  .vista-contact-card {
+    --flip-ry: -6deg !important;
+    --flip-rx: 2deg !important;
+    padding: var(--space-3);
+  }
+
+  /* Mobile FAB & UI Controls */
   #contact-fab, #back-to-top {
     width: 42px; height: 42px;
     bottom: var(--space-3);
@@ -34,9 +195,6 @@
     gap: var(--space-1);
   }
   .fab-item { width: 38px; height: 38px; font-size: 0.9rem; }
-
-  /* Tooltips rely on hover, which doesn't exist on touch — drop them here
-     rather than leave dead hover-only UI. */
   .fab-item::before { display: none; }
 }
 
@@ -46,4 +204,10 @@
 
 @media (max-width: 420px) {
   .tool-grid { grid-template-columns: repeat(2, 1fr); }
+  .swiper-slide {
+    width: 250px !important;
+    height: 380px !important;
+  }
+  .stat-card { padding: 0.5rem; }
 }
+

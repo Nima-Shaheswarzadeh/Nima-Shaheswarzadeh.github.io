@@ -80,3 +80,26 @@ body.hero-ready .hero-inner > *:nth-child(3) { transition-delay: 0.2s; }
 body.hero-ready .hero-inner > *:nth-child(4) { transition-delay: 0.55s; }
 body.hero-ready .hero-inner > *:nth-child(5) { transition-delay: 0.68s; }
 body.hero-ready .hero-inner > *:nth-child(6) { transition-delay: 0.78s; }
+
+/* ---------- Windows Vista Flip 3D Continuous Floating Loop ---------- */
+@keyframes vistaFlipFloat {
+  0%, 100% {
+    transform: perspective(1100px) rotateY(var(--flip-ry, -14deg)) rotateX(var(--flip-rx, 3deg)) translateZ(var(--flip-tz, 0px)) translateY(0px);
+    box-shadow: -8px 12px 28px rgba(0, 0, 0, 0.38), 0 0 16px var(--accent-soft);
+  }
+  50% {
+    transform: perspective(1100px) rotateY(calc(var(--flip-ry, -14deg) + 3deg)) rotateX(calc(var(--flip-rx, 3deg) - 2deg)) translateZ(calc(var(--flip-tz, 0px) + 12px)) translateY(-10px);
+    box-shadow: -14px 22px 42px rgba(0, 0, 0, 0.52), 0 0 28px var(--accent-soft-strong);
+  }
+}
+
+@keyframes vistaPulseGlow {
+  0%, 100% { border-color: rgba(98, 132, 193, 0.3); }
+  50% { border-color: rgba(147, 170, 217, 0.75); }
+}
+
+/* Robot companion animated booster pulse (smooth & gentle) */
+@keyframes robotBooster {
+  0%, 100% { transform: scaleY(0.95) translateY(0); opacity: 0.8; }
+  50% { transform: scaleY(1.15) translateY(1px); opacity: 0.98; filter: drop-shadow(0 0 8px #93aad9); }
+}

@@ -185,23 +185,29 @@
      ======================================= */
   #cute-companion {
     position: fixed;
-    right: 5%;
-    top: 20%;
+    right: 6%;
+    top: 22%;
     z-index: 100;
-    width: 70px;
-    height: 70px;
-    pointer-events: none;
-    filter: drop-shadow(0 0 15px rgba(98, 132, 193, 0.4));
+    width: 76px;
+    height: 76px;
+    pointer-events: auto;
+    cursor: pointer;
+    filter: drop-shadow(0 0 16px rgba(98, 132, 193, 0.45));
     transform-origin: center center;
-    transition: right 1.5s ease-out, top 0.8s ease-out; /* ترانزیشن نرم برای پرواز */
+    transition: right 0.75s cubic-bezier(0.2, 0.9, 0.3, 1), top 0.75s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.25s ease-out;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  #cute-companion:hover {
+    filter: drop-shadow(0 0 24px rgba(147, 170, 217, 0.8));
   }
   .companion-speech {
     position: absolute;
-    bottom: 110%;
+    bottom: 115%;
     right: 50%;
-    transform: translateX(50%) translateY(10px) scale(0.8);
-    background: rgba(10, 22, 40, 0.95);
-    border: 1px solid var(--accent);
+    transform: translateX(50%) translateY(10px) scale(0.85);
+    background: rgba(8, 16, 32, 0.95);
+    border: 1px solid var(--accent-light);
     color: white;
     padding: 10px 18px;
     border-radius: 16px 16px 0 16px;
@@ -211,44 +217,47 @@
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    box-shadow: 0 8px 25px rgba(98, 132, 193, 0.3);
+    transition: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 8px 30px rgba(98, 132, 193, 0.45);
+    pointer-events: none;
+    z-index: 110;
   }
   .companion-speech.show {
     opacity: 1;
     visibility: visible;
-    transform: translateX(50%) translateY(-10px) scale(1);
+    transform: translateX(50%) translateY(-8px) scale(1);
   }
 
   @keyframes floatCompanion {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
+    50% { transform: translateY(-16px); }
   }
-  .companion-float { animation: floatCompanion 3s ease-in-out infinite; }
+  .companion-float { animation: floatCompanion 3.2s ease-in-out infinite; }
+  
   @keyframes blinkCompanion {
     0%, 96%, 98% { transform: scaleY(1); }
-    97% { transform: scaleY(0.1); }
+    97% { transform: scaleY(0.08); }
     100% { transform: scaleY(1); }
   }
-  .companion-eye {
+  .companion-eye-normal {
     transform-origin: center;
     animation: blinkCompanion 4s infinite;
   }
   .companion-flame {
-    animation: floatCompanion 0.5s ease-in-out infinite alternate;
+    animation: robotBooster 1.5s ease-in-out infinite alternate;
   }
 
   /* =======================================
      Swiper Slider Styles
      ======================================= */
-  .swiper { width: 100%; padding: 40px 0 80px 0; }
+  .swiper { width: 100%; padding: 30px 0 40px 0; }
   .swiper-slide {
     width: 320px;
     height: 480px;
-    opacity: 0.3;
-    transition: opacity 0.5s;
+    opacity: 0.4;
+    transition: opacity 0.4s, transform 0.4s;
   }
-  @media (min-width: 768px) { .swiper-slide { width: 400px; height: 550px; } }
+  @media (min-width: 768px) { .swiper-slide { width: 380px; height: 530px; } }
   .swiper-slide-active { opacity: 1; }
   .swiper-slide .project-card { 
     height: 100%; 
@@ -263,18 +272,29 @@
   #bottom-wrapper {
     position: relative;
     overflow: hidden;
+    background: radial-gradient(circle at center, rgba(13, 21, 38, 0.4) 0%, rgba(5, 7, 13, 0.95) 100%);
   }
   #bottom-bg {
     position: absolute;
     inset: 0;
-    background: url('https://github.com/Nima-Shaheswarzadeh/nima-shaheswarzadeh.github.io/blob/main/Picture/Heels%201.png?raw=true') center/cover no-repeat;
+    background: url('https://github.com/Nima-Shaheswarzadeh/nima-shaheswarzadeh.github.io/blob/main/Picture/Heels%201.png?raw=true') center bottom / cover no-repeat;
     opacity: 0;
-    filter: blur(3px) brightness(0.8); /* وضوح و روشنایی بیشتر */
+    filter: blur(2px) brightness(0.85);
     z-index: 0;
-    transition: opacity 2s ease-out;
+    transition: opacity 1.8s ease-out;
   }
   #bottom-bg.in-view {
-    opacity: 0.65; /* شفافیت بیشتر برای دیده‌شدن عالی عکس */
+    opacity: 0.68;
+  }
+  @media (max-width: 768px) {
+    #bottom-bg {
+      background-size: contain !important;
+      background-position: center bottom !important;
+      background-repeat: no-repeat !important;
+    }
+    #bottom-bg.in-view {
+      opacity: 0.82 !important;
+    }
   }
   #contact, footer {
     position: relative;
@@ -301,29 +321,73 @@
 <div class="grain" aria-hidden="true"></div>
 
 <!-- ربات کیوت و شیطون -->
-<div id="cute-companion">
-  <div class="companion-speech" id="companion-speech">سلام! امیدوارم حالتون خوب باشه!</div>
-  <div class="companion-float">
-    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- هاله درخشان -->
-      <circle cx="50" cy="50" r="45" fill="var(--accent-soft)" />
-      <!-- شعله موتور -->
-      <path d="M 40 70 Q 50 105 60 70 Z" fill="var(--accent-light)" class="companion-flame" opacity="0.9" />
+<div id="cute-companion" title="روی من کلیک کن!">
+  <div class="companion-speech" id="companion-speech">سلام! امیدوارم حالتون خوب باشه! ✨</div>
+  <div class="companion-float" id="companion-inner">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+      <!-- هاله درخشان بیرونی -->
+      <circle cx="50" cy="50" r="46" fill="var(--accent-soft)" />
+      
+      <!-- شعله موتور تقویتی زیرین -->
+      <g id="companion-booster">
+        <path d="M 42 72 Q 50 106 58 72 Z" fill="#93aad9" class="companion-flame" opacity="0.95" />
+        <path d="M 45 72 Q 50 94 55 72 Z" fill="#ffffff" class="companion-flame" opacity="0.9" />
+      </g>
+      
       <!-- دست‌ها -->
-      <path d="M 30 55 Q 15 60 22 75" stroke="var(--accent-light)" stroke-width="4" stroke-linecap="round" fill="none"/>
-      <path d="M 70 55 Q 85 60 78 75" stroke="var(--accent-light)" stroke-width="4" stroke-linecap="round" fill="none"/>
-      <!-- بدنه -->
-      <rect x="25" y="30" width="50" height="45" rx="15" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="3"/>
-      <!-- صورت -->
-      <rect x="32" y="42" width="36" height="18" rx="8" fill="var(--bg-elevated)" stroke="var(--accent-light)" stroke-width="2"/>
-      <!-- چشم‌ها -->
-      <circle cx="41" cy="51" r="3.5" fill="var(--accent-light)" class="companion-eye"/>
-      <circle cx="59" cy="51" r="3.5" fill="var(--accent-light)" class="companion-eye"/>
-      <!-- آنتن -->
-      <path d="M 46 30 L 54 30 L 50 18 Z" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="2"/>
-      <!-- سر آنتن -->
-      <circle cx="50" cy="14" r="4.5" fill="var(--accent-light)" class="companion-flame"/>
-      <circle cx="50" cy="14" r="2.5" fill="#ffffff"/>
+      <path id="arm-left" d="M 28 54 Q 14 58 20 74" stroke="var(--accent-light)" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+      <path id="arm-right" d="M 72 54 Q 86 58 80 74" stroke="var(--accent-light)" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+      
+      <!-- بدنه فلزی براق -->
+      <rect x="24" y="28" width="52" height="47" rx="16" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="3"/>
+      <!-- انعکاس نور بالای سر -->
+      <rect x="32" y="32" width="36" height="8" rx="4" fill="rgba(255,255,255,0.15)"/>
+      
+      <!-- صفحه نمایش صورت -->
+      <rect x="30" y="40" width="40" height="23" rx="10" fill="rgba(5, 10, 22, 0.92)" stroke="var(--accent-light)" stroke-width="2"/>
+      
+      <!-- گونه‌های صورتی -->
+      <circle cx="34" cy="56" r="2.2" fill="#f472b6" opacity="0.65"/>
+      <circle cx="66" cy="56" r="2.2" fill="#f472b6" opacity="0.65"/>
+
+      <!-- حالت‌های مختلف چهره ربات -->
+      <!-- ۱. حالت نرمال (Normal / Idle) -->
+      <g id="face-normal">
+        <circle cx="41" cy="49" r="3.5" fill="#93aad9" class="companion-eye-normal"/>
+        <circle cx="41" cy="48" r="1.2" fill="#ffffff"/>
+        <circle cx="59" cy="49" r="3.5" fill="#93aad9" class="companion-eye-normal"/>
+        <circle cx="59" cy="48" r="1.2" fill="#ffffff"/>
+        <path d="M 46 56 Q 50 59 54 56" stroke="#93aad9" stroke-width="2" stroke-linecap="round" fill="none"/>
+      </g>
+
+      <!-- ۲. حالت اسکرول به پایین: خوشحال و هیجان‌زده (Happy / Diving Down) -->
+      <g id="face-down" style="display:none;">
+        <path d="M 37 50 Q 41 44 45 50" stroke="#93aad9" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+        <path d="M 55 50 Q 59 44 63 50" stroke="#93aad9" stroke-width="2.8" stroke-linecap="round" fill="none"/>
+        <path d="M 44 54 Q 50 62 56 54 Z" fill="#f472b6" stroke="#93aad9" stroke-width="1.5"/>
+      </g>
+
+      <!-- ۳. حالت اسکرول به بالا: متعجب و شگفت‌زده (Surprised / Soaring Up) -->
+      <g id="face-up" style="display:none;">
+        <circle cx="41" cy="49" r="4.8" fill="#93aad9"/>
+        <circle cx="41" cy="47" r="2" fill="#ffffff"/>
+        <circle cx="59" cy="49" r="4.8" fill="#93aad9"/>
+        <circle cx="59" cy="47" r="2" fill="#ffffff"/>
+        <ellipse cx="50" cy="56" rx="3.2" ry="4" fill="#93aad9"/>
+      </g>
+
+      <!-- ۴. حالت چشمک / عشق (Wink / Playful) -->
+      <g id="face-wink" style="display:none;">
+        <path d="M 36 49 L 45 49" stroke="#93aad9" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="59" cy="49" r="4.2" fill="#f472b6"/>
+        <circle cx="59" cy="47.5" r="1.5" fill="#ffffff"/>
+        <path d="M 46 55 Q 50 60 54 55" stroke="#93aad9" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+      </g>
+
+      <!-- آنتن و فرستنده -->
+      <path d="M 46 28 L 54 28 L 50 17 Z" fill="var(--surface-2)" stroke="var(--accent)" stroke-width="2"/>
+      <circle cx="50" cy="13" r="5" fill="var(--accent-light)" class="companion-flame"/>
+      <circle cx="50" cy="13" r="2.5" fill="#ffffff"/>
     </svg>
   </div>
 </div>
@@ -460,24 +524,24 @@
             <div class="skill-track"><div class="skill-fill" data-width="30%"></div></div>
           </div>
           <div class="skill-row">
-            <div class="skill-row-head"><span>CSS / JavaScript</span><span class="pct">40%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-width="40%"></div></div>
+            <div class="skill-row-head"><span>CSS / JavaScript</span><span class="pct">20%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-width="20%"></div></div>
           </div>
           <div class="skill-row">
             <div class="skill-row-head"><span>Python</span><span class="pct">50%</span></div>
             <div class="skill-track"><div class="skill-fill" data-width="50%"></div></div>
           </div>
           <div class="skill-row">
-            <div class="skill-row-head"><span>C# / Unity</span><span class="pct">60%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-width="60%"></div></div>
+            <div class="skill-row-head"><span>C# / Unity</span><span class="pct">90%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-width="90%"></div></div>
           </div>
           <div class="skill-row">
             <div class="skill-row-head"><span>Photoshop / AI</span><span class="pct">70%</span></div>
             <div class="skill-track"><div class="skill-fill" data-width="70%"></div></div>
           </div>
           <div class="skill-row">
-            <div class="skill-row-head"><span>Scratch</span><span class="pct">80%</span></div>
-            <div class="skill-track"><div class="skill-fill" data-width="80%"></div></div>
+            <div class="skill-row-head"><span>Scratch</span><span class="pct">90%</span></div>
+            <div class="skill-track"><div class="skill-fill" data-width="90%"></div></div>
           </div>
           <div class="skill-row">
             <div class="skill-row-head"><span>Visual Studio / VS Code</span><span class="pct">90%</span></div>
@@ -570,7 +634,12 @@
           </div>
         </div>
       </div>
-      <p class="text-center caption mt-4" style="color:var(--text-faint)">برای ورق زدن پروژه‌ها به پایین اسکرول کنید</p>
+      <!-- دکمه‌ها و نشانگرهای اسلایدر پروژه‌ها -->
+      <div class="swiper-controls" data-reveal>
+        <button class="swiper-btn swiper-button-prev-custom" aria-label="پروژه قبلی"><i class="fas fa-chevron-right"></i></button>
+        <div class="swiper-pagination"></div>
+        <button class="swiper-btn swiper-button-next-custom" aria-label="پروژه بعدی"><i class="fas fa-chevron-left"></i></button>
+      </div>
     </div>
   </section>
 
@@ -621,30 +690,67 @@
           <div class="divider mx-auto"></div>
           <p class="lede mx-auto">آماده همکاری در پروژه‌های جدید هستم. با من در ارتباط باشید!</p>
         </div>
-        <div class="contact-tiles-grid" data-reveal-group data-reveal="scale">
-          <a href="mailto:Nima.Shaheswarzadeh@gmail.com" class="glass contact-tile">
-            <span class="icon"><i class="fas fa-envelope"></i></span>
-            <span><h3>ایمیل</h3><span>Nima.Shaheswarzadeh@gmail.com</span></span>
-          </a>
-          <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" class="glass contact-tile">
-            <span class="icon"><i class="fab fa-telegram"></i></span>
-            <span><h3>تلگرام</h3><span>@Nima_Shaheswarzadeh</span></span>
-          </a>
-          <a href="https://wa.me/989371164025" target="_blank" class="glass contact-tile">
-            <span class="icon"><i class="fab fa-whatsapp"></i></span>
-            <span><h3>واتساپ</h3><span>@Nima_Shaheswarzadeh</span></span>
-          </a>
-          <a href="https://eitaa.com/Nima_Shaheswarzadeh" target="_blank" class="glass contact-tile">
+        <!-- 6 باکس تماس با افکت سه‌بعدی و لوپ متحرک Windows Vista Flip 3D -->
+        <div class="contact-tiles-grid vista-3d-stage" data-reveal-group data-reveal="scale">
+          <!-- ۱. ایتا -->
+          <a href="https://eitaa.com/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="vista-contact-card" style="--flip-ry: -15deg; --flip-rx: 3.5deg; --flip-tz: 35px; --anim-delay: 0s;">
+            <div class="vista-shine"></div>
             <span class="icon"><i class="fas fa-comment-dots"></i></span>
-            <span><h3>ایتا</h3><span>@Nima_Shaheswarzadeh</span></span>
+            <div class="tile-info">
+              <h3>ایتا (Eitaa)</h3>
+              <span>@Nima_Shaheswarzadeh</span>
+            </div>
+            <span class="vista-badge">گفتگو</span>
           </a>
-          <a href="https://instagram.com/Nima_Shaheswarzadeh" target="_blank" class="glass contact-tile">
+          <!-- ۲. تلگرام -->
+          <a href="https://t.me/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="vista-contact-card" style="--flip-ry: -13deg; --flip-rx: 2.8deg; --flip-tz: 28px; --anim-delay: 0.35s;">
+            <div class="vista-shine"></div>
+            <span class="icon"><i class="fab fa-telegram"></i></span>
+            <div class="tile-info">
+              <h3>تلگرام (Telegram)</h3>
+              <span>@Nima_Shaheswarzadeh</span>
+            </div>
+            <span class="vista-badge">پیام‌رسان</span>
+          </a>
+          <!-- ۳. واتساپ -->
+          <a href="https://wa.me/989371164025" target="_blank" rel="noopener noreferrer" class="vista-contact-card" style="--flip-ry: -11deg; --flip-rx: 2.1deg; --flip-tz: 21px; --anim-delay: 0.7s;">
+            <div class="vista-shine"></div>
+            <span class="icon"><i class="fab fa-whatsapp"></i></span>
+            <div class="tile-info">
+              <h3>واتساپ (WhatsApp)</h3>
+              <span>+98 937 116 4025</span>
+            </div>
+            <span class="vista-badge">ارتباط سریع</span>
+          </a>
+          <!-- ۴. اینستاگرام -->
+          <a href="https://instagram.com/Nima_Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="vista-contact-card" style="--flip-ry: -9deg; --flip-rx: 1.4deg; --flip-tz: 14px; --anim-delay: 1.05s;">
+            <div class="vista-shine"></div>
             <span class="icon"><i class="fab fa-instagram"></i></span>
-            <span><h3>اینستاگرام</h3><span>@Nima_Shaheswarzadeh</span></span>
+            <div class="tile-info">
+              <h3>اینستاگرام (Instagram)</h3>
+              <span>@Nima_Shaheswarzadeh</span>
+            </div>
+            <span class="vista-badge">صفحه رسمی</span>
           </a>
-          <a href="https://github.com/Nima-Shaheswarzadeh" target="_blank" class="glass contact-tile">
+          <!-- ۵. جیمیل -->
+          <a href="mailto:Nima.Shaheswarzadeh@gmail.com" class="vista-contact-card" style="--flip-ry: -7deg; --flip-rx: 0.7deg; --flip-tz: 7px; --anim-delay: 1.4s;">
+            <div class="vista-shine"></div>
+            <span class="icon"><i class="fas fa-envelope"></i></span>
+            <div class="tile-info">
+              <h3>جیمیل (Gmail)</h3>
+              <span>Nima.Shaheswarzadeh@gmail.com</span>
+            </div>
+            <span class="vista-badge">ایمیل کاری</span>
+          </a>
+          <!-- ۶. گیت‌هاب -->
+          <a href="https://github.com/Nima-Shaheswarzadeh" target="_blank" rel="noopener noreferrer" class="vista-contact-card" style="--flip-ry: -5deg; --flip-rx: 0deg; --flip-tz: 0px; --anim-delay: 1.75s;">
+            <div class="vista-shine"></div>
             <span class="icon"><i class="fab fa-github"></i></span>
-            <span><h3>گیت‌هاب</h3><span>github.com/Nima-Shaheswarzadeh</span></span>
+            <div class="tile-info">
+              <h3>گیت‌هاب (GitHub)</h3>
+              <span>github.com/Nima-Shaheswarzadeh</span>
+            </div>
+            <span class="vista-badge">سورس‌کدها</span>
           </a>
         </div>
       </div>
@@ -700,94 +806,183 @@
 </div>
 <button id="contact-fab" class="glass" aria-label="راه‌های ارتباطی" aria-expanded="false"><i class="fas fa-comment" aria-hidden="true"></i></button>
 
-
 <!-- وارد کردن اسکریپت اصلی سایت -->
 <script type="module" src="js/app.js"></script>
 
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-<!-- اسکریپت الحاقی: منطق ربات شیطون و اتصال Swiper به اسکرول -->
+<!-- اسکریپت الحاقی: منطق ربات شیطون و Swiper روان و پیشرفته -->
 <script type="module">
-  // ۱. منطق ربات (Cute Companion)
+  // ۱. منطق ربات هوشمند و متحرک (Cute Companion)
   const companion = document.getElementById('cute-companion');
   const speech = document.getElementById('companion-speech');
-  
-  // دیالوگ سلام به مدت 5 ثانیه (فقط علامت تعجب)
-  setTimeout(() => {
-    speech.classList.add('show');
-    setTimeout(() => speech.classList.remove('show'), 5000);
-  }, 1000);
+  const faceNormal = document.getElementById('face-normal');
+  const faceDown = document.getElementById('face-down');
+  const faceUp = document.getElementById('face-up');
+  const faceWink = document.getElementById('face-wink');
+  const booster = document.getElementById('companion-booster');
 
-  let compY = 20, compX = 5, compRot = 0, lastScroll = window.scrollY;
-  
+  // آرایه پیام‌های بامزه ربات
+  const companionQuotes = [
+    "سلام! امیدوارم روز پرانرژی داشته باشی! ✨",
+    "داری پروژه‌ها رو می‌بینی؟ اون بازی یونیتی خیلی خفنه! 🎮",
+    "مهارت‌های نیما رو دیدی؟ Scratch و C# غوغا می‌کنن! 🚀",
+    "اگه پروژه‌ای داری حتما از بخش تماس پیام بده! 💬",
+    "من همه جای سایت همراهتم، خوش بگذره! 🤖💙",
+    "روی من کلیک کردی؟ ایول دمت گرم! 🎉"
+  ];
+
+  function setFace(faceType) {
+    if (!faceNormal) return;
+    faceNormal.style.display = 'none';
+    if (faceDown) faceDown.style.display = 'none';
+    if (faceUp) faceUp.style.display = 'none';
+    if (faceWink) faceWink.style.display = 'none';
+
+    if (faceType === 'down' && faceDown) {
+      faceDown.style.display = 'block';
+    } else if (faceType === 'up' && faceUp) {
+      faceUp.style.display = 'block';
+    } else if (faceType === 'wink' && faceWink) {
+      faceWink.style.display = 'block';
+    } else {
+      faceNormal.style.display = 'block';
+    }
+  }
+
+  function showSpeech(text, duration = 4000) {
+    if (!speech) return;
+    speech.textContent = text;
+    speech.classList.add('show');
+    clearTimeout(speech._hideTimer);
+    speech._hideTimer = setTimeout(() => speech.classList.remove('show'), duration);
+  }
+
+  // دیالوگ خوش‌آمدگویی ابتدایی
+  setTimeout(() => {
+    showSpeech(companionQuotes[0], 4500);
+  }, 1200);
+
+  // کلیک روی ربات برای شیطنت، چرخش و دیالوگ تصادفی
+  let isSpinning = false;
+  if (companion) {
+    companion.addEventListener('click', () => {
+      if (isSpinning) return;
+      isSpinning = true;
+      setFace('wink');
+      const randomQuote = companionQuotes[Math.floor(Math.random() * companionQuotes.length)];
+      showSpeech(randomQuote, 3500);
+      companion.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      companion.style.transform = `rotate(360deg) scale(1.2)`;
+      setTimeout(() => {
+        companion.style.transition = 'right 0.75s cubic-bezier(0.2, 0.9, 0.3, 1), top 0.75s cubic-bezier(0.2, 0.9, 0.3, 1), transform 0.25s ease-out';
+        companion.style.transform = `rotate(0deg) scale(1)`;
+        setFace('normal');
+        isSpinning = false;
+      }, 650);
+    });
+  }
+
+  // حرکت آزاد و پرواز در سرتاسر مانیتور و تغییر قیافه با اسکرول
+  let compY = 20, compX = 6, compRot = 0, lastScroll = window.scrollY;
+  let scrollIdleTimer = null;
+
   window.addEventListener('scroll', () => {
     let currentScroll = window.scrollY;
     let diff = currentScroll - lastScroll;
     lastScroll = currentScroll;
     
-    // کج شدن بدن ربات با توجه به سرعت اسکرول
-    let targetRot = Math.max(-35, Math.min(35, diff * 0.15));
-    compRot += (targetRot - compRot) * 0.2;
+    if (Math.abs(diff) > 2) {
+      if (diff > 0) {
+        // اسکرول به پایین: قیافه هیجان‌زده و خوشحال
+        setFace('down');
+        if (booster) booster.style.transform = 'scale(1.1) translateY(1.5px)';
+      } else {
+        // اسکرول به بالا: قیافه شگفت‌زده
+        setFace('up');
+        if (booster) booster.style.transform = 'scale(0.95) translateY(-0.5px)';
+      }
+    }
+
+    clearTimeout(scrollIdleTimer);
+    scrollIdleTimer = setTimeout(() => {
+      setFace('normal');
+      if (booster) booster.style.transform = 'scale(1)';
+    }, 350);
+
+    // چرخش بدنه ربات متناسب با سرعت حرکت
+    let targetRot = Math.max(-30, Math.min(30, diff * 0.2));
+    compRot += (targetRot - compRot) * 0.25;
     
-    // حرکت عمودی و شیطنت افقی ربات
-    let scrollPercent = currentScroll / Math.max(1, (document.body.scrollHeight - window.innerHeight));
-    let targetY = 15 + (scrollPercent * 70); 
+    // محاسبه موقعیت در کل صفحه مانیتور
+    let maxScroll = Math.max(1, document.body.scrollHeight - window.innerHeight);
+    let scrollPercent = currentScroll / maxScroll;
     
-    // استفاده از موج سینوسی برای پرواز و پرش به چپ و راست (از ۲ تا ۱۵ درصد فاصله از راست)
-    let targetX = 2 + Math.abs(Math.sin(scrollPercent * Math.PI * 6)) * 13;
+    // حرکت عمودی از ۱۲ درصد تا ۸۰ درصد صفحه
+    let targetY = 14 + (scrollPercent * 66) + Math.sin(scrollPercent * Math.PI * 4) * 5;
     
-    compY += (targetY - compY) * 0.1;
-    compX += (targetX - compX) * 0.1;
+    // حرکت افقی در سرتاسر مانیتور (از ۶ درصد سمت راست تا ۷۸ درصد در چپ و مرکز)
+    let isMobile = window.innerWidth <= 640;
+    let targetX;
+    if (isMobile) {
+      // محدوده امن موبایل برای جلوگیری از بیرون افتادن
+      targetX = 4 + (Math.sin(scrollPercent * Math.PI * 3) * 0.5 + 0.5) * 62;
+    } else {
+      // حرکت گسترده روی دسکتاپ و مانیتور
+      targetX = 6 + (Math.sin(scrollPercent * Math.PI * 3.5) * 0.5 + 0.5) * 78;
+    }
     
-    companion.style.top = `${compY}%`;
-    companion.style.right = `${compX}%`;
-    companion.style.transform = `rotate(${compRot}deg)`;
+    compY += (targetY - compY) * 0.12;
+    compX += (targetX - compX) * 0.12;
+    
+    if (companion && !isSpinning) {
+      companion.style.top = `${compY}%`;
+      companion.style.right = `${compX}%`;
+      companion.style.transform = `rotate(${compRot}deg)`;
+    }
   }, { passive: true });
 
-  // بازگشت زاویه ربات به حالت عادی هنگام توقف
+  // بازگشت نرم زاویه ربات به حالت مستقیم
   setInterval(() => {
-    compRot *= 0.9; 
-    companion.style.transform = `rotate(${compRot}deg)`;
-  }, 50);
+    if (!isSpinning && companion) {
+      compRot *= 0.88;
+      companion.style.transform = `rotate(${compRot}deg)`;
+    }
+  }, 40);
 
-  // ۲. کنترل اسلایدر سه‌بعدی و قفل شدن روان آن با GSAP
+  // ۲. اسلایدر سه‌بعدی و کاملاً روون Swiper با تمام کنترل‌ها
   const swiper = new Swiper('.projectSwiper', {
     effect: 'coverflow',
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 'auto',
-    speed: 500,
+    initialSlide: 0,
+    speed: 550,
+    keyboard: {
+      enabled: true,
+    },
+    mousewheel: {
+      forceToAxis: true,
+      sensitivity: 0.8,
+      releaseOnEdges: true,
+    },
     coverflowEffect: {
-      rotate: 30,
+      rotate: 24,
       stretch: 0,
-      depth: 250,
+      depth: 220,
       modifier: 1,
-      slideShadows: false, // حذف سایه‌های اضافه
-    }
-  });
-
-  import { loadMotionLibs } from './js/motion.js';
-  
-  loadMotionLibs().then(motion => {
-    if(!motion) return;
-    const { ScrollTrigger } = motion;
-    
-    // قفل کردن (Pin) بسیار نرم بخش پروژه‌ها هنگام اسکرول
-    ScrollTrigger.create({
-      trigger: "#projects-pin-wrapper",
-      pin: true,
-      start: "center center", 
-      end: "+=1500", // کاربر باید ۱۵۰۰ پیکسل اسکرول کند تا پروژه‌ها ورق بخورند
-      scrub: 1,      
-      onUpdate: (self) => {
-        const total = swiper.slides.length - 1;
-        const index = Math.round(self.progress * total);
-        if(swiper.activeIndex !== index) {
-          swiper.slideTo(index);
-        }
-      }
-    });
+      slideShadows: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+      dynamicBullets: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next-custom',
+      prevEl: '.swiper-button-prev-custom',
+    },
   });
 </script>
 
